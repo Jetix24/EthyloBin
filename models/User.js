@@ -46,4 +46,4 @@ const userSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+export default mongoose.models.User || mongoose.model("User", userSchema); //Esto hace que no se dupliquen los modelos, y establece que en mongodb se llame User
