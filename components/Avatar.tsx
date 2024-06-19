@@ -1,17 +1,29 @@
 'use client';
 
-import Image from "next/image";
-import { User } from "@prisma/client";
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface AvatarProps {
-  user?: User;
+  userId?: string;
 }
 
-const Avatar: React.FC<AvatarProps> = ({
-  user
-}) => {
+const Avatar: React.FC<AvatarProps> = ({ userId }) => {
+  const [user, setUser] = useState<{ image?: string } | null>(null);
 
-  return ( 
+  useEffect(() => {
+    if (userId) {
+      axios.get(`/api/users/${userId}`)
+        .then(response => {
+          setUser(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+    }
+  }, [userId]);
+
+  return (
     <div className="relative">
       <div
         className="
@@ -27,12 +39,12 @@ const Avatar: React.FC<AvatarProps> = ({
       >
         <Image
           alt="Avatar"
-          src={user?.image || '/images/placeholder.jpg'}
+          src={user?.image || '/img/placeholder.jpg'}
           fill
         />
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Avatar;
