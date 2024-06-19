@@ -1,33 +1,29 @@
 'use client';
 
 import { useState } from "react";
-import { User } from "@prisma/client";
-
-import useRoutes from "@/app/hooks/useRoutes";
 
 import Avatar from "../Avatar";
 import DesktopItem from "./DesktopItem";
-import SettingsModal from "./SettingsModal";
+import useRoutes from "@/app/hooks/useRoutes";
 
 interface DesktopSidebarProps {
-  currentUser: User
+  currentUserImage: string;
 }
 
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
-  currentUser
+  currentUserImage
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log({ currentUser })
 
   return (
     <>
-      <SettingsModal
+      {/*<SettingsModal
         currentUser={currentUser}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-      />
+      /> */}
       <div
         className="
           hidden
@@ -92,7 +88,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               transition
             "
           >
-            <Avatar user={currentUser} />
+            <Avatar image={currentUserImage} />
           </div>
         </nav>
       </div>

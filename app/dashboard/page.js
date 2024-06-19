@@ -3,7 +3,6 @@ import { authOptions } from "@/libs/next-auth";
 import connectMongo from "@/libs/mongoose";
 import User from "@/models/User";
 import ButtonAccount from "@/components/ButtonAccount";
-import Avatar from "@/components/Avatar";
 
 export const dynamic = "force-dynamic";
 

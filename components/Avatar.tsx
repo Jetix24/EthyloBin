@@ -1,28 +1,14 @@
+// app/components/Avatar.js
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 interface AvatarProps {
-  userId?: string;
+  image?: string;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ userId }) => {
-  const [user, setUser] = useState<{ image?: string } | null>(null);
-
-  useEffect(() => {
-    if (userId) {
-      axios.get(`/api/users/${userId}`)
-        .then(response => {
-          setUser(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching user data:', error);
-        });
-    }
-  }, [userId]);
-
+const Avatar: React.FC<AvatarProps> = ({ image }) => {
   return (
     <div className="relative">
       <div
@@ -39,7 +25,7 @@ const Avatar: React.FC<AvatarProps> = ({ userId }) => {
       >
         <Image
           alt="Avatar"
-          src={user?.image || '/img/placeholder.jpg'}
+          src={image || '/img/placeholder.jpg'}
           fill
         />
       </div>

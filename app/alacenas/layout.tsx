@@ -10,7 +10,6 @@ export default async function ConversationsLayout({
   return (
     <Sidebar>
       <div className="h-full">
-
         {children}
       </div>
     </Sidebar>
