@@ -9,13 +9,19 @@ const zonaSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      trim: true, //trim hace que no se guarden espacios en blanco al principio y al final
+      trim: true,
     },
     // Relación con MateriaPrima (una zona puede tener varios productos/materia prima)
     materiasPrimas: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'MateriaPrima',
     }],
+    // Relación con Usuario
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,
