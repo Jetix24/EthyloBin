@@ -22,6 +22,31 @@ const materiaPrimaSchema = mongoose.Schema(
       ref: 'Categoria',
       required: true,
     },
+    // Relación con Proveedor
+    proveedor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Proveedor',
+    },
+    // Campos adicionales
+    contable: {
+      type: Boolean,
+      default: true,
+    },
+    medida: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    minimoAlmacen: {
+      type: Number,
+      required: true,
+    },
+    // Relación con Usuario
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,
