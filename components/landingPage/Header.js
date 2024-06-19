@@ -17,13 +17,9 @@ const links = [
     href: "/#precio",
     label: "Precio",
   },
-  {
-    href: "/signin",
-    label: "Sign In",
-  },
 ];
 
-const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100" />;
+const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg"  />;
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
@@ -45,7 +41,7 @@ const Header = () => {
         {/* Your logo/name on large screens */}
         <div className="flex lg:flex-1">
           <Link
-            className="flex items-center gap-2 shrink-0 text-purple_200 "
+            className="flex items-center gap-2 shrink-0 text-purple_200 text-3xl"
             href="/"
             title={`${config.appName} hompage`}
           >
@@ -92,7 +88,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover text-purple_200"
+              className="link link-hover text-purple_200 text-lg"
               title={link.label}
             >
               {link.label}
