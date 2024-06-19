@@ -37,14 +37,14 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
           text-sm
           leading-6
           font-semibold
-          text-gray-500
-          hover:text-black
+          text-emerald-500
+          hover:text-emerald-500
           hover:bg-gray-100
         `,
-          active && 'bg-gray-100 text-black'
+          active && 'bg-emerald-500 text-gray-100'
         )}
       >
-        <Icon className="h-6 w-6 shrink-0" />
+        <Icon className="h-7 w-7 shrink-0" />
         <span className="sr-only">{label}</span>
       </Link>
     </li>

@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { FaBasketShopping } from "react-icons/fa6";
-import {  HiUsers } from 'react-icons/hi2';
 import { GiFruitBowl } from "react-icons/gi";
 import { MdOutlineKitchen } from "react-icons/md";
 
