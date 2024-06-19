@@ -14,7 +14,7 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
   const { data: session, status } = useSession();
 
   const handleClick = () => {
-    if (status === "authenticated") {
+    if (status === "authenticated") { //Si el usuario ya está autenticado, redirigirlo a la página de callback y sino, redirigirlo a la página de inicio de sesión
       router.push(config.auth.callbackUrl);
     } else {
       signIn(undefined, { callbackUrl: config.auth.loginUrl });
