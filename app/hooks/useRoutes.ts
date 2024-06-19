@@ -10,9 +10,9 @@ const useRoutes = () => {
   const routes = useMemo(() => [
     {
       label: 'Zonas', 
-      href: '/alacenas',
+      href: '/zonas',
       icon: MdOutlineKitchen, 
-      active: pathname === '/alacenas'
+      active: pathname === '/zonas'
     },
     { 
       label: 'Materia Prima', 
