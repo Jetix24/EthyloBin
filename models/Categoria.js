@@ -16,6 +16,12 @@ const categoriaSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'MateriaPrima',
     }],
+    // Relación con Usuario
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,
