@@ -100,9 +100,7 @@ const ZoneList = () => {
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Zonas</div>
           </div>
-          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Add Zone
-          </div>
+
           <ul>
             {zonas.map((zona) => (
               <li key={zona._id} className="my-2 p-2 border rounded">
@@ -110,6 +108,9 @@ const ZoneList = () => {
               </li>
             ))}
           </ul>
+          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
+            Agregar Area
+          </div>
         </div>
       </aside>
     </>
