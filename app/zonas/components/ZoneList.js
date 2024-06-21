@@ -1,15 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
+import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 
-interface Zona {
-  _id: string;
-  name: string;
-}
-
-const ZoneList: React.FC = () => {
+const ZoneList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
@@ -30,7 +25,7 @@ const ZoneList: React.FC = () => {
     fetchZonas();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -44,12 +39,6 @@ const ZoneList: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-
-    // if (res.ok) {
-    //   const newZona = await res.json();
-    //   setZonas([...zonas, newZona]);
-    //   setIsModalOpen(false);
-    // }
   };
 
   return (
