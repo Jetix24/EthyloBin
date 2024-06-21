@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const zonaSchema = mongoose.Schema(
   {
@@ -7,19 +7,17 @@ const zonaSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    description: {
-      type: String,
-      trim: true,
-    },
     // Relación con MateriaPrima (una zona puede tener varios productos/materia prima)
-    materiasPrimas: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'MateriaPrima',
-    }],
+    materiasPrimas: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "MateriaPrima",
+      },
+    ],
     // Relación con Usuario
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
   },
@@ -28,4 +26,4 @@ const zonaSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.models.Zona || mongoose.model('Zona', zonaSchema);
+export default mongoose.models.Zona || mongoose.model("Zona", zonaSchema);
