@@ -11,25 +11,30 @@ interface Zona {
 
 const ZoneList: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [zonas, setZonas] = useState<Zona[]>([]);
+  const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  //   useEffect(() => {
-  //     const fetchZonas = async () => {
-  //       const res = await fetch("/api/zonas");
-  //       const data = await res.json();
-  //       setZonas(data);
-  //     };
-  //     fetchZonas();
-  //   }, []);
+  useEffect(() => {
+    const fetchZonas = async () => {
+      setIsLoading(true);
+      try {
+        const zonasData = await apiClient.get("/zonas");
+        setZonas(zonasData);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchZonas();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { data } = await apiClient.post("/zonas", { name });
-      const newZona = data.newZona;
+      const { newZona } = await apiClient.post("/zonas", { name });
       toast.success("Zona creada");
       console.log("Zona creada");
       setZonas([...zonas, newZona]);
@@ -67,7 +72,8 @@ const ZoneList: React.FC = () => {
               name="name"
               id="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="Type product name"
+              placeholder="Escribe el nombre de la zona"
+              autoComplete="off"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
