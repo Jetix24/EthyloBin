@@ -1,20 +1,17 @@
 import Sidebar from "@/components/sidebar/Sidebar";
 import ZoneList from "./components/ZoneList";
 
-
-export default async function ConversationsLayout({
-  children
+export default async function ZonasLayout({
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
- // const zonas = await getZones();
-
   return (
     <Sidebar>
       <div className="h-full">
-      <ZoneList  />
+        <ZoneList />
         {children}
       </div>
     </Sidebar>
-  )
-};
+  );
+}

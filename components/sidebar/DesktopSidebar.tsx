@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 
@@ -8,15 +8,14 @@ import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
 
 interface DesktopSidebarProps {
-  currentUserImage: string;
+  currentUserImage?: string;
 }
 
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
-  currentUserImage
+  currentUserImage,
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
-
 
   return (
     <>
@@ -26,7 +25,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         onClose={() => setIsOpen(false)}
       /> */}
       <div
-          className="
+        className="
             hidden
             lg:fixed
             lg:inset-y-0
@@ -41,9 +40,9 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             lg:flex
             lg:flex-col
           "
-        >
-          <div
-            className="
+      >
+        <div
+          className="
             py-4
             flex
             items-center
@@ -51,45 +50,40 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             w-full
             h-50        
             "
-          >
-            <Image
-              src="/img/icon.png"
-              alt="Logo"
-              width={50}
-              height={50}
-            />
-          </div>
-          <hr className="w-full border-slate-600" />
-          <nav
-            className="
+        >
+          <Image src="/img/icon.png" alt="Logo" width={50} height={50} />
+        </div>
+        <hr className="w-full border-slate-600" />
+        <nav
+          className="
               mt-4
               flex
               flex-col
               justify-between
             "
-          >
-            <ul
-              role="list"
-              className="
+        >
+          <ul
+            role="list"
+            className="
                 flex
                 flex-col
                 items-center
                 space-y-1
               "
-            >
-              {routes.map((item) => (
-                <DesktopItem
-                  key={item.label}
-                  href={item.href}
-                  label={item.label}
-                  icon={item.icon}
-                  active={item.active}
-                />
-              ))}
-            </ul>
-          </nav>
-          <nav
-            className="
+          >
+            {routes.map((item) => (
+              <DesktopItem
+                key={item.label}
+                href={item.href}
+                label={item.label}
+                icon={item.icon}
+                active={item.active}
+              />
+            ))}
+          </ul>
+        </nav>
+        <nav
+          className="
               mt-4
               flex
               flex-col
@@ -97,22 +91,22 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
               items-center
               h-96
             "
-          >
-            <div
-              onClick={() => setIsOpen(true)}
-              className="
+        >
+          <div
+            onClick={() => setIsOpen(true)}
+            className="
                 cursor-pointer
                 hover:opacity-75
                 transition
                 mt-auto
               "
-            >
-              <Avatar image={currentUserImage} />
-            </div>
-          </nav>
-        </div>
-      </>
-   );
-}
- 
+          >
+            <Avatar image={currentUserImage} />
+          </div>
+        </nav>
+      </div>
+    </>
+  );
+};
+
 export default DesktopSidebar;
