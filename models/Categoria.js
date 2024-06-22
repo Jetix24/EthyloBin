@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const categoriaSchema = mongoose.Schema(
   {
@@ -7,19 +7,17 @@ const categoriaSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    description: {
-      type: String,
-      trim: true,
-    },
     // Relación con MateriaPrima (una categoría puede tener varias materias primas)
-    materiasPrimas: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'MateriaPrima',
-    }],
+    materiasPrimas: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "MateriaPrima",
+      },
+    ],
     // Relación con Usuario
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
   },
@@ -28,4 +26,5 @@ const categoriaSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.models.Categoria || mongoose.model('Categoria', categoriaSchema);
+export default mongoose.models.Categoria ||
+  mongoose.model("Categoria", categoriaSchema);
