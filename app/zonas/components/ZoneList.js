@@ -100,15 +100,22 @@ const ZoneList = () => {
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Zonas</div>
           </div>
-
-          <ul>
-            {zonas.map((zona) => (
-              <li key={zona._id} className="my-2 p-2 border rounded">
-                <div className="font-bold">{zona.name}</div>
-              </li>
-            ))}
-          </ul>
+          {/*Listado de zonas */}
+          {isLoading ? (
+            <div className="flex justify-center items-center">
+              <span className="loading loading-spinner loading-md"></span>
+            </div>
+          ) : (
+            <ul>
+              {zonas.map((zona) => (
+                <li key={zona._id} className="my-2 p-2 border rounded">
+                  <div className="font-bold">{zona.name}</div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
+        {/*Boton de zonas */}
         <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
           <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
             Agregar Area
