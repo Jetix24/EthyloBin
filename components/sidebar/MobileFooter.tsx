@@ -1,17 +1,11 @@
 "use client";
 
-import useConversation from "@/app/hooks/useConversation";
 import useRoutes from "@/app/hooks/useRoutes";
 
 import MobileItem from "./MobileItem";
 
 const MobileFooter = () => {
   const routes = useRoutes();
-  const { isOpen } = useConversation();
-
-  if (isOpen) {
-    return null;
-  }
 
   return ( 
     <div
@@ -34,7 +28,6 @@ const MobileFooter = () => {
           href={route.href}
           active={route.active}
           icon={route.icon}
-          onClick={route.onClick}
         />
       ))}
     </div>
