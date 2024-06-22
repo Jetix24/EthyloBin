@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
+import CategoriaBox from "./CategoriaBox";
 
 const CategoriaList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +38,6 @@ const CategoriaList = () => {
     try {
       const { newCategoria } = await apiClient.post("/categorias", { name });
       toast.success("Categoria creada");
-      console.log("Categoria creada");
       setCategorias([...categorias, newCategoria]);
       setIsModalOpen(false);
     } catch (error) {
@@ -115,9 +115,7 @@ const CategoriaList = () => {
           ) : (
             <ul>
               {categorias.map((categoria) => (
-                <li key={categoria._id} className="my-2 p-2 border rounded">
-                  <div className="font-bold">{categoria.name}</div>
-                </li>
+                <CategoriaBox key={categoria._id} categoria={categoria} />
               ))}
             </ul>
           )}
