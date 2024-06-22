@@ -11,7 +11,7 @@ const useRoutes = () => {
   const routes = useMemo(
     () => [
       {
-        label: "Agregar",
+        label: "Agregar Materia Prima",
         href: "/materiaprima",
         icon: IoMdAddCircle,
         active: pathname === "/materiaprima",
