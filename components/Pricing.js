@@ -7,99 +7,68 @@ import ButtonCheckout from "./ButtonCheckout";
 
 const Pricing = () => {
   return (
-    <section className="bg-base-200 overflow-hidden" id="pricing">
-      <div className="py-24 px-8 max-w-5xl mx-auto">
-        <div className="flex flex-col text-center w-full mb-20">
-          <p className="font-medium text-primary mb-8">Pricing</p>
-          <h2 className="font-bold text-3xl lg:text-5xl tracking-tight">
-            Save hours of repetitive code and ship faster!
-          </h2>
-        </div>
-
-        <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
+    <section className="bg-purple_100 overflow-hidden" id="pricing">
+      <div className="py-24 px-8 max-w-7xl mx-auto">
+        <div className="relative pt-8">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {config.stripe.plans.map((plan) => (
-            <div key={plan.priceId} className="relative w-full max-w-lg">
-              {plan.isFeatured && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                  <span
-                    className={`badge text-xs text-primary-content font-semibold border-0 bg-primary`}
-                  >
-                    POPULAR
-                  </span>
-                </div>
-              )}
-
-              {plan.isFeatured && (
-                <div
-                  className={`absolute -inset-[1px] rounded-[9px] bg-primary z-10`}
-                ></div>
-              )}
-
-              <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-base-100 p-8 rounded-lg">
-                <div className="flex justify-between items-center gap-4">
-                  <div>
-                    <p className="text-lg lg:text-xl font-bold">{plan.name}</p>
-                    {plan.description && (
-                      <p className="text-base-content/80 mt-2">
+            <div key={plan.priceId} className="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
+              <div className="flex-1 bg-purple_200 px-6 py-8 lg:p-12">
+                <h3 className="text-3xl font-bold text-blue_500 sm:text-4xl">Precio pensado para tu negocio</h3>
+                {plan.description && (
+                      <p className="mt-3 text-l font-medium text-blue_500">
                         {plan.description}
                       </p>
-                    )}
+                )}
+                <div className="mt-8">
+                  <div className="flex items-center">
+                    <h4 className="flex-shrink-0 pr-4 text-md tracking-wider font-semibold uppercase text-blue_500">
+                      ¿Qué incluye?</h4>
+                    <div className="flex-1 border-t-2 border-blue_500"></div>
                   </div>
-                </div>
-                <div className="flex gap-2">
-                  {plan.priceAnchor && (
-                    <div className="flex flex-col justify-end mb-[4px] text-lg ">
-                      <p className="relative">
-                        <span className="absolute bg-base-content h-[1.5px] inset-x-0 top-[53%]"></span>
-                        <span className="text-base-content/80">
-                          ${plan.priceAnchor}
-                        </span>
-                      </p>
-                    </div>
-                  )}
-                  <p className={`text-5xl tracking-tight font-extrabold`}>
-                    ${plan.price}
-                  </p>
-                  <div className="flex flex-col justify-end mb-[4px]">
-                    <p className="text-xs text-base-content/60 uppercase font-semibold">
-                      USD
-                    </p>
-                  </div>
-                </div>
-                {plan.features && (
-                  <ul className="space-y-2.5 leading-relaxed text-base flex-1">
+                  {plan.features && (
+                  <ul role="list" className="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
                     {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-[18px] h-[18px] opacity-80 shrink-0"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-
-                        <span>{feature.name} </span>
-                      </li>
-                    ))}
+                    <li key={i} className="flex items-start lg:col-span-1">
+                      <div className="flex-shrink-0"><svg className="h-6 w-6 text-blue_200" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"></path>
+                      </svg></div>
+                      <p className="ml-3 text-md text-blue_300">{feature.name}</p>
+                    </li>
+                  ))}
                   </ul>
                 )}
-                <div className="space-y-2">
-                  <ButtonCheckout priceId={plan.priceId} />
-
-                  <p className="flex items-center justify-center gap-2 text-sm text-center text-base-content/80 font-medium relative">
-                    Pay once. Access forever.
-                  </p>
+                  
                 </div>
               </div>
+              {plan.priceAnchor && (
+              <div className="py-8 px-6 text-center bg-purple_100 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
+                <p className="text-xl leading-6 font-medium text-blue_300">Oferta Limitada</p>
+                <div className="">
+                  <span style={{opacity: '0.5'}} className="h1 line-through text-gray-600">${plan.priceAnchor}</span>
+                  <span className="text-blue_200 text-md">{" "}Promoción</span>
+                </div>
+                
+                <div className="mt-4 flex items-center justify-center text-5xl font-extrabold text-blue_300"><span>${plan.price}</span>
+                  <span className="ml-3 text-xl font-medium text-gray-600">MXN/mes</span>
+                </div>
+                
+                <div className="mt-4 bg-blue_200">
+                  <ButtonCheckout priceId={plan.priceId} />
+                </div>
+              </div>
+              )}
             </div>
-          ))}
+            
+            ))}
+          </div>
         </div>
       </div>
+      
+
     </section>
   );
 };

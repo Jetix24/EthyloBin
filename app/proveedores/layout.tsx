@@ -1,7 +1,7 @@
 import Sidebar from "@/components/sidebar/Sidebar";
-import ZoneList from "./components/ZoneList";
+import ProveedorList from "./components/ProveedorList";
 
-export default async function ZonasLayout({
+export default async function ProveedoresLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ export default async function ZonasLayout({
   return (
     <Sidebar>
       <div className="h-full">
-        <ZoneList />
+        <ProveedorList />
         {children}
       </div>
     </Sidebar>
