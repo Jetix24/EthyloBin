@@ -25,6 +25,12 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
+  useEffect(() => {
+    if (!isModalOpen) {
+      setName(""); // Limpiar el campo de entrada cuando el modal se cierra
+    }
+  }, [isModalOpen]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
