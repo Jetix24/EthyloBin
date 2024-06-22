@@ -1,12 +1,10 @@
 import { Suspense } from 'react'
 import Header from "@/components/landingPage/Header";
-import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
-import FeaturesAccordion from "@/components/FeaturesAccordion";
+import Hero from "@/components/landingPage/Hero";
 import Pricing from "@/components/Pricing";
-import FAQ from "@/components/FAQ";
 import CTA from "@/components/landingPage/CTA";
 import Footer from "@/components/Footer";
+import CarouselText from '@/components/landingPage/CarouselText';
 
 export default function Home() {
   return (
@@ -16,6 +14,8 @@ export default function Home() {
       </Suspense>
       <main>
         <CTA />
+        <Hero />
+        <CarouselText />
         <Pricing />      
       </main>
       <Footer />
