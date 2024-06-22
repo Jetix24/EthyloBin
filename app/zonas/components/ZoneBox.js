@@ -1,6 +1,14 @@
 "use client";
 
-const ZoneBox = () => {
+const ZoneBox = ({ data, onClick }) => { 
+
+  const handleClick = onClick || (() => {
+    console.log("Clicked!");
+  });
+
+  if (!data) {
+    return <div>No hay datos disponibles</div>;
+  }
   return (
     <div
       onClick={handleClick}
