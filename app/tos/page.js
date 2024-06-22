@@ -9,21 +9,23 @@ import config from "@/config";
 // 3. Replace the data with your own (if needed)
 // 4. Paste the answer from ChatGPT directly in the <pre> tag below
 
-// You are an excellent lawyer.
+// Eres un excelente abogado.
 
-// I need your help to write a simple Terms & Services for my website. Here is some context:
-// - Website: https://shipfa.st
-// - Name: ShipFast
-// - Contact information: marc@shipfa.st
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - Ownership: when buying a package, users can download code to create apps. They own the code but they do not have the right to resell it. They can ask for a full refund within 7 day after the purchase.
-// - User data collected: name, email and payment information
-// - Non-personal data collection: web cookies
-// - Link to privacy-policy: https://shipfa.st/privacy-policy
-// - Governing Law: France
-// - Updates to the Terms: users will be updated by email
+// Necesito tu ayuda para redactar unos Términos y Servicios simples para mi sitio web. Aquí tienes algo de contexto:
+// - Sitio web: https://tario.com
+// - Nombre: Tario
+// - Información de contacto: solofervazquez@gmail.com
+// - Descripción: Tario es una herramienta digital para gestionar tu negocio de preparación de alimentos. Ayuda a los propietarios de cafeterías, puestos de comida y restaurantes a administrar sus inventarios.
+// - Propiedad: al comprar una suscripción, los usuarios obtienen acceso a la plataforma y a las funciones de gestión de inventario. No pueden revender la plataforma ni los datos recopilados.
+// - Datos de usuarios recopilados: nombre, correo electrónico e información de pago
+// - Recopilación de datos no personales: cookies web
+// - Enlace a la política de privacidad: https://tario.com/privacy-policy
+// - Ley aplicable: México
+// - Actualizaciones de los Términos: los usuarios serán actualizados por correo electrónico
 
-// Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
+// Por favor, redacta unos Términos y Servicios simples para mi sitio. Añade la fecha actual. No añadas ni expliques tu razonamiento.
+
+// Answer:
 
 export const metadata = getSEOTags({
   title: `Terms and Conditions | ${config.appName}`,
@@ -50,46 +52,44 @@ const TOS = () => {
           Back
         </Link>
         <h1 className="text-3xl font-extrabold pb-6">
-          Terms and Conditions for {config.appName}
+          Terminos y condiciones de {config.appName}
         </h1>
 
         <pre
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`Fecha de entrada en vigor: 18 de junio de 2024
 
-Welcome to ShipFast!
+Bienvenido a Tario. Estos Términos y Servicios rigen el uso de nuestro sitio web y plataforma disponible en https://tario.com.
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+1. Aceptación de los Términos
+Al acceder o utilizar nuestra plataforma, aceptas cumplir con estos Términos y Servicios. Si no estás de acuerdo con estos términos, no utilices nuestro servicio.
 
-1. Description of ShipFast
+2. Descripción del Servicio
+Tario es una herramienta digital para gestionar negocios de preparación de alimentos. Ofrecemos funcionalidades de gestión de inventarios para propietarios de cafeterías, puestos de comida y restaurantes.
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+3. Propiedad y Licencia
+Al comprar una suscripción, obtienes acceso a nuestra plataforma y sus funciones. No puedes revender, distribuir o usar comercialmente la plataforma o los datos recopilados a través de ella.
 
-2. Ownership and Usage Rights
+4. Datos Recopilados
+Recopilamos información personal como nombre, correo electrónico e información de pago. También recopilamos datos no personales a través de cookies web. Para más información, consulta nuestra Política de Privacidad en https://tario.com/privacy-policy.
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+5. Uso de la Plataforma
+El uso de la plataforma debe ser conforme a las leyes y regulaciones aplicables. Está prohibido el uso indebido, la duplicación o la reproducción de cualquier parte de la plataforma sin nuestro consentimiento.
 
-3. User Data and Privacy
+6. Actualizaciones de los Términos
+Nos reservamos el derecho de modificar estos Términos y Servicios en cualquier momento. Notificaremos a los usuarios sobre cualquier cambio por correo electrónico.
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+7. Ley Aplicable
+Estos Términos y Servicios se rigen por las leyes de México. Cualquier disputa será resuelta en los tribunales competentes de México.
 
-4. Non-Personal Data Collection
+8. Contacto
+Para cualquier consulta o soporte, contáctanos en solofervazquez@gmail.com.
 
-We use web cookies to collect non-personal data for the purpose of improving our services and user experience.
+Gracias por usar Tario.
 
-5. Governing Law
-
-These Terms are governed by the laws of France.
-
-6. Updates to the Terms
-
-We may update these Terms from time to time. Users will be notified of any changes via email.
-
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
-
-Thank you for using ShipFast!`}
+© 2024 Tario. Todos los derechos reservados.`}
         </pre>
       </div>
     </main>

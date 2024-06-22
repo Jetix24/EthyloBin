@@ -1,3 +1,6 @@
+const { Amiri_Quran } = require("next/font/google");
+const { GiAquarium } = require("react-icons/gi");
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,6 +18,7 @@ module.exports = {
         purple_300: '#8999B2',
         purple_200: '#E7E2DA',
         purple_100: '#F7F3F0',
+        aquatario: '#48AD9D',
       },
       backgroundImage: {
         gradient:
