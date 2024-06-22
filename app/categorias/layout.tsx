@@ -1,3 +1,4 @@
+import React from 'react';
 import Sidebar from "@/components/sidebar/Sidebar";
 import CategoriaList from "./components/CategoriaList";
 
