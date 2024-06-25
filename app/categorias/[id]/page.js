@@ -31,22 +31,24 @@ const CategoriaDetail = () => {
   }, [id]);
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold mb-4">Materias Primas</h1>
-      {isLoading ? (
-        <div className="flex justify-center items-center">
-          <span className="loading loading-spinner loading-md"></span>
-        </div>
-      ) : (
-        <ul>
-          {materiasPrimas.map((materia) => (
-            <li key={materia._id} className="my-2 p-2 border rounded">
-              <div className="font-bold">{materia.name}</div>
-              <div>{materia.description}</div>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="pl-5">
+      <div className="pl-80 p-5 h-full">
+        <h1 className="text-2xl font-bold mb-4">Materias Primas</h1>
+        {isLoading ? (
+          <div className="flex justify-center items-center">
+            <span className="loading loading-spinner loading-md"></span>
+          </div>
+        ) : (
+          <ul>
+            {materiasPrimas.map((materia) => (
+              <li key={materia._id} className="my-2 p-2 border rounded">
+                <div className="font-bold">{materia.name}</div>
+                <div>{materia.description}</div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
