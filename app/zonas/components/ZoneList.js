@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
+import ZoneBox from "./ZoneBox";
 
 const ZoneList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,19 +26,12 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
-  useEffect(() => {
-    if (!isModalOpen) {
-      setName(""); // Limpiar el campo de entrada cuando el modal se cierra
-    }
-  }, [isModalOpen]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       const { newZona } = await apiClient.post("/zonas", { name });
       toast.success("Zona creada");
-      console.log("Zona creada");
       setZonas([...zonas, newZona]);
       setIsModalOpen(false);
     } catch (error) {
@@ -60,7 +54,7 @@ const ZoneList = () => {
               htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Name
+              Nombre de la zona
             </label>
             <input
               type="text"
@@ -94,7 +88,7 @@ const ZoneList = () => {
               {isLoading ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
-                "Crear Zona"
+                "Crear zona"
               )}
             </button>
           </div>
@@ -106,7 +100,6 @@ const ZoneList = () => {
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Zonas</div>
           </div>
-          {/*Listado de zonas */}
           {isLoading ? (
             <div className="flex justify-center items-center">
               <span className="loading loading-spinner loading-md"></span>
@@ -114,17 +107,14 @@ const ZoneList = () => {
           ) : (
             <ul>
               {zonas.map((zona) => (
-                <li key={zona._id} className="my-2 p-2 border rounded">
-                  <div className="font-bold">{zona.name}</div>
-                </li>
+                <ZoneBox key={zona._id} zona={zona} />
               ))}
             </ul>
           )}
         </div>
-        {/*Boton de zonas */}
         <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
           <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Area
+            Agregar Zona
           </div>
         </div>
       </aside>

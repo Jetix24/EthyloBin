@@ -1,52 +1,20 @@
 "use client";
 
-const ZoneBox = ({ data, onClick }) => { 
+import { useRouter } from "next/navigation";
 
-  const handleClick = onClick || (() => {
-    console.log("Clicked!");
-  });
+const ZoneBox = ({ zona }) => {
+  const router = useRouter();
 
-  if (!data) {
-    return <div>No hay datos disponibles</div>;
-  }
+  const handleClick = () => {
+    router.push(`/zonas/${zona._id}`);
+  };
+
   return (
     <div
       onClick={handleClick}
-      className="
-          w-full
-          relative
-          flex
-          items-center
-          space-x-3
-          p-3
-          my-1
-          hover:bg-neutral-100
-          rounded-lg
-          transition
-          cursor-pointer"
+      className="cursor-pointer my-2 p-2 border rounded hover:bg-gray-100"
     >
-      <div className="min-w-0 flex-1">
-        <div className="focus:outline-none">
-          <div
-            className="
-                flex
-                justify-between
-                items-center
-                mb-1
-              "
-          >
-            <p
-              className="
-                  text-sm
-                  font-medium
-                  text-white
-                "
-            >
-              {data.name}
-            </p>
-          </div>
-        </div>
-      </div>
+      <div className="font-bold">{zona.name}</div>
     </div>
   );
 };
