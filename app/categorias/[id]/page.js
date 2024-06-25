@@ -1,55 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
 import apiClient from "@/libs/api";
-import clsx from "clsx";
 import toast from "react-hot-toast";
 
-const CategoriaDetail = ({ params }) => {
+const CategoriaDetail = () => {
+  const router = useRouter();
+  const { id } = useParams();
   const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
-  const { id } = params;
 
   useEffect(() => {
-    if (id) {
-      const fetchMateriasPrimas = async () => {
-        setIsLoading(true);
-        try {
-          const materiasData = await apiClient.get(
-            `/api/categorias/${id}/materias-primas`
-          );
-          setMateriasPrimas(materiasData);
-        } catch (error) {
-          console.error(error);
-          toast.error("Error al cargar las materias primas");
-        } finally {
-          setIsLoading(false);
-        }
-      };
+    const fetchMateriasPrimas = async () => {
+      setIsLoading(true);
+      try {
+        const materiasData = await apiClient.get(
+          `/categorias/${id}/materias-primas`
+        );
+        setMateriasPrimas(materiasData);
+      } catch (error) {
+        console.error(error);
+        toast.error("Error al cargar materias primas");
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      fetchMateriasPrimas();
-    }
+    fetchMateriasPrimas();
   }, [id]);
 
   return (
-    <div className={clsx("lg:pl-80 h-full lg:block", "block")}>
-      <button
-        onClick={() => router.push("/categorias")}
-        className="mb-4 text-blue-500"
-      >
-        Volver a Categorías
-      </button>
+    <div className="p-5">
+      <h1 className="text-2xl font-bold mb-4">Materias Primas</h1>
       {isLoading ? (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center">
           <span className="loading loading-spinner loading-md"></span>
         </div>
       ) : (
         <ul>
-          {materiasPrimas.map((materiaPrima) => (
-            <li key={materiaPrima._id} className="my-2 p-2 border rounded">
-              {materiaPrima.name}
+          {materiasPrimas.map((materia) => (
+            <li key={materia._id} className="my-2 p-2 border rounded">
+              <div className="font-bold">{materia.name}</div>
+              <div>{materia.description}</div>
             </li>
           ))}
         </ul>
