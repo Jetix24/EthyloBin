@@ -5,6 +5,7 @@ import Avatar from "../Avatar";
 import DesktopItem from "./DesktopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 interface DesktopSidebarProps {
   currentUserImage?: string;
@@ -14,6 +15,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUserImage,
 }) => {
   const routes = useRoutes();
+  const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -100,7 +102,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
                 mt-auto
               "
           >
-            <Avatar image={currentUserImage} />
+            <Avatar image={session?.user?.image} />
           </div>
         </nav>
       </div>
