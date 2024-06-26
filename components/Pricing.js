@@ -57,7 +57,7 @@ const Pricing = () => {
                 </div>
                 
                 <div className="mt-4 bg-blue_200">
-                  <ButtonCheckout priceId={plan.priceId} />
+                  <ButtonCheckout priceId={plan.priceId} mode="subscription" />
                 </div>
               </div>
               )}
