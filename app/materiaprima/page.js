@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const Home = () => {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [cantidad, setCantidad] = useState(0); // Nuevo campo
   const [zona, setZona] = useState("");
   const [categoria, setCategoria] = useState("");
   const [proveedor, setProveedor] = useState("");
@@ -54,7 +54,7 @@ const Home = () => {
     try {
       const newMateriaPrima = {
         name,
-        description,
+        cantidad,
         zona: zona || null,
         categoria,
         proveedor: proveedor || null,
@@ -69,7 +69,7 @@ const Home = () => {
       toast.success("Materia prima agregada exitosamente");
       // Reset form fields
       setName("");
-      setDescription("");
+      setCantidad(0);
       setZona("");
       setCategoria("");
       setProveedor("");
@@ -113,6 +113,7 @@ const Home = () => {
                   placeholder="Nombre de la materia prima"
                 />
               </div>
+
               <div>
                 <label
                   htmlFor="categoria"
@@ -222,6 +223,23 @@ const Home = () => {
               </div>
               <div>
                 <label
+                  htmlFor="cantidad"
+                  className="block mb-2 text-sm font-medium text-gray-900 "
+                >
+                  Cantidad actual en inventario
+                </label>
+                <input
+                  type="number"
+                  id="cantidad"
+                  value={cantidad}
+                  onChange={(e) => setCantidad(e.target.valueAsNumber)}
+                  required
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                  placeholder="Cantidad en inventario"
+                />
+              </div>
+              <div>
+                <label
                   htmlFor="minimoAlmacen"
                   className="block mb-2 text-sm font-medium text-gray-900 "
                 >
@@ -235,22 +253,6 @@ const Home = () => {
                   required
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                   placeholder="Cantidad mínima en almacén"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="description"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  Descripción (opcional)
-                </label>
-                <textarea
-                  id="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
-                  placeholder="Descripción de la materia prima"
                 />
               </div>
             </div>

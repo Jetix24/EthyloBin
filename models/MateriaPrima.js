@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const materiaPrimaSchema = mongoose.Schema(
   {
@@ -7,25 +7,25 @@ const materiaPrimaSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    description: {
-      type: String,
-      trim: true,
+    cantidad: {
+      type: Number,
+      required: true,
     },
     // Relación con Zona (una materia prima se puede almacenar en una sola zona)
     zona: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Zona',
+      ref: "Zona",
     },
     // Relación con Categoría (una materia prima debe estar categorizada)
     categoria: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Categoria',
+      ref: "Categoria",
       required: true,
     },
     // Relación con Proveedor
     proveedor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Proveedor',
+      ref: "Proveedor",
     },
     // Campos adicionales
     contable: {
@@ -44,7 +44,7 @@ const materiaPrimaSchema = mongoose.Schema(
     // Relación con Usuario
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
   },
@@ -53,4 +53,5 @@ const materiaPrimaSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.models.MateriaPrima || mongoose.model('MateriaPrima', materiaPrimaSchema);
+export default mongoose.models.MateriaPrima ||
+  mongoose.model("MateriaPrima", materiaPrimaSchema);
