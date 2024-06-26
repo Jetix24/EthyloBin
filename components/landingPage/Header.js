@@ -17,13 +17,9 @@ const links = [
     href: "/#precio",
     label: "Precio",
   },
-  {
-    href: "/signin",
-    label: "Sign In",
-  },
 ];
 
-const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100" />;
+const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg"  />;
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
@@ -45,7 +41,7 @@ const Header = () => {
         {/* Your logo/name on large screens */}
         <div className="flex lg:flex-1">
           <Link
-            className="flex items-center gap-2 shrink-0 text-purple_200 "
+            className="flex items-center gap-2 shrink-0 text-purple_200 text-3xl"
             href="/"
             title={`${config.appName} hompage`}
           >
@@ -53,10 +49,9 @@ const Header = () => {
               src={logo}
               alt={`${config.appName} logo`}
               className="w-8"
-              placeholder="blur"
               priority={true}
-              width={32}
-              height={32}
+              width={40}
+              height={40}
             />
             <span className="font-extrabold text-lg">{config.appName}</span>
           </Link>
@@ -75,7 +70,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 text-base-content text-purple_200"
+              className="w-6 h-6 text-base-content "
             >
               <path
                 strokeLinecap="round"
@@ -92,7 +87,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover text-purple_200"
+              className="link link-hover text-purple_200 text-lg"
               title={link.label}
             >
               {link.label}
@@ -120,10 +115,9 @@ const Header = () => {
                 src={logo}
                 alt={`${config.appName} logo`}
                 className="w-8"
-                placeholder="blur"
                 priority={true}
-                width={32}
-                height={32}
+                width={40}
+                height={40}
               />
               <span className="font-extrabold text-lg">{config.appName}</span>
             </Link>

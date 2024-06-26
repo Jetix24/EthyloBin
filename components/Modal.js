@@ -5,7 +5,7 @@ import { Fragment } from "react";
 
 // A simple modal component which can be shown/hidden with a boolean and a function
 // Because of the setIsModalOpen function, you can't use it in a server component.
-const Modal = ({ isModalOpen, setIsModalOpen }) => {
+const Modal = ({ isModalOpen, setIsModalOpen, children, title="" }) => {
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
@@ -39,7 +39,7 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
               <Dialog.Panel className="relative w-full max-w-3xl h-full overflow-visible transform text-left align-middle shadow-xl transition-all rounded-xl bg-base-100 p-6 md:p-8">
                 <div className="flex justify-between items-center mb-4">
                   <Dialog.Title as="h2" className="font-semibold">
-                    I&apos;m a modal
+                    {title}
                   </Dialog.Title>
                   <button
                     className="btn btn-square btn-ghost btn-sm"
@@ -56,7 +56,9 @@ const Modal = ({ isModalOpen, setIsModalOpen }) => {
                   </button>
                 </div>
 
-                <section>And here is my content</section>
+                <section>
+                  {children}
+                </section>
               </Dialog.Panel>
             </Transition.Child>
           </div>

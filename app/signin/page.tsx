@@ -1,4 +1,3 @@
-import { FaClipboardList } from "react-icons/fa";
 import AuthForm from "./components/AuthForm";
 
 export default function signin() {
