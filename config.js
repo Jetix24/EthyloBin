@@ -33,7 +33,7 @@ const config = {
         priceAnchor: 149,
         features: [
           { name: "Gestión de inventario"},
-          { name: "Categorización por zonas" },
+          { name: "Categorización por areas" },
           { name: "Lista de compras automática" },
           { name: "Alertas de stock bajo" },
           { name: "Actualizaciones automáticas" },
