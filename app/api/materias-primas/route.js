@@ -20,6 +20,9 @@ export async function POST(req) {
     medida,
     minimoAlmacen,
   } = body;
+
+  console.log("Datos recibidos:", body);
+
   if (!name || !categoria || !medida || minimoAlmacen == null)
     return NextResponse.json(
       { error: "Missing required fields" },

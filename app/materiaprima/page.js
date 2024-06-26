@@ -11,7 +11,7 @@ const Home = () => {
   const [categoria, setCategoria] = useState("");
   const [proveedor, setProveedor] = useState("");
   const [contable, setContable] = useState(true);
-  const [medida, setMedida] = useState("");
+  const [medida, setMedida] = useState("unidades"); // Valor por defecto
   const [minimoAlmacen, setMinimoAlmacen] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,7 +52,7 @@ const Home = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await apiClient.post("/materias-primas", {
+      const newMateriaPrima = {
         name,
         description,
         zona: zona || null,
@@ -61,7 +61,11 @@ const Home = () => {
         contable,
         medida,
         minimoAlmacen,
-      });
+      };
+
+      console.log("Datos enviados:", newMateriaPrima);
+
+      await apiClient.post("/materias-primas", newMateriaPrima);
       toast.success("Materia prima agregada exitosamente");
       // Reset form fields
       setName("");
@@ -70,7 +74,7 @@ const Home = () => {
       setCategoria("");
       setProveedor("");
       setContable(true);
-      setMedida("");
+      setMedida("unidades"); // Restablecer a valor por defecto
       setMinimoAlmacen(0);
     } catch (error) {
       console.error(error);
@@ -202,6 +206,7 @@ const Home = () => {
                   required
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
+                  <option value="">Seleccione una medida</option>
                   {contable
                     ? contableOptions.map((option) => (
                         <option key={option} value={option}>
@@ -270,7 +275,7 @@ const Home = () => {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 1.414 1.414L10 11.414l-4.293 4.293a1 1 1.414-1.414L8.586 10 4.293 5.707a1 1 0 0-1.414z"
                     clipRule="evenodd"
                   />
                 </svg>

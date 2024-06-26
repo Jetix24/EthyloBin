@@ -1,12 +1,8 @@
-import React from 'react';
+import React from "react";
 import Sidebar from "@/components/sidebar/Sidebar";
 import CategoriaList from "./components/CategoriaList";
 
-export default async function materiaprimaLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function CategoriaLayout({ children }) {
   return (
     <Sidebar>
       <CategoriaList />
