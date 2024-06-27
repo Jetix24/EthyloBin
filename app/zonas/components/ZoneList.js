@@ -26,14 +26,23 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
-  const handleEdit = async (id) => {
-    console.log(`Editando zona con id: ${id}`);
-    // Aquí puedes agregar la lógica para editar la zona
+  const handleEdit = async (id, newName) => {
+    setZonas((prevZonas) =>
+      prevZonas.map((zona) =>
+        zona._id === id ? { ...zona, name: newName } : zona
+      )
+    );
   };
 
   const handleDelete = async (id) => {
-    console.log(`Eliminando zona con id: ${id}`);
-    // Aquí puedes agregar la lógica para eliminar la zona
+    try {
+      await apiClient.delete(`/zonas/${id}`);
+      setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
+      toast.success("Zona eliminada");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar la zona");
+    }
   };
 
   const handleSubmit = async (e) => {

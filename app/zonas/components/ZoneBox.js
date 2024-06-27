@@ -3,11 +3,13 @@ import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
+import apiClient from "@/libs/api";
 
 const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [newName, setNewName] = useState(zona.name);
   const router = useRouter();
 
   const handleClick = () => {
@@ -22,6 +24,18 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const handleDelete = () => {
     setIsDeleteModalOpen(true);
     setIsPopoverOpen(false);
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await apiClient.put("/zonas", { id: zona._id, name: newName });
+      onEdit(zona._id, newName);
+      setIsEditModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      // Puedes mostrar un mensaje de error aquí si lo deseas
+    }
   };
 
   return (
@@ -64,19 +78,14 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
         setIsModalOpen={setIsEditModalOpen}
         title="Editar Zona"
       >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            onEdit(zona._id);
-            setIsEditModalOpen(false);
-          }}
-        >
+        <form onSubmit={handleEditSubmit}>
           <label className="block mb-2 text-sm font-medium text-gray-900">
             Nombre de la zona
           </label>
           <input
             type="text"
-            defaultValue={zona.name}
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
             placeholder="Nombre de la zona"
           />

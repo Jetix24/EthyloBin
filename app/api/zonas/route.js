@@ -63,3 +63,65 @@ export async function GET(req) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }
 }
+
+// Método PUT para actualizar una zona
+export async function PUT(req) {
+  const session = await getServerSession(authOptions);
+  if (!session)
+    return NextResponse.json({ error: "Not signed in" }, { status: 401 });
+
+  const body = await req.json();
+  const { id, name } = body;
+  if (!id || !name)
+    return NextResponse.json(
+      { error: "ID and name are required" },
+      { status: 400 }
+    );
+
+  const db = await connectMongo();
+  const ObjectId = db.Types.ObjectId;
+
+  try {
+    const zona = await Zona.findOneAndUpdate(
+      { _id: new ObjectId(id), userId: new ObjectId(session.user.id) },
+      { name },
+      { new: true }
+    );
+    if (!zona)
+      return NextResponse.json({ error: "Zona not found" }, { status: 404 });
+
+    return NextResponse.json(zona, { status: 200 });
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: e.message }, { status: 500 });
+  }
+}
+
+// Método DELETE para eliminar una zona
+export async function DELETE(req) {
+  const session = await getServerSession(authOptions);
+  if (!session)
+    return NextResponse.json({ error: "Not signed in" }, { status: 401 });
+
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  if (!id)
+    return NextResponse.json({ error: "ID is required" }, { status: 400 });
+
+  const db = await connectMongo();
+  const ObjectId = db.Types.ObjectId;
+
+  try {
+    const zona = await Zona.findOneAndDelete({
+      _id: new ObjectId(id),
+      userId: new ObjectId(session.user.id),
+    });
+    if (!zona)
+      return NextResponse.json({ error: "Zona not found" }, { status: 404 });
+
+    return NextResponse.json({ message: "Zona deleted" }, { status: 200 });
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: e.message }, { status: 500 });
+  }
+}
