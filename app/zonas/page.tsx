@@ -1,9 +1,10 @@
-"use client";
-
 import EmptyState from "@/components/EmptyState";
 import clsx from "clsx";
+import connectMongo from "@/libs/mongoose";
+import User from "@/models/User";
+import getSession from "../actions/getSession";
 
-const Home = () => {
+export default async function Home() {
 
   return (
     <div
@@ -15,5 +16,3 @@ const Home = () => {
     </div>
   )
 };
-
-export default Home;

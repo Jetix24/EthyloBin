@@ -11,8 +11,10 @@ import config from "@/config";
 const ButtonCheckout = ({ priceId, mode = "payment" }) => {
   const [isLoading, setIsLoading] = useState(false);
 
+  
   const handlePayment = async () => {
     setIsLoading(true);
+
 
     try {
       const res = await apiClient.post("/stripe/create-checkout", {
