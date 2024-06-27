@@ -26,6 +26,14 @@ const MateriaZonaList = ({ zonaId }) => {
     fetchMateriasPrimas();
   }, [zonaId]);
 
+  const handleQuantityChange = (id, newQuantity) => {
+    setMateriasPrimas((prevMaterias) =>
+      prevMaterias.map((materia) =>
+        materia._id === id ? { ...materia, cantidad: newQuantity } : materia
+      )
+    );
+  };
+
   return (
     <div className="p-5">
       <h1 className="text-4xl font-bold mb-4">Materias Primas</h1>
@@ -39,6 +47,7 @@ const MateriaZonaList = ({ zonaId }) => {
             <MateriaZonaBox
               key={materia._id}
               materia={materia}
+              onQuantityChange={handleQuantityChange}
               className={index % 2 === 0 ? "bg-blue-100" : "bg-white"}
             />
           ))}
