@@ -21,16 +21,16 @@ const config = {
         // REQUIRED — we use this to find the plan in the webhook (for instance if you want to update the user's credits based on the plan)
         priceId:
           process.env.NODE_ENV === "development"
-            ? "price_1PVQjK2NkWrPkE6CXwEmdn9R"
-            : "prod_QM91uiqBABVUdL",
+            ? "price_1PWDKO2NkWrPkE6CjNNsmVPe"
+            : "aqui ba el de prod",
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "La mejor opción para tu cafetería",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 99.99,
+        price: 149,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 149,
+        priceAnchor: 200,
         features: [
           { name: "Gestión de inventario"},
           { name: "Categorización por areas" },
@@ -72,6 +72,9 @@ const config = {
     loginUrl: "/signin",
     // REQUIRED — the path you want to redirect users after successfull login (i.e. /dashboard, /private). This is normally a private page for users to manage their accounts. It's used in apiClient (/libs/api.js) upon 401 errors from our API & in ButtonSignin.js
     callbackUrl: "/zonas",
+
+    landUrl: "/",
+
   },
 };
 
