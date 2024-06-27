@@ -51,7 +51,7 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
 
   return (
     <>
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
+      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100 active:bg-slate-500">
         <div className="flex-1 cursor-pointer" onClick={handleClick}>
           <div className="font-bold">{zona.name}</div>
         </div>
