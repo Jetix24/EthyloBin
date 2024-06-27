@@ -26,6 +26,16 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
+  const handleEdit = async (id) => {
+    console.log(`Editando zona con id: ${id}`);
+    // Aquí puedes agregar la lógica para editar la zona
+  };
+
+  const handleDelete = async (id) => {
+    console.log(`Eliminando zona con id: ${id}`);
+    // Aquí puedes agregar la lógica para eliminar la zona
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -107,7 +117,12 @@ const ZoneList = () => {
           ) : (
             <ul>
               {zonas.map((zona) => (
-                <ZoneBox key={zona._id} zona={zona} />
+                <ZoneBox
+                  key={zona._id}
+                  zona={zona}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
+                />
               ))}
             </ul>
           )}

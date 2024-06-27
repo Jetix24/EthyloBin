@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
 import { useRouter } from "next/navigation";
+import Modal from "@/components/Modal";
 
-const ZoneBox = ({ zona }) => {
+const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     router.push(`/zonas/${zona._id}`);
@@ -25,10 +27,7 @@ const ZoneBox = ({ zona }) => {
   return (
     <>
       <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
-        <div
-          className="flex-1 cursor-pointer"
-          onClick={() => onSelect(zona._id)}
-        >
+        <div className="flex-1 cursor-pointer" onClick={handleClick}>
           <div className="font-bold">{zona.name}</div>
         </div>
         <Popover className="relative">
@@ -65,7 +64,6 @@ const ZoneBox = ({ zona }) => {
         setIsModalOpen={setIsEditModalOpen}
         title="Editar Zona"
       >
-        {/* Aquí va el contenido del modal de edición */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -93,7 +91,6 @@ const ZoneBox = ({ zona }) => {
         setIsModalOpen={setIsDeleteModalOpen}
         title="Eliminar Zona"
       >
-        {/* Aquí va el contenido del modal de eliminación */}
         <p>
           ¿Estás seguro? Al eliminar esta zona, todos los elementos dentro de
           esta zona se quedarán sin zona.
