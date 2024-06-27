@@ -28,9 +28,9 @@ const config = {
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
         description: "La mejor opción para tu cafetería",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 99.99,
+        price: 149,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 149,
+        priceAnchor: 200,
         features: [
           { name: "Gestión de inventario"},
           { name: "Categorización por areas" },

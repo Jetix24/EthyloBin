@@ -8,13 +8,22 @@ import config from "@/config";
 // It calls the /api/stripe/create-checkout route with the priceId, successUrl and cancelUrl
 // By default, it doesn't force users to be authenticated. But if they are, it will prefill the Checkout data with their email and/or credit card. You can change that in the API route
 // You can also change the mode to "subscription" if you want to create a subscription instead of a one-time payment
-const ButtonCheckout = ({ priceId, mode = "payment" }) => {
+const ButtonCheckout = ({ priceId, mode = "payment", hasAccess, session}) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  
   const handlePayment = async () => {
     setIsLoading(true);
 
+    if (!session) {         // Redirigir a la página de inicio de sesión si no hay usuario
+      window.location.href = '/signin';
+      setIsLoading(false); // Asegúrate de detener el indicador de carga
+      return; // Detener la ejecución de la función aquí
+    } else if (hasAccess) {
+      // Redirigir a /zonas si el usuario tiene acceso
+      window.location.href = '/zonas';
+      setIsLoading(false); // Asegúrate de detener el indicador de carga
+      return; // Detener la ejecución de la función aquí
+    }
     try {
       const res = await apiClient.post("/stripe/create-checkout", {
         priceId,

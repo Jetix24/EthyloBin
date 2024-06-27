@@ -5,13 +5,13 @@ import Pricing from "@/components/Pricing";
 import CTA from "@/components/landingPage/CTA";
 import Footer from "@/components/Footer";
 import CarouselText from '@/components/landingPage/CarouselText';
-//import getCurrentUser from '../actions/getCurrentUser';
+import getCurrentUser from '../actions/getCurrentUser';
 import getSession from '../actions/getSession';
 
 export default async function Home() {
 
   const session = await getSession();
-  //const user = await getCurrentUser();
+  const user = await getCurrentUser();
 
   return (
     <>
@@ -22,7 +22,7 @@ export default async function Home() {
         <CTA session={session}/>
         <Hero />
         <CarouselText />
-        <Pricing/>      
+        <Pricing user={user} session={session}/>      
       </main>
       <Footer />
     </>
