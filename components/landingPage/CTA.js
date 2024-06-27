@@ -1,7 +1,20 @@
+"use client"
 import Image from "next/image";
-import config from "@/config";
+import { useRouter } from 'next/navigation';
 
-const CTA = () => {
+const CTA = ({session}) => {
+
+  const router = useRouter(); // Paso 2: Inicializar useRouter
+
+  // Modificar la función manejadora para usar currentUser
+  const handleClick = () => {
+    if (!session) {
+      router.push('/signin');
+    } else {
+      router.push('/zonas');
+    }
+  };
+
   return (
     <section className="relative hero overflow-hidden min-h-screen">
       <Image
@@ -20,7 +33,7 @@ const CTA = () => {
           Optimiza tu tiempo y aumenta la eficiencia con nuestra herramienta digital fácil de usar
           </p>
 
-          <button className="btn bg-blue_200 rounded-md text-lg text-purple_200 border-0 hover:bg-blue_100 btn-wide ">
+          <button onClick={handleClick} className="btn bg-blue_200 rounded-md text-lg text-purple_200 border-0 hover:bg-blue_100 btn-wide ">
             Empieza ahora
           </button>
         </div>
