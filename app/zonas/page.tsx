@@ -1,8 +1,5 @@
 import EmptyState from "@/components/EmptyState";
 import clsx from "clsx";
-import connectMongo from "@/libs/mongoose";
-import User from "@/models/User";
-import getSession from "../actions/getSession";
 
 export default async function Home() {
 
