@@ -4,7 +4,6 @@ import { Popover } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
-import toast from "react-hot-toast";
 
 const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -36,6 +35,17 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
     } catch (error) {
       console.error(error);
       toast.error("Error al editar la zona");
+    }
+  };
+
+  const handleDeleteConfirm = async () => {
+    try {
+      await apiClient.delete(`/zonas?id=${zona._id}`);
+      onDelete(zona._id);
+      setIsDeleteModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar la zona");
     }
   };
 
@@ -102,22 +112,21 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
         title="Eliminar Zona"
       >
         <p>
-          ¿Estás seguro? Al eliminar esta zona, todos los elementos dentro de
-          esta zona se quedarán sin zona.
+          ¿Estás seguro?
+          <br />
+          Al eliminar esta zona, todos los elementos dentro de esta zona se
+          quedarán sin zona.
         </p>
         <div className="flex justify-end mt-4">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
-            className="mr-4 btn btn-secondary"
+            className="mr-4 btn"
           >
             Cancelar
           </button>
           <button
-            onClick={() => {
-              onDelete(zona._id);
-              setIsDeleteModalOpen(false);
-            }}
-            className="btn btn-danger"
+            onClick={handleDeleteConfirm}
+            className="btn bg-red-500 text-white"
           >
             Eliminar
           </button>

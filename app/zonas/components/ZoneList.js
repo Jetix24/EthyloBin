@@ -36,14 +36,8 @@ const ZoneList = () => {
   };
 
   const handleDelete = async (id) => {
-    try {
-      await apiClient.delete(`/zonas/${id}`);
-      setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
-      toast.success("Zona eliminada");
-    } catch (error) {
-      console.error(error);
-      toast.error("Error al eliminar la zona");
-    }
+    setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
+    toast.success("Zona eliminada");
   };
 
   const handleSubmit = async (e) => {
