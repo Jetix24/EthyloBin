@@ -4,6 +4,7 @@ import { Popover } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
+import toast from "react-hot-toast";
 
 const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -34,7 +35,7 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
       setIsEditModalOpen(false);
     } catch (error) {
       console.error(error);
-      // Puedes mostrar un mensaje de error aquí si lo deseas
+      toast.error("Error al editar la zona");
     }
   };
 

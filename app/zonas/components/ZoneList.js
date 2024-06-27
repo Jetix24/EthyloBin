@@ -32,6 +32,7 @@ const ZoneList = () => {
         zona._id === id ? { ...zona, name: newName } : zona
       )
     );
+    toast.success("Zona actualizada");
   };
 
   const handleDelete = async (id) => {
