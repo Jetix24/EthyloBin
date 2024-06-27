@@ -22,7 +22,7 @@ const AuthForm = () => {
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      router.push('/dashboard');
+      router.push('/zonas');
     }
   }, [session?.status, router]);
 
@@ -70,7 +70,7 @@ const AuthForm = () => {
 
         if (callback?.ok && !callback?.error) {
           toast.success('Logged in!');
-          router.push('/dashboard');
+          router.push('/zonas');
         }
       })
       .finally(() => setIsLoading(false));
