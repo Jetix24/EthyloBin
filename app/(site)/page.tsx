@@ -12,6 +12,7 @@ export default async function Home() {
 
   const session = await getSession();
   const user = await getCurrentUser();
+  const hasAccess = user?.hasAccess;
 
   return (
     <>
@@ -22,7 +23,7 @@ export default async function Home() {
         <CTA session={session}/>
         <Hero />
         <CarouselText />
-        <Pricing user={user} session={session}/>      
+        <Pricing hasAccess={hasAccess} session={session}/>      
       </main>
       <Footer />
     </>
