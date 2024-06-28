@@ -11,7 +11,6 @@ import AuthSocialButton from "./AuthSocialButton";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import apiClient from "@/libs/api";
-import config from "@/config";
 
 type Variant = 'LOGIN' | 'REGISTER';
 

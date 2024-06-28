@@ -43,7 +43,7 @@ const ButtonAccount = () => {
         <>
           <Popover.Button className="btn">
             {session?.user?.image ? (
-              <img
+              <Image
                 src={session?.user?.image}
                 alt={session?.user?.name || "Account"}
                 className="w-6 h-6 rounded-full shrink-0"
