@@ -7,50 +7,43 @@ import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-const CategoriaBox = ({ categoria, onEdit, onDelete }) => {
+const ProveedorBox = ({ proveedor, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [name, setName] = useState(categoria.name);
+  const [name, setName] = useState(proveedor.name);
   const router = useRouter();
 
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
-      await apiClient.put(`/categorias/${categoria._id}`, { name });
-      onEdit(categoria._id, name);
+      await apiClient.put(`/proveedores/${proveedor._id}`, { name });
+      onEdit(proveedor._id, name);
       setIsEditModalOpen(false);
-      toast.success("Categoría actualizada");
+      toast.success("Proveedor actualizado");
     } catch (error) {
       console.error(error);
-      toast.error("Error al actualizar la categoría");
+      toast.error("Error al actualizar el proveedor");
     }
   };
 
   const handleDelete = async () => {
     try {
-      await apiClient.delete(`/categorias/${categoria._id}`);
-      onDelete(categoria._id);
+      await apiClient.delete(`/proveedores/${proveedor._id}`);
+      onDelete(proveedor._id);
       setIsDeleteModalOpen(false);
-      toast.success("Categoría eliminada");
+      toast.success("Proveedor eliminado");
     } catch (error) {
       console.error(error);
-      toast.error("Error al eliminar la categoría");
+      toast.error("Error al eliminar el proveedor");
     }
-  };
-
-  const handleClick = () => {
-    router.push(`/categorias/${categoria._id}`);
   };
 
   return (
     <>
-      <div
-        onClick={handleClick}
-        className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100"
-      >
+      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100">
         <div className="flex-1 cursor-pointer">
-          <div className="font-bold">{categoria.name}</div>
+          <div className="font-bold">{proveedor.name}</div>
         </div>
         <Popover className="relative">
           <Popover.Button
@@ -90,18 +83,18 @@ const CategoriaBox = ({ categoria, onEdit, onDelete }) => {
       <Modal
         isModalOpen={isEditModalOpen}
         setIsModalOpen={setIsEditModalOpen}
-        title="Editar Categoría"
+        title="Editar Proveedor"
       >
         <form onSubmit={handleEdit}>
           <label className="block mb-2 text-sm font-medium text-gray-900">
-            Nombre de la categoría
+            Nombre del proveedor
           </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-            placeholder="Nombre de la categoría"
+            placeholder="Nombre del proveedor"
           />
           <button type="submit" className="mt-4 btn btn-primary">
             Guardar cambios
@@ -112,11 +105,11 @@ const CategoriaBox = ({ categoria, onEdit, onDelete }) => {
       <Modal
         isModalOpen={isDeleteModalOpen}
         setIsModalOpen={setIsDeleteModalOpen}
-        title="Eliminar Categoría"
+        title="Eliminar Proveedor"
       >
         <p>
-          ¿Estás seguro? Al eliminar esta categoría, todas las materias primas
-          asociadas quedarán sin categoría.
+          ¿Estás seguro? Al eliminar este proveedor, todos los elementos
+          asociados quedarán sin proveedor.
         </p>
         <div className="flex justify-end mt-4">
           <button
@@ -134,4 +127,4 @@ const CategoriaBox = ({ categoria, onEdit, onDelete }) => {
   );
 };
 
-export default CategoriaBox;
+export default ProveedorBox;

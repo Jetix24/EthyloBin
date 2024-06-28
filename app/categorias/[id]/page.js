@@ -43,7 +43,6 @@ const CategoriaDetail = () => {
             {materiasPrimas.map((materia) => (
               <li key={materia._id} className="my-2 p-2 border rounded">
                 <div className="font-bold">{materia.name}</div>
-                <div>{materia.description}</div>
               </li>
             ))}
           </ul>
