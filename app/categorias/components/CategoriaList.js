@@ -30,7 +30,7 @@ const CategoriaList = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { newCategoria } = await apiClient.post("/api/categorias", {
+      const { newCategoria } = await apiClient.post("/categorias", {
         name,
       });
       toast.success("Categoría creada");
