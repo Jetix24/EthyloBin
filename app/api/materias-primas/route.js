@@ -12,7 +12,7 @@ export async function POST(req) {
   const body = await req.json();
   const {
     name,
-    description,
+    cantidad,
     zona,
     categoria,
     proveedor,
@@ -20,7 +20,16 @@ export async function POST(req) {
     medida,
     minimoAlmacen,
   } = body;
-  if (!name || !categoria || !medida || minimoAlmacen == null)
+
+  console.log("Datos recibidos:", body);
+
+  if (
+    !name ||
+    !categoria ||
+    !medida ||
+    cantidad == null ||
+    minimoAlmacen == null
+  )
     return NextResponse.json(
       { error: "Missing required fields" },
       { status: 400 }
@@ -32,7 +41,7 @@ export async function POST(req) {
   try {
     const newMateriaPrima = await MateriaPrima.create({
       name,
-      description,
+      cantidad,
       zona: zona ? new ObjectId(zona) : null,
       categoria: new ObjectId(categoria),
       proveedor: proveedor ? new ObjectId(proveedor) : null,

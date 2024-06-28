@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
       {config.domainName && (
         <head>
           <PlausibleProvider domain={config.domainName} />
+          <script defer data-domain="tario.software" src="https://app.abralytics.com/assets/tracker/index.js"></script>
         </head>
       )}
       <body>

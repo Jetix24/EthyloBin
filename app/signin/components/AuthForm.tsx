@@ -4,26 +4,44 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { BsGoogle } from 'react-icons/bs';
-
 import { toast } from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import AuthSocialButton from "./AuthSocialButton";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import apiClient from "@/libs/api";
 
 type Variant = 'LOGIN' | 'REGISTER';
 
-const AuthForm = () => {
+const AuthForm = ({priceId, mode= "payment", user}) => {
   const session = useSession();
   const router = useRouter();
   const [variant, setVariant] = useState<Variant>('LOGIN');
   const [isLoading, setIsLoading] = useState(false);
+  
 
   useEffect(() => {
-    if (session?.status === 'authenticated') {
-      router.push('/dashboard');
-    }
+    const fetchData = async () => {
+      if (session?.status === 'authenticated') {
+        if(user.hasAccess) {
+          router.push('/zonas');
+        }
+        const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
+        const successUrl = `${baseUrl}/zonas`;
+        const cancelUrl = `${baseUrl}/`;
+
+        const res: { url: string } = await apiClient.post("/stripe/create-checkout", {
+          priceId,
+          mode,
+          successUrl,
+          cancelUrl,
+        });
+        window.location.href = res.url;
+      }
+    };
+  
+    fetchData();
   }, [session?.status, router]);
 
   const toggleVariant = useCallback(() => {
@@ -70,7 +88,7 @@ const AuthForm = () => {
 
         if (callback?.ok && !callback?.error) {
           toast.success('Logged in!');
-          router.push('/dashboard');
+          router.push('/zonas');
         }
       })
       .finally(() => setIsLoading(false));

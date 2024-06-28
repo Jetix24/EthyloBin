@@ -12,8 +12,8 @@ const CarouselText = () => {
             <a href="#slide2" className="btn btn-circle">❯</a>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1/4 flex items-center justify-center  flex-col " style={{backgroundColor: 'rgba(16, 29, 48, 0.6)'}}>
-            <h1 className="text-5xl font-bold text-white">Fácil de Usar</h1>
-            <p  className="mt-4 text-xl font-medium text-purple_300">Una interfaz intuitiva que no requiere conocimientos técnicos.</p>
+          <h1 className="text-xl md:text-5xl font-bold text-white">Fácil de Usar</h1>
+          <p className="mt-2 text-md md:mt-4 md:text-xl font-medium text-purple_300">Una interfaz intuitiva que no requiere conocimientos técnicos.</p>
           </div>
         </div>
         <div id="slide2" className="carousel-item relative w-full">

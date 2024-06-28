@@ -1,9 +1,7 @@
-"use client";
-
 import EmptyState from "@/components/EmptyState";
 import clsx from "clsx";
 
-const Home = () => {
+export default async function Home() {
 
   return (
     <div
@@ -14,6 +12,4 @@ const Home = () => {
       <EmptyState />
     </div>
   )
-};
-
-export default Home;
+}

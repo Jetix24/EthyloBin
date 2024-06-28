@@ -5,6 +5,8 @@ import Avatar from "../Avatar";
 import DesktopItem from "./DesktopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
+import LogoutItem from "./LogoutItem";
 
 interface DesktopSidebarProps {
   currentUserImage?: string;
@@ -14,7 +16,12 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   currentUserImage,
 }) => {
   const routes = useRoutes();
+  const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: "/" });
+  };
 
   return (
     <>
@@ -95,12 +102,27 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             onClick={() => setIsOpen(true)}
             className="
                 cursor-pointer
-                hover:opacity-75
-                transition
                 mt-auto
+                flex
+                flex-col
+                items-center
+                justify-end
+                h-full
               "
           >
-            <Avatar image={currentUserImage} />
+            <ul
+              role="list"
+              className="
+                  flex
+                  flex-col
+                  items-center
+                  space-y-1
+                  mb-3
+                "
+            >
+              <LogoutItem onClick={handleSignOut} />
+            </ul>
+            <Avatar image={session?.user?.image} />
           </div>
         </nav>
       </div>

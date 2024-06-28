@@ -14,25 +14,29 @@ const useRoutes = () => {
         label: "Agregar Materia Prima",
         href: "/materiaprima",
         icon: IoMdAddCircle,
-        active: pathname === "/materiaprima",
+        active:
+          pathname === "/materiaprima" ||
+          !!pathname.match(/\/materiaprima\/\d+/),
       },
       {
         label: "Zonas",
         href: "/zonas",
         icon: MdOutlineKitchen,
-        active: pathname === "/zonas",
+        active: pathname === "/zonas" || !!pathname.match(/\/zonas\/\d+/),
       },
       {
         label: "Categorías",
         href: "/categorias",
         icon: GiFruitBowl,
-        active: pathname === "/categorias",
+        active:
+          pathname === "/categorias" || !!pathname.match(/\/categorias\/\d+/),
       },
       {
         label: "Proveedores",
         href: "/proveedores",
         icon: FaBasketShopping,
-        active: pathname === "/proveedores",
+        active:
+          pathname === "/proveedores" || !!pathname.match(/\/proveedores\/\d+/),
       },
     ],
     [pathname]

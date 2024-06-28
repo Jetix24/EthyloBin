@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
+import ZoneBox from "./ZoneBox";
 
 const ZoneList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,19 +26,26 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
-  useEffect(() => {
-    if (!isModalOpen) {
-      setName(""); // Limpiar el campo de entrada cuando el modal se cierra
-    }
-  }, [isModalOpen]);
+  const handleEdit = async (id, newName) => {
+    setZonas((prevZonas) =>
+      prevZonas.map((zona) =>
+        zona._id === id ? { ...zona, name: newName } : zona
+      )
+    );
+    toast.success("Zona actualizada");
+  };
+
+  const handleDelete = async (id) => {
+    setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
+    toast.success("Zona eliminada");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       const { newZona } = await apiClient.post("/zonas", { name });
-      toast.success("Zona creada");
-      console.log("Zona creada");
+      toast.success("Area creada");
       setZonas([...zonas, newZona]);
       setIsModalOpen(false);
     } catch (error) {
@@ -52,7 +60,7 @@ const ZoneList = () => {
       <Modal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        title="Crear nueva zona"
+        title="Crear nueva Area"
       >
         <form onSubmit={handleSubmit}>
           <div className="col-span-2">
@@ -60,14 +68,14 @@ const ZoneList = () => {
               htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Name
+              Nombre del area
             </label>
             <input
               type="text"
               name="name"
               id="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="Escribe el nombre de la zona"
+              placeholder="Escribe el nombre del area"
               autoComplete="off"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -94,7 +102,7 @@ const ZoneList = () => {
               {isLoading ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
-                "Crear Zona"
+                "Crear area"
               )}
             </button>
           </div>
@@ -104,9 +112,8 @@ const ZoneList = () => {
       <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">Zonas</div>
+            <div className="text-2xl font-bold text-neutral-800">Areas</div>
           </div>
-          {/*Listado de zonas */}
           {isLoading ? (
             <div className="flex justify-center items-center">
               <span className="loading loading-spinner loading-md"></span>
@@ -114,14 +121,16 @@ const ZoneList = () => {
           ) : (
             <ul>
               {zonas.map((zona) => (
-                <li key={zona._id} className="my-2 p-2 border rounded">
-                  <div className="font-bold">{zona.name}</div>
-                </li>
+                <ZoneBox
+                  key={zona._id}
+                  zona={zona}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
+                />
               ))}
             </ul>
           )}
         </div>
-        {/*Boton de zonas */}
         <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
           <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
             Agregar Area

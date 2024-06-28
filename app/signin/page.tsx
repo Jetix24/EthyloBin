@@ -1,6 +1,9 @@
 import AuthForm from "./components/AuthForm";
-
-export default function signin() {
+import getCurrentUser from "@/app/actions/getCurrentUser";
+export default async function signin() {
+  
+  const user = await getCurrentUser();
+  const hasAccess = user?.hasAccess;
     return (
       <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
         <div>
@@ -8,7 +11,7 @@ export default function signin() {
                 Inicia sesión en tu cuenta
             </h2>
         </div>
-            <AuthForm />
+            <AuthForm priceId="price_1PWDKO2NkWrPkE6CjNNsmVPe" mode="subscription" user={hasAccess} />
       </div>
 
     );

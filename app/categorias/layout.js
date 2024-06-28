@@ -1,16 +1,12 @@
-import React from 'react';
+import React from "react";
 import Sidebar from "@/components/sidebar/Sidebar";
+import CategoriaList from "./components/CategoriaList";
 import getSession from "../actions/getSession";
 import { redirect } from "next/navigation";
 import config from "@/config";
 import getCurrentUser from '../actions/getCurrentUser';
 
-export default async function materiaprimaLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
+export default async function CategoriaLayout({ children }) {
   const session = await getSession();
   const user = await getCurrentUser();
 
@@ -20,9 +16,9 @@ export default async function materiaprimaLayout({
   if(!user?.hasAccess) {
     redirect(config.auth.landUrl);
   }
-
   return (
     <Sidebar>
+      <CategoriaList />
       <div className="h-full">{children}</div>
     </Sidebar>
   );
