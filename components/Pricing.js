@@ -5,7 +5,7 @@ import ButtonCheckout from "./ButtonCheckout";
 // It's your Stripe config in config.js.stripe.plans[] that will be used to display the plans
 // <ButtonCheckout /> renders a button that will redirect the user to Stripe checkout called the /api/stripe/create-checkout API endpoint with the correct priceId
 
-const Pricing = ({user, session}) => {
+const Pricing = ({hasAccess, session}) => {
   return (
     <section className="bg-purple_100 overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-7xl mx-auto">
@@ -57,7 +57,7 @@ const Pricing = ({user, session}) => {
                 </div>
                 
                 <div className="mt-4 bg-blue_200">
-                  <ButtonCheckout priceId={plan.priceId} mode="subscription" hasAccess={user} session={session} />
+                  <ButtonCheckout priceId={plan.priceId} mode="subscription" hasAccess={hasAccess} session={session} />
                 </div>
               </div>
               )}

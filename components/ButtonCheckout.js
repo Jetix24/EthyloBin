@@ -14,13 +14,18 @@ const ButtonCheckout = ({ priceId, mode = "payment", hasAccess, session}) => {
   const handlePayment = async () => {
     setIsLoading(true);
 
+    const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
+    console.log(baseUrl);
+    const successUrl = `${baseUrl}/zonas`;
+    const cancelUrl = `${baseUrl}/`;
+
     if (!session) {         // Redirigir a la página de inicio de sesión si no hay usuario
-      window.location.href = '/signin';
+      router.push('/sigin');
       setIsLoading(false); // Asegúrate de detener el indicador de carga
       return; // Detener la ejecución de la función aquí
     } else if (hasAccess) {
       // Redirigir a /zonas si el usuario tiene acceso
-      window.location.href = '/zonas';
+      router.push('/zonas');
       setIsLoading(false); // Asegúrate de detener el indicador de carga
       return; // Detener la ejecución de la función aquí
     }
@@ -28,8 +33,8 @@ const ButtonCheckout = ({ priceId, mode = "payment", hasAccess, session}) => {
       const res = await apiClient.post("/stripe/create-checkout", {
         priceId,
         mode,
-        successUrl: window.location.href,
-        cancelUrl: window.location.href,
+        successUrl,
+        cancelUrl,
       });
 
       window.location.href = res.url;
