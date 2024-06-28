@@ -23,10 +23,10 @@ const AuthForm = ({priceId, mode= "payment", user}) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (session?.status === 'authenticated') {
-        if(user.hasAccess) {
+        if(user) {
           router.push('/zonas');
         }
+        else if (session?.status === 'authenticated') {
         const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
         const successUrl = `${baseUrl}/zonas`;
         const cancelUrl = `${baseUrl}/`;
