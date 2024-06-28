@@ -16,6 +16,7 @@ export async function GET(req, { params }) {
     const materiasPrimas = await MateriaPrima.find({
       proveedor: new ObjectId(params.id),
       userId: new ObjectId(session.user.id),
+      $expr: { $lt: ["$cantidad", "$minimoAlmacen"] }
     });
 
     return NextResponse.json(materiasPrimas, { status: 200 });
