@@ -6,11 +6,7 @@ import { redirect } from "next/navigation";
 import config from "@/config";
 import getCurrentUser from '../actions/getCurrentUser';
 
-export default async function ProveedoresLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function ProveedoresLayout({ children }) {
   const session = await getSession();
   const user = await getCurrentUser();
 
@@ -23,10 +19,8 @@ export default async function ProveedoresLayout({
 
   return (
     <Sidebar>
-      <div className="h-full">
         <ProveedorList />
-        {children}
-      </div>
+        <div className="h-full">{children}</div>
     </Sidebar>
   );
 }
