@@ -27,19 +27,23 @@ const AuthForm = ({priceId, mode= "payment", user}) => {
           router.push('/zonas');
         }
         else if (session?.status === 'authenticated') {
-        const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
-        const successUrl = `${baseUrl}/zonas`;
-        const cancelUrl = `${baseUrl}/`;
+          if(user) {
+            router.push('/zonas');
+          }else{
+            const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
+            const successUrl = `${baseUrl}/zonas`;
+            const cancelUrl = `${baseUrl}/`;
 
-        const res: { url: string } = await apiClient.post("/stripe/create-checkout", {
-          priceId,
-          mode,
-          successUrl,
-          cancelUrl,
-        });
-        window.location.href = res.url;
+            const res: { url: string } = await apiClient.post("/stripe/create-checkout", {
+              priceId,
+              mode,
+              successUrl,
+              cancelUrl,
+            });
+            window.location.href = res.url;
       }
-    };
+    }
+  }
   
     fetchData();
   }, [session?.status, router]);
