@@ -19,7 +19,7 @@ const ButtonCheckout = ({ priceId, mode = "payment", hasAccess, session}) => {
     const cancelUrl = `${baseUrl}/`;
 
     if (!session) {         // Redirigir a la página de inicio de sesión si no hay usuario
-      router.push('/sigin');
+      router.push('/signin');
       setIsLoading(false); // Asegúrate de detener el indicador de carga
       return; // Detener la ejecución de la función aquí
     } else if (hasAccess) {

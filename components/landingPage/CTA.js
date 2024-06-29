@@ -22,6 +22,7 @@ const CTA = ({session}) => {
         alt="Background"
         className="object-cover w-full"
         fill
+        priority
       />
       <div className="relative hero-overlay bg-blue_500 bg-opacity-60"></div>
       <div className="relative hero-content text-center text-neutral-content p-8 w-full">
