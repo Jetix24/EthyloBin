@@ -6,7 +6,7 @@ const config = {
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription: "Herramienta digital para gestionar tu cafetería",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
-  domainName: "https://www.tario.software/",
+  domainName: "tario.software",
   crisp: {
     // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (mailgun.supportEmail) otherwise customer support won't work.
     id: "",
@@ -21,7 +21,7 @@ const config = {
         priceId:
           process.env.NODE_ENV === "development"
             ? "price_1PWDKO2NkWrPkE6CjNNsmVPe"
-            : "aqui ba el de prod",
+            : "price_1PX0Nh2NkWrPkE6Ctjd3rqj2",
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others

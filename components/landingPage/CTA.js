@@ -1,17 +1,21 @@
 "use client"
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
+import config from "@/config";
 
-const CTA = ({session}) => {
+
+const CTA = ({hasAccess, session}) => {
 
   const router = useRouter(); // Paso 2: Inicializar useRouter
-
   // Modificar la función manejadora para usar currentUser
   const handleClick = () => {
+    
+    
     if (!session) {
-      router.push('/signin');
-    } else {
-      router.push('/zonas');
+      router.push(config.auth.loginUrl);
+    } else if (!hasAccess) {
+      router.push(config.auth.callbackUrl);
     }
   };
 
@@ -22,6 +26,7 @@ const CTA = ({session}) => {
         alt="Background"
         className="object-cover w-full"
         fill
+        priority
       />
       <div className="relative hero-overlay bg-blue_500 bg-opacity-60"></div>
       <div className="relative hero-content text-center text-neutral-content p-8 w-full">
