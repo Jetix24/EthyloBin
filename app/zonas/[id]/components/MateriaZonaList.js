@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import MateriaZonaBox from "./MateriaZonaBox";
+import EmptyState from "@/components/EmptyState"; // Asegúrate de importar el componente EmptyState
 
 const MateriaZonaList = ({ zonaId }) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
@@ -35,11 +36,17 @@ const MateriaZonaList = ({ zonaId }) => {
   };
 
   return (
-    <div className="p-5">
-      <h1 className="text-4xl font-bold mb-4">Materias Primas</h1>
+    <div className="p-5 mx-14">
+      <h1 className="text-3xl font-bold mb-4">Materias Primas</h1>
       {isLoading ? (
         <div className="flex justify-center items-center">
           <span className="loading loading-spinner loading-md"></span>
+        </div>
+      ) : materiasPrimas.length === 0 ? (
+        <div className="flex justify-center items-center h-96">
+          <span className="text-gray-500">
+            Parece que no tienes nada registrado en esta zona
+          </span>
         </div>
       ) : (
         <ul>
