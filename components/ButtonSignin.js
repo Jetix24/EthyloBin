@@ -1,59 +1,47 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Corregido de "next/navigation" a "next/router"
 import config from "@/config";
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-// A simple button to sign in with our providers (Google & Magic Links).
-// It automatically redirects user to callbackUrl (config.auth.callbackUrl) after login, which is normally a private page for users to manage their accounts.
-// If the user is already logged in, it will show their profile picture & redirect them to callbackUrl immediately.
-const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
+
+const ButtonSignin = ({ text = "Iniciar sesión", extraStyle, hasAccess }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
-  const [isLoading, setIsLoading] = useState(true); // Paso 2
+  const isLoading = status === 'loading';
 
   const handleClick = () => {
-    if (status === "authenticated") { //Si el usuario ya está autenticado, redirigirlo a la página de callback y sino, redirigirlo a la página de inicio de sesión
+    if (status === "unauthenticated") {
+      router.push(config.auth.loginUrl);
+    } else if (hasAccess){
       router.push(config.auth.callbackUrl);
-    } else {
-      router.push("/signin");
     }
   };
 
-  if (status === "authenticated") {
-    return (
-      <Link
-        href={config.auth.callbackUrl}
-        className={`btn ${extraStyle ? extraStyle : ""}`}
-      >
-        {session.user?.image ? (
+  return (
+    <button
+      className={`btn ${extraStyle ? extraStyle : ""} ${isLoading ? "btn-disabled" : ""}`} // Añade una clase para estilizar el botón deshabilitado
+      onClick={handleClick}
+      disabled={isLoading} // Deshabilita el botón mientras carga
+    >
+      {isLoading ? (
+        <span className="loading loading-spinner loading-xs"></span> // Spinner mostrado condicionalmente
+      ) : status === "authenticated" && session.user ? (
+        <>
           <Image
-            src={session.user?.image}
-            alt={session.user?.name || "Account"}
+            src={session.user.image || "/default-profile.png"} // Asegúrate de tener una imagen predeterminada
+            alt={session.user.name || "Account"}
             className="w-6 h-6 rounded-full shrink-0"
             referrerPolicy="no-referrer"
             width={24}
             height={24}
           />
-        ) : (
-          <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0">
-            {session.user?.name?.charAt(0) || session.user?.email?.charAt(0)}
-          </span>
-        )}
-        {session.user?.name || session.user?.email || "Account"}
-      </Link>
-    );
-  }
-
-  return (
-    <button
-      className={`btn ${extraStyle ? extraStyle : ""}`}
-      onClick={handleClick}
-    >
-      {text}
+          <span>{session.user.name || session.user.email || "Account"}</span>
+        </>
+      ) : (
+        <span>{text}</span> // Texto del botón cuando no está cargando y no está autenticado
+      )}
     </button>
   );
 };
