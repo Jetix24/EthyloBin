@@ -23,8 +23,8 @@ const CarouselText = () => {
             <a href="#slide3" className="btn btn-circle">❯</a>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1/3 md:h-1/4 flex items-center justify-center flex-col" style={{backgroundColor: 'rgba(16, 29, 48, 0.6)'}}>
-            <h1 className="text-xs md:text-sm font-bold text-white">Gestiona Eficientemente tu Inventario</h1>
-            <p className="mt-4 text-xs md:text-[2.5vw] font-medium text-purple_300">Actualizaciones en tiempo real al utilizar los productos.</p>
+            <h1 className="text-sm md:text-5xl font-bold text-white">Gestiona Eficientemente tu Inventario</h1>
+            <p className="mt-2  text-[2.5vw] md:mt-4 md:text-xl  font-medium text-purple_300">Actualizaciones en tiempo real al utilizar los productos.</p>
           </div>
         </div> 
         <div id="slide3" className="carousel-item relative w-full">
@@ -34,8 +34,8 @@ const CarouselText = () => {
             <a href="#slide4" className="btn btn-circle">❯</a>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1/3 md:h-1/4 flex items-center justify-center  flex-col " style={{backgroundColor: 'rgba(16, 29, 48, 0.6)'}}>
-            <h1 className="text-sm font-bold text-white">Organiza y Clasifica</h1>
-            <p  className="mt-4 text-[2.5vw] font-medium text-purple_300"> Gestiona tu inventario por ubicaciones específicas dentro del almacén.</p>
+            <h1 className="text-sm  md:text-5xl font-bold text-white">Organiza y Clasifica</h1>
+            <p  className="mt-2 text-[2.5vw] md:mt-4 md:text-xl   font-medium text-purple_300"> Gestiona tu inventario por ubicaciones específicas dentro del almacén.</p>
           </div>
         </div> 
         <div id="slide4" className="carousel-item relative w-full">
@@ -45,8 +45,8 @@ const CarouselText = () => {
             <a href="#slide1" className="btn btn-circle">❯</a>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1/3 md:h-1/4 flex items-center justify-center  flex-col " style={{backgroundColor: 'rgba(16, 29, 48, 0.6)'}}>
-            <h1 className="text-sm font-bold text-white">Gestiona tus Proveedores</h1>
-            <p  className="mt-4 text-[2.5vw] font-medium text-purple_300">Registra tus proveedores y relacionalos con tus productos.</p>
+            <h1 className="text-sm  md:text-5xl font-bold text-white">Gestiona tus Proveedores</h1>
+            <p  className="mt-2  text-[2.5vw] md:mt-4 md:text-xl   font-medium text-purple_300">Registra tus proveedores y relacionalos con tus productos.</p>
           </div>
         </div>
       </div>
