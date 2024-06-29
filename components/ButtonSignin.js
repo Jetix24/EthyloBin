@@ -30,8 +30,6 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
         className={`btn ${extraStyle ? extraStyle : ""}`}
       >
         {session.user?.image ? (
-          <>
-          {isLoading && <div>Cargando...</div>}
           <Image
             src={session.user?.image}
             alt={session.user?.name || "Account"}
@@ -39,10 +37,7 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
             referrerPolicy="no-referrer"
             width={24}
             height={24}
-            onLoad={() => setIsLoading(false)} // Paso 3
-            style={{ display: isLoading ? 'none' : 'block' }} // Oculta la imagen mientras carga
           />
-          </>
         ) : (
           <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0">
             {session.user?.name?.charAt(0) || session.user?.email?.charAt(0)}

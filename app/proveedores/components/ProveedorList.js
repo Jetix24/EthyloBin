@@ -4,7 +4,6 @@ import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import ProveedorBox from "./ProveedorBox";
 import Modal from "@/components/Modal";
-import { useRouter } from "next/navigation";
 
 const ProveedorList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
