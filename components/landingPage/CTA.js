@@ -1,17 +1,21 @@
 "use client"
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
+import config from "@/config";
 
-const CTA = ({session}) => {
+
+const CTA = ({hasAccess, session}) => {
 
   const router = useRouter(); // Paso 2: Inicializar useRouter
-
   // Modificar la función manejadora para usar currentUser
   const handleClick = () => {
+    
+    
     if (!session) {
-      router.push('/signin');
-    } else {
-      router.push('/zonas');
+      router.push(config.auth.loginUrl);
+    } else if (!hasAccess) {
+      router.push(config.auth.callbackUrl);
     }
   };
 

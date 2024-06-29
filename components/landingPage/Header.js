@@ -19,13 +19,12 @@ const links = [
   },
 ];
 
-const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg"  />;
-
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
-const Header = () => {
+const Header = ({hasAccess}) => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
+  const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg" hasAccess={hasAccess} />;
 
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
   useEffect(() => {

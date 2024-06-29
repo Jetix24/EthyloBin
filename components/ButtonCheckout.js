@@ -48,7 +48,7 @@ const ButtonCheckout = ({ priceId, mode = "payment", hasAccess, session}) => {
     >
       {isLoading ? (
         <span className="loading loading-spinner loading-xs"></span>
-      ) : "Obten" + config?.appName}
+      ) : "Obten " + config?.appName}
     </button>
   );
 };

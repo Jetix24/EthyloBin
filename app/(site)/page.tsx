@@ -17,10 +17,10 @@ export default async function Home() {
   return (
     <>
       <Suspense>
-        <Header />
+        <Header hasAccess={hasAccess}/>
       </Suspense>
       <main>
-        <CTA session={session}/>
+        <CTA hasAccess={hasAccess} session={session}/>
         <Hero />
         <CarouselText />
         <Pricing hasAccess={hasAccess} session={session}/>      
