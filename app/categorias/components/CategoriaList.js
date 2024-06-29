@@ -4,12 +4,14 @@ import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import CategoriaBox from "./CategoriaBox";
+import { useRouter } from "next/navigation";
 
 const CategoriaList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categorias, setCategorias] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -41,20 +43,6 @@ const CategoriaList = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleEdit = (id, newName) => {
-    setCategorias((prevCategorias) =>
-      prevCategorias.map((categoria) =>
-        categoria._id === id ? { ...categoria, name: newName } : categoria
-      )
-    );
-  };
-
-  const handleDelete = (id) => {
-    setCategorias((prevCategorias) =>
-      prevCategorias.filter((categoria) => categoria._id !== id)
-    );
   };
 
   return (
@@ -89,6 +77,18 @@ const CategoriaList = () => {
               disabled={isLoading}
               className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
+              <svg
+                className="me-1 -ms-1 w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
               {isLoading ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
@@ -112,13 +112,15 @@ const CategoriaList = () => {
             </div>
           ) : (
             <ul>
+              <li
+                key="all"
+                className="my-2 p-2 border rounded cursor-pointer"
+                onClick={() => router.push("/categorias")}
+              >
+                <div className="font-bold">Todas las materias primas</div>
+              </li>
               {categorias.map((categoria) => (
-                <CategoriaBox
-                  key={categoria._id}
-                  categoria={categoria}
-                  onEdit={handleEdit}
-                  onDelete={handleDelete}
-                />
+                <CategoriaBox key={categoria._id} categoria={categoria} />
               ))}
             </ul>
           )}
