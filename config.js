@@ -4,10 +4,9 @@ const config = {
   // REQUIRED
   appName: "Tario",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
-  appDescription:
-    "Herramienta digital para gestionar tu cafetería",
+  appDescription: "Herramienta digital para gestionar tu cafetería",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
-  domainName: "tario.software",
+  domainName: "www.tario.software",
   crisp: {
     // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (mailgun.supportEmail) otherwise customer support won't work.
     id: "",
@@ -32,14 +31,14 @@ const config = {
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 200,
         features: [
-          { name: "Gestión de inventario"},
+          { name: "Gestión de inventario" },
           { name: "Categorización por areas" },
           { name: "Lista de compras automática" },
           { name: "Alertas de stock bajo" },
           { name: "Actualizaciones automáticas" },
           { name: "Acceso ilimitado a todas las funciones" },
         ],
-      }
+      },
     ],
   },
   aws: {
@@ -74,7 +73,6 @@ const config = {
     callbackUrl: "/zonas",
 
     landUrl: "/",
-
   },
 };
 
