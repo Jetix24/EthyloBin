@@ -39,9 +39,15 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete }) => {
     }
   };
 
+  const handleClick = () => {
+    router.push(`/proveedores/${proveedor._id}`);
+  };
+
   return (
     <>
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100">
+      <div 
+          onClick={handleClick}
+          className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100">
         <div className="flex-1 cursor-pointer">
           <div className="font-bold">{proveedor.name}</div>
         </div>
