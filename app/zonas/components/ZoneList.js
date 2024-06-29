@@ -60,7 +60,7 @@ const ZoneList = () => {
       <Modal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        title="Crear nueva Area"
+        title="Crear nueva Área"
       >
         <form onSubmit={handleSubmit}>
           <div className="col-span-2">
@@ -68,7 +68,7 @@ const ZoneList = () => {
               htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Nombre del area
+              Nombre del área
             </label>
             <input
               type="text"
@@ -112,7 +112,7 @@ const ZoneList = () => {
       <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">Areas</div>
+            <div className="text-2xl font-bold text-neutral-800">Áreas</div>
           </div>
           {isLoading ? (
             <div className="flex justify-center items-center">
