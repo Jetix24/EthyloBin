@@ -42,7 +42,7 @@ const AuthForm = ({priceId, mode= "payment", user}) => {
             });
             window.location.href = res.url;
       }
-    };
+    }
   }
   
     fetchData();
