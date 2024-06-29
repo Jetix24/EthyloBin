@@ -15,34 +15,17 @@ import apiClient from "@/libs/api";
 type Variant = 'LOGIN' | 'REGISTER';
 
 const AuthForm = ({priceId, mode= "payment", user}) => {
-  const session = useSession();
   const router = useRouter();
+  const { data: session } = useSession();
   const [variant, setVariant] = useState<Variant>('LOGIN');
   const [isLoading, setIsLoading] = useState(false);
   
 
   useEffect(() => {
-    const fetchData = async () => {
-        if(user) {
-          router.push('/zonas');
-        }
-        else if (session?.status === 'authenticated') {
-        const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
-        const successUrl = `${baseUrl}/zonas`;
-        const cancelUrl = `${baseUrl}/`;
-
-        const res: { url: string } = await apiClient.post("/stripe/create-checkout", {
-          priceId,
-          mode,
-          successUrl,
-          cancelUrl,
-        });
-        window.location.href = res.url;
-      }
-    };
-  
-    fetchData();
-  }, [session?.status, router]);
+    if (session) {
+      router.push('/zonas');
+    }
+  }, [session, router]);
 
   const toggleVariant = useCallback(() => {
     if (variant === 'LOGIN') {
@@ -72,6 +55,16 @@ const AuthForm = ({priceId, mode= "payment", user}) => {
     if (variant === 'REGISTER') {
       axios.post('/api/register', data)
       .then(() => signIn('credentials', data))
+      /*.then((callback) => {
+        if (callback?.error) {
+          toast.error('Credentials are incorrect');
+          toast.error(`Error: ${callback.error}`);
+      }
+      if (callback?.ok) {
+          toast.success('Logged in successfully');
+          router.push('/zonas');
+      }
+      })*/
       .catch(() => toast.error('Something went wrong!'))
       .finally(() => setIsLoading(false))
     }
@@ -81,14 +74,29 @@ const AuthForm = ({priceId, mode= "payment", user}) => {
         ...data,
         redirect: false
       })
-      .then((callback) => {
+      .then(async (callback) => {
         if (callback?.error) {
           toast.error('Invalid credentials');
         }
 
-        if (callback?.ok && !callback?.error) {
+        if (callback?.ok) {
           toast.success('Logged in!');
-          router.push('/zonas');
+          console.log("Usuario",user);
+          /*if(user) {
+            router.push('/zonas');
+          }else{
+            const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
+            const successUrl = `${baseUrl}/zonas`;
+            const cancelUrl = `${baseUrl}/`;
+
+            const res: { url: string } = await apiClient.post("/stripe/create-checkout", {
+              priceId,
+              mode,
+              successUrl,
+              cancelUrl,
+            });
+            window.location.href = res.url;
+      }*/
         }
       })
       .finally(() => setIsLoading(false));
