@@ -21,8 +21,8 @@ const ZoneBox = ({ zona, isActive, onClick }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center my-2 p-2 border rounded hover:bg-slate-200 ${
-          isActive ? "bg-blue-500 text-white" : "bg-white"
+        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer hover:bg-slate-200 ${
+          isActive ? "bg-slate-400 text-white" : "bg-white"
         }`}
         onClick={onClick}
       >
