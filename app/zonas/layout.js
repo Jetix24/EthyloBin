@@ -7,7 +7,7 @@ import config from "@/config";
 import getCurrentUser from "../actions/getCurrentUser";
 
 export default async function ZonasLayout({ children }) {
-  const session = await getSession();
+  /*const session = await getSession();
   const user = await getCurrentUser();
 
   if (!session) {
@@ -15,7 +15,7 @@ export default async function ZonasLayout({ children }) {
   }
   if (!user?.hasAccess) {
     redirect(config.auth.landUrl);
-  }
+  }*/
 
   return (
     <Sidebar>

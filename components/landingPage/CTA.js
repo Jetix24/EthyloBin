@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 import config from "@/config";
 
 
-const CTA = ({hasAccess, session}) => {
+const CTA = () => {
 
   const router = useRouter(); // Paso 2: Inicializar useRouter
   // Modificar la función manejadora para usar currentUser
-  const handleClick = () => {
+  /*const handleClick = () => {
     
     
     if (!session) {
@@ -17,7 +17,7 @@ const CTA = ({hasAccess, session}) => {
     } else if (!hasAccess) {
       router.push(config.auth.callbackUrl);
     }
-  };
+  };*/
 
   return (
     <section className="relative hero overflow-hidden min-h-screen">
@@ -38,7 +38,7 @@ const CTA = ({hasAccess, session}) => {
           Optimiza tu tiempo y aumenta la eficiencia con nuestra herramienta digital fácil de usar
           </p>
 
-          <button onClick={handleClick} className="btn bg-blue_200 rounded-md text-lg text-purple_200 border-0 hover:bg-blue_100 btn-wide ">
+          <button className="btn bg-blue_200 rounded-md text-lg text-purple_200 border-0 hover:bg-blue_100 btn-wide ">
             Empieza ahora
           </button>
         </div>
