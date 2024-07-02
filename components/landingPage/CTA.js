@@ -15,7 +15,7 @@ const CTA = () => {
     if (!session) {
       router.push(config.auth.loginUrl);
     } else if (!hasAccess) {
-      router.push(config.auth.callbackUrl);
+      router.push(config.auth.zonasUrl);
     }
   };*/
 

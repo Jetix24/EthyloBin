@@ -15,14 +15,14 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
     if (status === "unauthenticated") {
       router.push(config.auth.loginUrl);
     } else {
-      router.push(config.auth.callbackUrl);
+      router.push(config.auth.zonasUrl);
     }
   };
 
   if (status === "authenticated") {
     return (
       <Link
-        href={config.auth.callbackUrl}
+        href={config.auth.zonasUrl}
         className={`btn ${extraStyle ? extraStyle : ""}`}
       >
         {session.user?.image ? (

@@ -72,6 +72,6 @@ module.exports = {
   },
   plugins: [require("daisyui" , 'tw-elements/dist/plugin')],
   daisyui: {
-    themes: ["light", "dark"],
+    themes: ["cupcake", "dark", "cmyk"],
   },
 };

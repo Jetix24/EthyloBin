@@ -22,7 +22,7 @@ const ButtonCheckout = ({ priceId, mode = "payment"}) => {
     /*if (!session) {         // Redirigir a la página de inicio de sesión si no hay usuario
       router.push(config.auth.loginUrl);
     } else if (hasAccess) {
-      router.push(config.auth.callbackUrl);
+      router.push(config.auth.zonasUrl);
     } else{
       try {
         const res = await apiClient.post("/stripe/create-checkout", {

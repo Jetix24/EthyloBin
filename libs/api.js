@@ -20,7 +20,7 @@ apiClient.interceptors.response.use(
       // User not auth, ask to re login
       toast.error("Please login");
       // automatically redirect to /dashboard page after login
-      return signIn(undefined, { callbackUrl: config.auth.callbackUrl });
+      return signIn(undefined, { callbackUrl: config.auth.zonasUrl });
     } else if (error.response?.status === 403) {
       // User not authorized, must subscribe/purchase/pick a plan
       message = "Pick a plan to use this feature";
