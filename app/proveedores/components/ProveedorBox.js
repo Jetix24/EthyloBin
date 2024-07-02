@@ -1,43 +1,12 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
-import Modal from "@/components/Modal";
-import apiClient from "@/libs/api";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
-const ProveedorBox = ({ proveedor, onEdit, onDelete }) => {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [name, setName] = useState(proveedor.name);
+const ProveedorBox = ({ proveedor }) => {
   const router = useRouter();
-
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    try {
-      await apiClient.put(`/proveedores/${proveedor._id}`, { name });
-      onEdit(proveedor._id, name);
-      setIsEditModalOpen(false);
-      toast.success("Proveedor actualizado");
-    } catch (error) {
-      console.error(error);
-      toast.error("Error al actualizar el proveedor");
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      await apiClient.delete(`/proveedores/${proveedor._id}`);
-      onDelete(proveedor._id);
-      setIsDeleteModalOpen(false);
-      toast.success("Proveedor eliminado");
-    } catch (error) {
-      console.error(error);
-      toast.error("Error al eliminar el proveedor");
-    }
-  };
+  const pathname = usePathname();
+  const isActive = pathname === `/proveedores/${proveedor._id}`;
 
   const handleClick = () => {
     router.push(`/proveedores/${proveedor._id}`);
@@ -45,90 +14,31 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete }) => {
 
   return (
     <>
-      <div 
-          onClick={handleClick}
-          className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100">
-        <div className="flex-1 cursor-pointer">
+      <div
+        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer ${
+          isActive ? "bg-blue-200" : "bg-white"
+        }`}
+        onClick={handleClick}
+      >
+        <div className="flex-1">
           <div className="font-bold">{proveedor.name}</div>
         </div>
         <Popover className="relative">
-          <Popover.Button
-            onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-            className="focus:outline-none flex items-center"
-          >
+          <Popover.Button className="focus:outline-none flex items-center">
             <BsThreeDots className="text-xl" />
           </Popover.Button>
-
-          {isPopoverOpen && (
-            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-              <div className="p-2">
-                <button
-                  onClick={() => {
-                    setIsEditModalOpen(true);
-                    setIsPopoverOpen(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Editar
-                </button>
-                <button
-                  onClick={() => {
-                    setIsDeleteModalOpen(true);
-                    setIsPopoverOpen(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Eliminar
-                </button>
-              </div>
-            </Popover.Panel>
-          )}
+          <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+            <div className="p-2">
+              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Editar
+              </button>
+              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                Eliminar
+              </button>
+            </div>
+          </Popover.Panel>
         </Popover>
       </div>
-
-      <Modal
-        isModalOpen={isEditModalOpen}
-        setIsModalOpen={setIsEditModalOpen}
-        title="Editar Proveedor"
-      >
-        <form onSubmit={handleEdit}>
-          <label className="block mb-2 text-sm font-medium text-gray-900">
-            Nombre del proveedor
-          </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-            placeholder="Nombre del proveedor"
-          />
-          <button type="submit" className="mt-4 btn btn-primary">
-            Guardar cambios
-          </button>
-        </form>
-      </Modal>
-
-      <Modal
-        isModalOpen={isDeleteModalOpen}
-        setIsModalOpen={setIsDeleteModalOpen}
-        title="Eliminar Proveedor"
-      >
-        <p>
-          ¿Estás seguro? Al eliminar este proveedor, todos los elementos
-          asociados quedarán sin proveedor.
-        </p>
-        <div className="flex justify-end mt-4">
-          <button
-            onClick={() => setIsDeleteModalOpen(false)}
-            className="mr-4 btn btn-secondary"
-          >
-            Cancelar
-          </button>
-          <button onClick={handleDelete} className="btn btn-danger">
-            Eliminar
-          </button>
-        </div>
-      </Modal>
     </>
   );
 };
