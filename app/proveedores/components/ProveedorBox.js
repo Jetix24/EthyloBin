@@ -15,7 +15,7 @@ const ProveedorBox = ({ proveedor }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer ${
+        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer hover:bg-slate-300 ${
           isActive ? "bg-blue-200" : "bg-white"
         }`}
         onClick={handleClick}
