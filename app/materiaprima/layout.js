@@ -5,11 +5,7 @@ import { redirect } from "next/navigation";
 import config from "@/config";
 import getCurrentUser from '../actions/getCurrentUser';
 
-export default async function materiaprimaLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function materiaprimaLayout({children}) {
 
   const session = await getSession();
   const user = await getCurrentUser();
@@ -17,8 +13,8 @@ export default async function materiaprimaLayout({
   if (!session) {
     redirect(config.auth.loginUrl);
   }
-  if(!user?.hasAccess) {
-    redirect(config.auth.landUrl);
+  if (!user?.hasAccess) {
+    redirect(config.auth.landUrlPri);
   }
 
   return (
