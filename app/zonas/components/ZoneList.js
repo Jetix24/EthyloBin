@@ -4,15 +4,12 @@ import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import ZoneBox from "./ZoneBox";
-import { useRouter } from "next/navigation";
 
 const ZoneList = () => {
-  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [activeZonaId, setActiveZonaId] = useState(null);
 
   useEffect(() => {
     const fetchZonas = async () => {
@@ -29,9 +26,18 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
-  const handleZonaClick = (zonaId) => {
-    setActiveZonaId(zonaId);
-    router.push(`/zonas/${zonaId}`);
+  const handleEdit = async (id, newName) => {
+    setZonas((prevZonas) =>
+      prevZonas.map((zona) =>
+        zona._id === id ? { ...zona, name: newName } : zona
+      )
+    );
+    toast.success("Zona actualizada");
+  };
+
+  const handleDelete = async (id) => {
+    setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
+    toast.success("Zona eliminada");
   };
 
   const handleSubmit = async (e) => {
@@ -54,7 +60,7 @@ const ZoneList = () => {
       <Modal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        title="Crear nueva Area"
+        title="Crear nueva Área"
       >
         <form onSubmit={handleSubmit}>
           <div className="col-span-2">
@@ -62,7 +68,7 @@ const ZoneList = () => {
               htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Nombre del area
+              Nombre del área
             </label>
             <input
               type="text"
@@ -118,8 +124,8 @@ const ZoneList = () => {
                 <ZoneBox
                   key={zona._id}
                   zona={zona}
-                  isActive={zona._id === activeZonaId}
-                  onClick={() => handleZonaClick(zona._id)}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
                 />
               ))}
             </ul>
