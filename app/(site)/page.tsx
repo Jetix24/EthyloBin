@@ -5,14 +5,8 @@ import Pricing from "@/components/landingPage/Pricing";
 import CTA from "@/components/landingPage/CTA";
 import Footer from "@/components/Footer";
 import CarouselText from '@/components/landingPage/CarouselText';
-import getCurrentUser from '../actions/getCurrentUser';
-import getSession from '../actions/getSession';
 
 export default async function Home() {
-
-  //const session = await getSession();
-  //const user = await getCurrentUser();
-  //const hasAccess = user?.hasAccess;
 
   return (
     <>
@@ -22,7 +16,7 @@ export default async function Home() {
       <main>
         <CTA/>
         <Characteristics/>
-        <CarouselText />
+        <CarouselText/>
         <Pricing/>      
       </main>
       <Footer />
