@@ -14,8 +14,6 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
   const handleClick = () => {
     if (status === "unauthenticated") {
       router.push(config.auth.loginUrl);
-    } else {
-      router.push(config.auth.zonasUrl);
     }
   };
 
@@ -26,7 +24,7 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
         className={`btn ${extraStyle ? extraStyle : ""}`}
       >
         {session.user?.image ? (
-          <img
+          <Image
             src={session.user?.image}
             alt={session.user?.name || "Account"}
             className="w-6 h-6 rounded-full shrink-0"
