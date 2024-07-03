@@ -4,7 +4,7 @@ import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import CategoriaBox from "./CategoriaBox";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const CategoriaList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,6 +12,7 @@ const CategoriaList = () => {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -32,9 +33,7 @@ const CategoriaList = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { newCategoria } = await apiClient.post("/categorias", {
-        name,
-      });
+      const { newCategoria } = await apiClient.post("/categorias", { name });
       toast.success("Categoría creada");
       setCategorias([...categorias, newCategoria]);
       setIsModalOpen(false);
@@ -44,6 +43,8 @@ const CategoriaList = () => {
       setIsLoading(false);
     }
   };
+
+  const isActiveAll = pathname === "/categorias";
 
   return (
     <>
@@ -114,7 +115,9 @@ const CategoriaList = () => {
             <ul>
               <li
                 key="all"
-                className="my-2 p-2 border rounded cursor-pointer"
+                className={`my-2 p-2 border rounded cursor-pointer ${
+                  isActiveAll ? "bg-blue-200" : "bg-white"
+                }`}
                 onClick={() => router.push("/categorias")}
               >
                 <div className="font-bold">Todas las materias primas</div>
