@@ -5,43 +5,51 @@ import { useRouter } from "next/navigation"; // Corregido de "next/navigation" a
 import config from "@/config";
 import React from 'react';
 import Image from 'next/image';
+import Link from "next/link";
 
-const ButtonSignin = ({ text = "Iniciar sesión", extraStyle, hasAccess }) => {
+const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
-  const isLoading = status === 'loading';
 
   const handleClick = () => {
     if (status === "unauthenticated") {
       router.push(config.auth.loginUrl);
-    } else if (hasAccess){
+    } else {
       router.push(config.auth.callbackUrl);
     }
   };
 
-  return (
-    <button
-      className={`btn ${extraStyle ? extraStyle : ""} ${isLoading ? "btn-disabled" : ""}`} // Añade una clase para estilizar el botón deshabilitado
-      onClick={handleClick}
-      disabled={isLoading} // Deshabilita el botón mientras carga
-    >
-      {isLoading ? (
-        <span className="loading loading-spinner loading-xs"></span> // Spinner mostrado condicionalmente
-      ) : status === "authenticated" && session.user ? (
-        <>
-          <Image
-            src={session.user.image || "/default-profile.png"} // Asegúrate de tener una imagen predeterminada
-            alt={session.user.name || "Account"}
+  if (status === "authenticated") {
+    return (
+      <Link
+        href={config.auth.callbackUrl}
+        className={`btn ${extraStyle ? extraStyle : ""}`}
+      >
+        {session.user?.image ? (
+          <img
+            src={session.user?.image}
+            alt={session.user?.name || "Account"}
             className="w-6 h-6 rounded-full shrink-0"
             referrerPolicy="no-referrer"
             width={24}
             height={24}
           />
-          <span>{session.user.name || session.user.email || "Account"}</span>
-        </>
-      ) : (
-        <span>{text}</span> // Texto del botón cuando no está cargando y no está autenticado
-      )}
+        ) : (
+          <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0">
+            {session.user?.name?.charAt(0) || session.user?.email?.charAt(0)}
+          </span>
+        )}
+        {session.user?.name || session.user?.email || "Account"}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      className={`btn ${extraStyle ? extraStyle : ""}`}
+      onClick={handleClick}
+    >
+      {text}
     </button>
   );
 };

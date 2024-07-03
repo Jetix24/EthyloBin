@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import apiClient from "@/libs/api";
 
-const MateriaZonaBox = ({ materia, onQuantityChange }) => {
+const MateriaZonaBox = ({ materia, onQuantityChange, bgcolor }) => {
   const [quantity, setQuantity] = useState(materia.cantidad);
 
   const handleQuantityChange = async (newQuantity) => {
