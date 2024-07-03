@@ -1,24 +1,8 @@
 "use client"
-import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
-import config from "@/config";
-
+import ButtonCta from "./ButtonCta";
 
 const CTA = () => {
-
-  const router = useRouter(); // Paso 2: Inicializar useRouter
-  // Modificar la función manejadora para usar currentUser
-  /*const handleClick = () => {
-    
-    
-    if (!session) {
-      router.push(config.auth.loginUrl);
-    } else if (!hasAccess) {
-      router.push(config.auth.zonasUrl);
-    }
-  };*/
-
   return (
     <section className="relative hero overflow-hidden min-h-screen">
       <Image
@@ -37,10 +21,9 @@ const CTA = () => {
           <p className="text-lg opacity-80 mb-12 md:mb-16">
           Optimiza tu tiempo y aumenta la eficiencia con nuestra herramienta digital fácil de usar
           </p>
-
-          <button className="btn bg-blue_200 rounded-md text-lg text-purple_200 border-0 hover:bg-blue_100 btn-wide ">
-            Empieza ahora
-          </button>
+          <div className="flex flex-col items-center gap-4 md:gap-8">
+          <ButtonCta />
+          </div>
         </div>
       </div>
     </section>
