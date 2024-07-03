@@ -4,17 +4,17 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import ButtonSignin from "../ButtonSignin";
+import ButtonSignin from "./ButtonSignin";
 import logo from "@/app/icon.png";
 import config from "@/config";
 
 const links = [
   {
-    href: "/#caracteristicas",
+    href: "/#characteristics",
     label: "Caracteristicas",
   },
   {
-    href: "/#precio",
+    href: "/#pricing",
     label: "Precio",
   },
 ];

@@ -9,7 +9,7 @@ async function Sidebar({ children }: {
 
   return (
     <div className="h-full">
-      <DesktopSidebar currentUserImage={user?.image} />
+      <DesktopSidebar currentUserImage={user?.image} hasAccess={user?.hasAccess} />
       {/*<MobileFooter />*/}
       <main className="lg:pl-20 h-full">
         {children}
