@@ -13,9 +13,10 @@ export default async function ProveedoresLayout({ children }) {
   if (!session) {
     redirect(config.auth.loginUrl);
   }
-  if(!user?.hasAccess) {
-    redirect(config.auth.landUrl);
+  if (!user?.hasAccess) {
+    redirect(config.auth.landUrlPri);
   }
+
 
   return (
     <Sidebar>

@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import Header from "@/components/landingPage/Header";
-import Hero from "@/components/landingPage/Hero";
+import Characteristics from "@/components/landingPage/Characteristics";
 import Pricing from "@/components/landingPage/Pricing";
 import CTA from "@/components/landingPage/CTA";
 import Footer from "@/components/Footer";
@@ -21,7 +21,7 @@ export default async function Home() {
       </Suspense>
       <main>
         <CTA/>
-        <Hero />
+        <Characteristics/>
         <CarouselText />
         <Pricing/>      
       </main>
