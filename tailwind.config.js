@@ -11,14 +11,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue_500: '#101D30',
-        blue_300: '#1E3242',
-        blue_200: '#48AD9D',
-        blue_100: '#96CDC4',
-        purple_300: '#8999B2',
-        purple_200: '#E7E2DA',
-        purple_100: '#F7F3F0',
-        aquatario: '#48AD9D',
+        blue_500: "#101D30",
+        blue_300: "#1E3242",
+        blue_200: "#48AD9D",
+        blue_100: "#96CDC4",
+        purple_300: "#8999B2",
+        purple_200: "#E7E2DA",
+        purple_100: "#F7F3F0",
       },
       backgroundImage: {
         gradient:
@@ -70,7 +69,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui" , 'tw-elements/dist/plugin')],
+  plugins: [require("daisyui", "tw-elements/dist/plugin")],
   daisyui: {
     themes: ["light", "dark"],
   },

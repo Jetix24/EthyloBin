@@ -55,7 +55,7 @@ const MateriaZonaList = ({ zonaId }) => {
               key={materia._id}
               materia={materia}
               onQuantityChange={handleQuantityChange}
-              className={index % 2 === 0 ? "bg-blue-100" : "bg-white"}
+              className={index % 2 === 0 ? "bg-blue-200" : "bg-white"}
             />
           ))}
         </ul>

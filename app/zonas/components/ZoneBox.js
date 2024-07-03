@@ -4,7 +4,7 @@ import { Popover } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
-import { toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -39,20 +39,9 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
     }
   };
 
-  const handleDeleteConfirm = async () => {
-    try {
-      await apiClient.delete(`/zonas?id=${zona._id}`);
-      onDelete(zona._id);
-      setIsDeleteModalOpen(false);
-    } catch (error) {
-      console.error(error);
-      toast.error("Error al eliminar la zona");
-    }
-  };
-
   return (
     <>
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white hover:bg-gray-100 active:bg-slate-500">
+      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
         <div className="flex-1 cursor-pointer" onClick={handleClick}>
           <div className="font-bold">{zona.name}</div>
         </div>
@@ -113,21 +102,22 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
         title="Eliminar Zona"
       >
         <p>
-          ¿Estás seguro?
-          <br />
-          Al eliminar esta zona, todos los elementos dentro de esta zona se
-          quedarán sin zona.
+          ¿Estás seguro? Al eliminar esta zona, todos los elementos dentro de
+          esta zona se quedarán sin zona.
         </p>
         <div className="flex justify-end mt-4">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
-            className="mr-4 btn"
+            className="mr-4 btn btn-secondary"
           >
             Cancelar
           </button>
           <button
-            onClick={handleDeleteConfirm}
-            className="btn bg-red-500 text-white"
+            onClick={() => {
+              onDelete(zona._id);
+              setIsDeleteModalOpen(false);
+            }}
+            className="btn btn-danger"
           >
             Eliminar
           </button>
