@@ -31,9 +31,9 @@ const ButtonCta = () => {
       {isLoading ? (
         <span className="loading loading-spinner loading-xs"></span>
       ) : status === "authenticated" ? (
-        "Empieza Ahora"
+        "Ingresar a " + config?.appName
       ) : ( 
-        "Inicia Sesión")}
+        "Empieza Ahora")}
     </button>
   );
 }
