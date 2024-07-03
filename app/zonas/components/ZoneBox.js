@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
+import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal";
+import apiClient from "@/libs/api";
+import toast from "react-hot-toast";
 
-const ZoneBox = ({ zona, isActive, onClick }) => {
+const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [newName, setNewName] = useState(zona.name);
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/zonas/${zona._id}`);
+  };
 
   const handleEdit = () => {
     setIsEditModalOpen(true);
@@ -18,15 +27,22 @@ const ZoneBox = ({ zona, isActive, onClick }) => {
     setIsPopoverOpen(false);
   };
 
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await apiClient.put("/zonas", { id: zona._id, name: newName });
+      onEdit(zona._id, newName);
+      setIsEditModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al editar la zona");
+    }
+  };
+
   return (
     <>
-      <div
-        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer hover:bg-slate-200 ${
-          isActive ? "bg-slate-400 text-white" : "bg-white"
-        }`}
-        onClick={onClick}
-      >
-        <div className="flex-1">
+      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
+        <div className="flex-1 cursor-pointer" onClick={handleClick}>
           <div className="font-bold">{zona.name}</div>
         </div>
         <Popover className="relative">
@@ -63,19 +79,14 @@ const ZoneBox = ({ zona, isActive, onClick }) => {
         setIsModalOpen={setIsEditModalOpen}
         title="Editar Zona"
       >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            onEdit(zona._id);
-            setIsEditModalOpen(false);
-          }}
-        >
+        <form onSubmit={handleEditSubmit}>
           <label className="block mb-2 text-sm font-medium text-gray-900">
             Nombre de la zona
           </label>
           <input
             type="text"
-            defaultValue={zona.name}
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
             placeholder="Nombre de la zona"
           />
@@ -91,10 +102,8 @@ const ZoneBox = ({ zona, isActive, onClick }) => {
         title="Eliminar Zona"
       >
         <p>
-          ¿Estás seguro?
-          <br />
-          Al eliminar esta zona, todos los elementos dentro de esta zona se
-          quedarán sin zona.
+          ¿Estás seguro? Al eliminar esta zona, todos los elementos dentro de
+          esta zona se quedarán sin zona.
         </p>
         <div className="flex justify-end mt-4">
           <button
