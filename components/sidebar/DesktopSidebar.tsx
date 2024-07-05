@@ -122,7 +122,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             >
               <LogoutItem onClick={handleSignOut} />
             </ul>
-            <Avatar image={session?.user?.image} />
           </div>
         </nav>
       </div>
