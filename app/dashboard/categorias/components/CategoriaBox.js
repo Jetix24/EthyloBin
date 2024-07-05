@@ -6,10 +6,10 @@ import { Popover } from "@headlessui/react";
 const CategoriaBox = ({ categoria }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const isActive = pathname === `/categorias/${categoria._id}`;
+  const isActive = pathname === `/dashboard/categorias/${categoria._id}`;
 
   const handleClick = () => {
-    router.push(`/categorias/${categoria._id}`);
+    router.push(`/dashboard/categorias/${categoria._id}`);
   };
 
   return (
