@@ -12,31 +12,27 @@ const useRoutes = () => {
     () => [
       {
         label: "Agregar Materia Prima",
-        href: "/materiaprima",
+        href: "/dashboard/materiaprima",
         icon: IoMdAddCircle,
-        active:
-          pathname === "/materiaprima" ||
-          !!pathname.match(/\/materiaprima\/\d+/),
+        active: pathname === "/dashboard/materiaprima" || !!pathname.match(/\/dashboard\/materiaprima\/\d+/),
       },
       {
         label: "Zonas",
         href: "/dashboard/zonas",
         icon: MdOutlineKitchen,
-        active: pathname === "/zonas" || !!pathname.match(/\/zonas\/\d+/),
+        active: pathname === "/dashboard/zonas" || !!pathname.match(/\/dashboard\/zonas\/\d+/),
       },
       {
         label: "Categorías",
-        href: "/categorias",
+        href: "/dashboard/categorias",
         icon: GiFruitBowl,
-        active:
-          pathname === "/categorias" || !!pathname.match(/\/categorias\/\d+/),
+        active: pathname === "/dashboard/categorias" || !!pathname.match(/\/dashboard\/categorias\/\d+/),
       },
       {
         label: "Proveedores",
-        href: "/proveedores",
+        href: "/dashboard/proveedores",
         icon: FaBasketShopping,
-        active:
-          pathname === "/proveedores" || !!pathname.match(/\/proveedores\/\d+/),
+        active: pathname === "/dashboard/proveedores" || !!pathname.match(/\/dashboard\/proveedores\/\d+/),
       },
     ],
     [pathname]
