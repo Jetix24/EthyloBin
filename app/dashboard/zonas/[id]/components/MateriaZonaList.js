@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import MateriaZonaBox from "./MateriaZonaBox";
-import EmptyState from "@/components/EmptyState"; // Asegúrate de importar el componente EmptyState
 
 const MateriaZonaList = ({ zonaId }) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
@@ -13,7 +12,7 @@ const MateriaZonaList = ({ zonaId }) => {
       setIsLoading(true);
       try {
         const materiasData = await apiClient.get(
-          `/dashboard/zonas/${zonaId}/materias-primas`
+          `/zonas/${zonaId}/materias-primas`
         );
         setMateriasPrimas(materiasData);
       } catch (error) {
