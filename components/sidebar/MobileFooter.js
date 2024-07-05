@@ -1,13 +1,11 @@
 "use client";
-
 import useRoutes from "@/app/hooks/useRoutes";
-
 import MobileItem from "./MobileItem";
 
 const MobileFooter = () => {
   const routes = useRoutes();
 
-  return ( 
+  return (
     <div
       className="
         fixed
@@ -31,7 +29,7 @@ const MobileFooter = () => {
         />
       ))}
     </div>
-   );
-}
- 
+  );
+};
+
 export default MobileFooter;
