@@ -9,7 +9,7 @@ const ProveedorBox = ({ proveedor }) => {
   const isActive = pathname === `/proveedores/${proveedor._id}`;
 
   const handleClick = () => {
-    router.push(`/proveedores/${proveedor._id}`);
+    router.push(`/dashboard/proveedores/${proveedor._id}`);
   };
 
   return (
