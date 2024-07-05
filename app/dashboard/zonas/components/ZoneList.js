@@ -9,13 +9,14 @@ const ZoneList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchZonas = async () => {
       setIsLoading(true);
       try {
         const zonasData = await apiClient.get("/zonas");
+        console.log("zonasData", zonasData);
         setZonas(zonasData);
       } catch (error) {
         console.error(error);

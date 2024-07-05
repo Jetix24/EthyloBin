@@ -20,7 +20,7 @@ const useRoutes = () => {
       },
       {
         label: "Zonas",
-        href: "/zonas",
+        href: "/dashboard/zonas",
         icon: MdOutlineKitchen,
         active: pathname === "/zonas" || !!pathname.match(/\/zonas\/\d+/),
       },

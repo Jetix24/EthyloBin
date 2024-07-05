@@ -14,7 +14,7 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/zonas/${zona._id}`);
+    router.push(`/dashboard/zonas/${zona._id}`);
   };
 
   const handleEdit = () => {

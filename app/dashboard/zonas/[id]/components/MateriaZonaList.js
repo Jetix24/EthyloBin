@@ -13,7 +13,7 @@ const MateriaZonaList = ({ zonaId }) => {
       setIsLoading(true);
       try {
         const materiasData = await apiClient.get(
-          `/zonas/${zonaId}/materias-primas`
+          `/dashboard/zonas/${zonaId}/materias-primas`
         );
         setMateriasPrimas(materiasData);
       } catch (error) {

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/next-auth";
 import config from "@/config";
+import Sidebar from "@/components/sidebar/Sidebar";
 
 // This is a server-side component to ensure the user is logged in.
 // If not, it will redirect to the login page.
@@ -11,9 +12,13 @@ import config from "@/config";
 export default async function LayoutPrivate({ children }) {
   const session = await getServerSession(authOptions);
 
-  if (!session) {
-    redirect(config.auth.loginUrl);
-  }
+  //If not session, redirect to login page
+  if (!session) redirect(config.auth.loginUrl);
+  //if (!session.hasAccess) redirect(config.auth.loginUrl);
 
-  return <>{children}</>;
+  return (
+    <Sidebar>
+      <div className="h-full">{children}</div>
+    </Sidebar>
+  );
 }

@@ -10,14 +10,7 @@ import LogoutItem from "./LogoutItem";
 import config from "next/config";
 import { useRouter } from "next/navigation";
 
-interface DesktopSidebarProps {
-  currentUserImage?: string;
-  hasAccess?: boolean;
-}
-
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
-  currentUserImage, hasAccess
-}) => {
+const DesktopSidebar: React.FC<DesktopSidebarProps> = () => {
   const routes = useRoutes();
   const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
@@ -26,15 +19,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
   const handleSignOut = () => {
     signOut({ callbackUrl: "/" });
   };
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/api/auth/signin");
-    } else if (!hasAccess) {
-      router.push("/#pricing");
-    }
-
-  }, [status]);
 
   return (
     <>
