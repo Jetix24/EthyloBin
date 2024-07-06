@@ -46,6 +46,20 @@ const CategoriaList = () => {
 
   const isActiveAll = pathname === "/categorias";
 
+
+  const handleEdit = async (id, newName) => {
+    setCategorias((prevCategorias) =>
+      prevCategorias.map((categoria) =>
+        categoria._id === id ? { ...categoria, name: newName } : categoria      )
+    );
+    toast.success("Categoria actualizada");
+  };
+
+  const handleDelete = async (id) => {
+    setCategorias((prevCategorias) => prevCategorias.filter((categoria) => categoria._id !== id));
+    toast.success("Categoria eliminada");
+  };
+
   return (
     <>
       <Modal
@@ -123,7 +137,8 @@ const CategoriaList = () => {
                 <div className="font-bold">Todas las materias primas</div>
               </li>
               {categorias.map((categoria) => (
-                <CategoriaBox key={categoria._id} categoria={categoria} />
+                <CategoriaBox key={categoria._id} categoria={categoria}  onEdit={handleEdit}
+                onDelete={handleDelete}  />
               ))}
             </ul>
           )}

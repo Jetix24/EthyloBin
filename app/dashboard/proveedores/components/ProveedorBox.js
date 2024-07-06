@@ -108,7 +108,7 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
       >
         <p>
           ¿Estás seguro? Al eliminar este proveedor, todos los elementos dentro de
-          este proveedor se quedarán proveedor.
+          este proveedor se quedarán sin proveedor.
         </p>
         <div className="flex justify-end mt-4">
           <button
