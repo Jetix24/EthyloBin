@@ -32,7 +32,7 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await apiClient.put("/provedores", { id: proveedor._id, name: newName });
+      await apiClient.put("/proveedores", { id: proveedor._id, name: newName });
       onEdit(proveedor._id, newName);
       setIsEditModalOpen(false);
     } catch (error) {
@@ -119,7 +119,7 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
           </button>
           <button
             onClick={() => {
-              onDelete(zona._id);
+              onDelete(proveedor._id);
               setIsDeleteModalOpen(false);
             }}
             className="btn btn-danger"

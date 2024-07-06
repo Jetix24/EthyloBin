@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectMongo from "@/libs/mongoose";
 import Proveedor from "@/models/Proveedor";
+import MateriaPrima from "@/models/MateriaPrima";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
 
