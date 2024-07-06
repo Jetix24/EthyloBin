@@ -10,11 +10,10 @@ import { useRouter } from "next/navigation";
 import AuthSocialButton from "./AuthSocialButton";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import apiClient from "@/libs/api";
 
 type Variant = 'LOGIN' | 'REGISTER';
 
-const AuthForm = ({priceId, mode= "payment", user}) => {
+const AuthForm = ( {user}) => {
   const router = useRouter();
   const { data: session } = useSession();
   const [variant, setVariant] = useState<Variant>('LOGIN');
