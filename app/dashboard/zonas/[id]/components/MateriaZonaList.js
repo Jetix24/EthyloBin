@@ -5,7 +5,7 @@ import MateriaZonaBox from "./MateriaZonaBox";
 
 const MateriaZonaList = ({ zonaId }) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMateriasPrimas = async () => {

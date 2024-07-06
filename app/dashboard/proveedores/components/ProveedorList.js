@@ -29,19 +29,6 @@ const ProveedorList = () => {
     fetchProveedores();
   }, []);
 
-  const handleEdit = async (id, newName) => {
-    setProveedores((prevProvedores) =>
-      prevProvedores.map((proveedor) =>
-        proveedor._id === id ? { ...proveedor, name: newName } : proveedor      )
-    );
-    toast.success("Proveedor actualizado");
-  };
-
-  const handleDelete = async (id) => {
-    setProveedores((prevProvedores) => prevProvedores.filter((proveedor) => proveedor._id !== id));
-    toast.success("Proveedor eliminado");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -58,6 +45,23 @@ const ProveedorList = () => {
   };
 
   const isActiveAll = pathname === "/proveedores";
+
+  const handleEdit = async (id, newName) => {
+    setProveedores((prevProvedores) =>
+      prevProvedores.map((proveedor) =>
+        proveedor._id === id ? { ...proveedor, name: newName } : proveedor      )
+    );
+    toast.success("Proveedor actualizado");
+  };
+
+  const handleDelete = async (id) => {
+    setProveedores((prevProvedores) => prevProvedores.filter((proveedor) => proveedor._id !== id));
+    toast.success("Proveedor eliminado");
+  };
+
+  
+
+  
 
   return (
     <>

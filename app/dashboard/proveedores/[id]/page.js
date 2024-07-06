@@ -1,57 +1,15 @@
 "use client";
+import { useParams } from "next/navigation";
+import MateriaProList from "./components/MaterialProList";
 
-import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
-import apiClient from "@/libs/api";
-import toast from "react-hot-toast";
-
-const CategoriaDetail = () => {
-  const router = useRouter();
+const ProveedorDetail = () => {
   const { id } = useParams();
-  const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchMateriasPrimas = async () => {
-      setIsLoading(true);
-      try {
-        const materiasData = await apiClient.get(
-          `/proveedores/${id}/materias-primas`
-        );
-        setMateriasPrimas(materiasData);
-      } catch (error) {
-        console.error(error);
-        toast.error("Error al cargar materias primas");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchMateriasPrimas();
-  }, [id]);
 
   return (
-    <div className="pl-5">
-      <div className="pl-80 p-5 h-full">
-        <h1 className="text-2xl font-bold mb-4">Materias Primas</h1>
-        {isLoading ? (
-          <div className="flex justify-center items-center">
-            <span className="loading loading-spinner loading-md"></span>
-          </div>
-        ) : (
-          <ul>
-            {materiasPrimas.map((materia) => (
-              <li key={materia._id} className="my-2 p-2 border rounded">
-                <div className="font-bold">
-                <h2 className="font-bold">{`${materia.name}       Min: ${materia.minimoAlmacen}/Can: ${materia.cantidad}`}</h2>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+    <div className="pl-80">
+      <MateriaProList proveedorId={id} />
     </div>
   );
 };
 
-export default CategoriaDetail;
+export default ProveedorDetail;

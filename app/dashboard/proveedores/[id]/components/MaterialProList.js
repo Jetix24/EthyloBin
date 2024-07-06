@@ -1,18 +1,19 @@
+"use client"
 import React, { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import MateriaProBox from "./MateriaProBox";
 
-const MateriaZonaList = ({ proId }) => {
+const MateriaZonaList = ({proveedorId}) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMateriasPrimas = async () => {
       setIsLoading(true);
       try {
         const materiasData = await apiClient.get(
-          `/zonas/${zonaId}/materias-primas`
+          `/proveedores/${proveedorId}/materias-primas`
         );
         setMateriasPrimas(materiasData);
       } catch (error) {
@@ -24,15 +25,8 @@ const MateriaZonaList = ({ proId }) => {
     };
 
     fetchMateriasPrimas();
-  }, [zonaId]);
+  }, [proveedorId]);
 
-  const handleQuantityChange = (id, newQuantity) => {
-    setMateriasPrimas((prevMaterias) =>
-      prevMaterias.map((materia) =>
-        materia._id === id ? { ...materia, cantidad: newQuantity } : materia
-      )
-    );
-  };
 
   return (
     <div className="p-5 mx-14">
@@ -49,12 +43,10 @@ const MateriaZonaList = ({ proId }) => {
         </div>
       ) : (
         <ul>
-          {materiasPrimas.map((materia, index) => (
-            <MateriaZonaBox
+          {materiasPrimas.map((materia) => (
+            <MateriaProBox
               key={materia._id}
               materia={materia}
-              onQuantityChange={handleQuantityChange}
-              className={index % 2 === 0 ? "bg-blue-200" : "bg-white"}
             />
           ))}
         </ul>
