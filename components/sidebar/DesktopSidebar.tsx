@@ -1,40 +1,19 @@
 "use client";
 
-import React, { use, useEffect, useState } from "react";
-import Avatar from "../Avatar";
+import React, { useState } from "react";
 import DesktopItem from "./DesktopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import LogoutItem from "./LogoutItem";
-import config from "next/config";
-import { useRouter } from "next/navigation";
 
-interface DesktopSidebarProps {
-  currentUserImage?: string;
-  hasAccess?: boolean;
-}
-
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
-  currentUserImage, hasAccess
-}) => {
+const DesktopSidebar: React.FC = () => {
   const routes = useRoutes();
-  const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
   const handleSignOut = () => {
     signOut({ callbackUrl: "/" });
   };
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/api/auth/signin");
-    } else if (!hasAccess) {
-      router.push("/#pricing");
-    }
-
-  }, [status]);
 
   return (
     <>
@@ -135,7 +114,6 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             >
               <LogoutItem onClick={handleSignOut} />
             </ul>
-            <Avatar image={session?.user?.image} />
           </div>
         </nav>
       </div>

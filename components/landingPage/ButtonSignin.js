@@ -3,8 +3,8 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation"; // Corregido de "next/navigation" a "next/router"
 import config from "@/config";
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
@@ -20,7 +20,7 @@ const ButtonSignin = ({ text = "Iniciar sesión", extraStyle }) => {
   if (status === "authenticated") {
     return (
       <Link
-        href={config.auth.zonasUrl}
+        href={config.auth.callbackUrl}
         className={`btn ${extraStyle ? extraStyle : ""}`}
       >
         {session.user?.image ? (

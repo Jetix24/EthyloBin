@@ -14,7 +14,7 @@ export default async function signin() {
                 Inicia sesión en tu cuenta
             </h2>
         </div>
-            <AuthForm priceId={price} mode="subscription" user={hasAccess} />
+            <AuthForm user={hasAccess} />
       </div>
 
     );

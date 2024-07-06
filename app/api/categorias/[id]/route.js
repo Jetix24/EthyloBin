@@ -4,34 +4,32 @@ import Categoria from "@/models/Categoria";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/libs/next-auth";
 
-export async function PUT(req, { params }) {
+export async function PUT(req) {
   const session = await getServerSession(authOptions);
   if (!session)
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
-  const { id } = params;
-  const { name } = await req.json();
+  const body = await req.json();
+  const { id, name } = body;
+  if (!id || !name)
+    return NextResponse.json(
+      { error: "ID and name are required" },
+      { status: 400 }
+    );
 
-  if (!name) {
-    return NextResponse.json({ error: "Name is required" }, { status: 400 });
-  }
-
-  await connectMongo();
-  const ObjectId = require("mongoose").Types.ObjectId;
+  const db = await connectMongo();
+  const ObjectId = db.Types.ObjectId;
 
   try {
+    
     const categoria = await Categoria.findByIdAndUpdate(
-      new ObjectId(id),
+      { _id: new ObjectId(id), userId: new ObjectId(session.user.id) },
       { name },
       { new: true }
     );
 
-    if (!categoria) {
-      return NextResponse.json(
-        { error: "Categoria not found" },
-        { status: 404 }
-      );
-    }
+    if (!categoria)
+      return NextResponse.json({ error: "Categoria not found" },{ status: 404 });
 
     return NextResponse.json({ categoria }, { status: 200 });
   } catch (error) {

@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
+import MateriaPrimaBox from "./components/MateriaPrimaBox";
 
 const CategoriaDetail = () => {
-  const router = useRouter();
   const { id } = useParams();
   const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,7 @@ const CategoriaDetail = () => {
       setIsLoading(true);
       try {
         const materiasData = await apiClient.get(
-          `/proveedores/${id}/materias-primas`
+          `/categorias/${id}/materias-primas`
         );
         setMateriasPrimas(materiasData);
       } catch (error) {
@@ -30,6 +30,20 @@ const CategoriaDetail = () => {
     fetchMateriasPrimas();
   }, [id]);
 
+  const handleEdit = (materiaId, updatedData) => {
+    setMateriasPrimas((prevMaterias) =>
+      prevMaterias.map((materia) =>
+        materia._id === materiaId ? { ...materia, ...updatedData } : materia
+      )
+    );
+  };
+
+  const handleDelete = (materiaId) => {
+    setMateriasPrimas((prevMaterias) =>
+      prevMaterias.filter((materia) => materia._id !== materiaId)
+    );
+  };
+
   return (
     <div className="pl-5">
       <div className="pl-80 p-5 h-full">
@@ -41,11 +55,12 @@ const CategoriaDetail = () => {
         ) : (
           <ul>
             {materiasPrimas.map((materia) => (
-              <li key={materia._id} className="my-2 p-2 border rounded">
-                <div className="font-bold">
-                <h2 className="font-bold">{`${materia.name}       Min: ${materia.minimoAlmacen}/Can: ${materia.cantidad}`}</h2>
-                </div>
-              </li>
+              <MateriaPrimaBox
+                key={materia._id}
+                materia={materia}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
             ))}
           </ul>
         )}

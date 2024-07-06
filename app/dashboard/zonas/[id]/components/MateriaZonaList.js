@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import MateriaZonaBox from "./MateriaZonaBox";
-import EmptyState from "@/components/EmptyState"; // Asegúrate de importar el componente EmptyState
 
 const MateriaZonaList = ({ zonaId }) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMateriasPrimas = async () => {
@@ -55,7 +54,7 @@ const MateriaZonaList = ({ zonaId }) => {
               key={materia._id}
               materia={materia}
               onQuantityChange={handleQuantityChange}
-              className={index % 2 === 0 ? "bg-blue-200" : "bg-white"}
+              //className={index % 2 === 0 ? "bg-blue-200" : "bg-white"}
             />
           ))}
         </ul>
