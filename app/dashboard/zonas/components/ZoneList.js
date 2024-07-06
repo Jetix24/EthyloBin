@@ -16,7 +16,6 @@ const ZoneList = () => {
       setIsLoading(true);
       try {
         const zonasData = await apiClient.get("/zonas");
-        console.log("zonasData", zonasData);
         setZonas(zonasData);
       } catch (error) {
         console.error(error);
