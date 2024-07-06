@@ -44,7 +44,7 @@ export async function POST(req) {
   }
 }
 
-export async function GET(req) {
+export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session)
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });

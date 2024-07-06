@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import MateriaPrimaBox from "./components/MateriaPrimaBox";
 
 const CategoriaDetail = () => {
-  const router = useRouter();
   const { id } = useParams();
   const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

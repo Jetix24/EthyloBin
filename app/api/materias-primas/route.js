@@ -61,7 +61,7 @@ export async function POST(req) {
 }
 
 // Obtener todas las materias primas del usuario
-export async function GET(req) {
+export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session)
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
@@ -165,7 +165,6 @@ export async function DELETE(req) {
   }
 
   await connectMongo();
-  const ObjectId = mongoose.Types.ObjectId;
 
   try {
     const deletedMateriaPrima = await MateriaPrima.findByIdAndDelete(id);
