@@ -12,7 +12,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
   const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
-  const successUrl = `${baseUrl}/zonas`;
+  const successUrl = `${baseUrl}/dashboard/zonas`;
   const cancelUrl = `${baseUrl}/#pricing`;
 
   const handlePayment = async () => {
