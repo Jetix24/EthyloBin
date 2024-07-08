@@ -44,9 +44,6 @@ const CategoriaList = () => {
     }
   };
 
-  const isActiveAll = pathname === "/categorias";
-
-
   const handleEdit = async (id, newName) => {
     setCategorias((prevCategorias) =>
       prevCategorias.map((categoria) =>
@@ -59,6 +56,8 @@ const CategoriaList = () => {
     setCategorias((prevCategorias) => prevCategorias.filter((categoria) => categoria._id !== id));
     toast.success("Categoria eliminada");
   };
+
+  const isActiveAll = pathname === "/dashboard/categorias";
 
   return (
     <>
@@ -132,7 +131,7 @@ const CategoriaList = () => {
                 className={`my-2 p-2 border rounded cursor-pointer ${
                   isActiveAll ? "bg-blue-200" : "bg-white"
                 }`}
-                onClick={() => router.push("/categorias")}
+                onClick={() => router.push("/dashboard/categorias")}
               >
                 <div className="font-bold">Todas las materias primas</div>
               </li>
