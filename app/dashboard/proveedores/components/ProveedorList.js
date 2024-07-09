@@ -44,7 +44,7 @@ const ProveedorList = () => {
     }
   };
 
-  const isActiveAll = pathname === "/proveedores";
+  const isActiveAll = pathname === "/dashboard/proveedores";
 
   const handleEdit = async (id, newName) => {
     setProveedores((prevProvedores) =>
@@ -135,7 +135,7 @@ const ProveedorList = () => {
                 className={`my-2 p-2 border rounded cursor-pointer ${
                   isActiveAll ? "bg-blue-200" : "bg-white"
                 }`}
-                onClick={() => router.push("/proveedores")}
+                onClick={() => router.push("/dashboard/proveedores")}
               >
                 <div className="font-bold">Todos los proveedores</div>
               </li>
