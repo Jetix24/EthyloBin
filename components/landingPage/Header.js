@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
+import ButtonLogOut from "./ButtonLogOut";
 import logo from "@/app/icon.png";
 import config from "@/config";
 
@@ -25,7 +26,7 @@ const Header = () => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg" />;
-
+  const out = <ButtonLogOut />;
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
   useEffect(() => {
     setIsOpen(false);
@@ -95,7 +96,7 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
+        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}{out}</div>
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
@@ -162,6 +163,7 @@ const Header = () => {
             <div className="divider"></div>
             {/* Your CTA on small screens */}
             <div className="flex flex-col">{cta}</div>
+            <div className="flex flex-col mt-2 ml-0 w-full ">{out}</div>
           </div>
         </div>
       </div>
