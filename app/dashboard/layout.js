@@ -12,9 +12,7 @@ export default async function LayoutPrivate({ children }) {
   if (!session) {
     redirect(config.auth.loginUrl);
   }else{
-    console.log(session);
     const user = await getCurrentUser(session);
-    console.log(user);
     if(!user.hasAcess){
       redirect(config.auth.landUrlPri);
     }
