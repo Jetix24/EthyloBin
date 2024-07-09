@@ -9,14 +9,14 @@ export default async function LayoutPrivate({ children }) {
   const session = await getServerSession(authOptions);
   
 
-  if (!session) {
+  if (!session) 
     redirect(config.auth.loginUrl);
-  }else{
-    const user = await getCurrentUser(session);
-    if(!user.hasAcess){
-      redirect(config.auth.landUrlPri);
-    }
-  }
+  // }else{
+  //   const user = await getCurrentUser(session);
+  //   if(!user.hasAcess){
+  //     redirect(config.auth.landUrlPri);
+  //   }
+  // }
 
   return (
     <Sidebar>
