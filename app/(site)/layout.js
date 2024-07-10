@@ -4,10 +4,10 @@ import { authOptions } from "@/libs/next-auth";
 import config from "@/config";
 
 export default async function LayoutPrivate({ children }) { 
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
   
-  if (session) 
-    redirect(config.auth.callbackUrl);
+  // if (session) 
+  //   redirect(config.auth.callbackUrl);
 
   return (
     <div className="h-full">
