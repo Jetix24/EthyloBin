@@ -4,18 +4,17 @@ import getSession from "./getSession";
 const getCurrentUser = async () => {
   try {
     const session = await getSession();
+    const db = await connectMongo();
 
     if (!session?.user?.email) {
       return null;
     }
-
-    // Buscamos al usuario por su email en la base de datos
-    const currentUser = await User.findOne({ email: session.user.email });
+    const currentUser = await User.findById(session.user.id);
 
     if (!currentUser) {
       return null;
     }
-
+    console.log('user current', currentUser)
     return currentUser;
   } catch (error) {
     console.error("Error al obtener el usuario actual:", error);
