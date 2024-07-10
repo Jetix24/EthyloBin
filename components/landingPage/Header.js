@@ -48,12 +48,12 @@ const Header = () => {
             <Image
               src={logo}
               alt={`${config.appName} logo`}
-              className="w-8"
+              className="w-10"
               priority={true}
               width={40}
               height={40}
             />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            <span className="font-extrabold text-xl">{config.appName}</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
@@ -70,7 +70,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 text-purple_200 "
+              className="w-8 h-8 text-purple_200 "
             >
               <path
                 strokeLinecap="round"
@@ -114,12 +114,12 @@ const Header = () => {
               <Image
                 src={logo}
                 alt={`${config.appName} logo`}
-                className="w-8"
+                className="w-10"
                 priority={true}
                 width={40}
                 height={40}
               />
-              <span className="font-extrabold text-lg">{config.appName}</span>
+              <span className="font-extrabold text-xl">{config.appName}</span>
             </Link>
             <button
               type="button"
