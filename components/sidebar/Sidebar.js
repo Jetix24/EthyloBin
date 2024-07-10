@@ -1,14 +1,15 @@
 import React from "react";
-// import getCurrentUser from "@/app/actions/getCurrentUser";
+import { authOptions } from "@/libs/next-auth";
 import DesktopSidebar from "./DesktopSidebar";
 import MobileFooter from "./MobileFooter";
+import { getServerSession } from "next-auth";
 
-async function Sidebar({ children }: { children: React.ReactNode }) {
-  // const user = await getCurrentUser();
+async function Sidebar({ children }) {
+  const session = await getServerSession(authOptions);
 
   return (
     <div className="h-full">
-      <DesktopSidebar />
+      <DesktopSidebar image={session?.user?.image} />
       <MobileFooter />
       <main className="lg:pl-20 h-full">{children}</main>
     </div>
@@ -16,4 +17,3 @@ async function Sidebar({ children }: { children: React.ReactNode }) {
 }
 
 export default Sidebar;
-
