@@ -37,7 +37,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({image}) => {
             lg:z-40
             lg:w-20
             lg:overflow-y-auto
-            lg:bg-blue_500
+            lg:bg-dark_purple
             lg:border-r-[1px]
             border-slate-800
             lg:pb-4

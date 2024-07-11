@@ -11,13 +11,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue_500: "#101D30",
-        blue_300: "#1E3242",
-        blue_200: "#48AD9D",
-        blue_100: "#96CDC4",
-        purple_300: "#8999B2",
-        purple_200: "#E7E2DA",
-        purple_100: "#F7F3F0",
+        dark_purple: "#0C081F",
+        blue_purple: "#242C53",
+        cute_blue: "#3D4375",
+        cute_purple: "#95729C",
+        white_purple: "#ECD4D8",
+        cute_white: "#F7F0F6",
       },
       backgroundImage: {
         gradient:
