@@ -1,5 +1,5 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
   icon: Icon,
   href,
   onClick,
-  active
+  active,
 }) => {
   const handleClick = () => {
     if (onClick) {
@@ -24,11 +24,12 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
     }
   };
 
-  return ( 
+  return (
     <li onClick={handleClick}>
-      <Link 
+      <Link
         href={href}
-        className={clsx(`
+        className={clsx(
+          `
           group
           flex
           gap-x-3
@@ -37,18 +38,18 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
           text-sm
           leading-6
           font-semibold
-          text-emerald-500
-          hover:text-emerald-500
-          hover:bg-gray-100
+          text-white_purple
+          hover:text-cute_blue
+          hover:bg-white_purple
         `,
-          active && 'bg-emerald-500 text-gray-100'
+          active && "bg-cute_blue text-white_purple"
         )}
       >
         <Icon className="h-7 w-7 shrink-0" />
         <span className="sr-only">{label}</span>
       </Link>
     </li>
-   );
-}
- 
+  );
+};
+
 export default DesktopItem;
