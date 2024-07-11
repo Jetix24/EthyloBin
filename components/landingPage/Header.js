@@ -25,7 +25,9 @@ const links = [
 const Header = () => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
-  const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg" />;
+  const cta = (
+    <ButtonSignin extraStyle="btn-primary bg-cute_purple text-cute_white rounded-md border-0 hover:bg-blue_100 text-lg" />
+  );
   const out = <ButtonLogOut />;
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
   useEffect(() => {
@@ -33,7 +35,7 @@ const Header = () => {
   }, [searchParams]);
 
   return (
-    <header className="bg-blue_500">
+    <header className="bg-dark_purple">
       <nav
         className="container flex items-center justify-between px-8 py-4 mx-auto"
         aria-label="Global"
@@ -41,7 +43,7 @@ const Header = () => {
         {/* Your logo/name on large screens */}
         <div className="flex lg:flex-1">
           <Link
-            className="flex items-center gap-2 shrink-0 text-purple_200 text-3xl"
+            className="flex items-center gap-2 shrink-0 text-cute_white text-3xl"
             href="/"
             title={`${config.appName} hompage`}
           >
@@ -87,7 +89,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover text-purple_200 text-lg"
+              className="link link-hover text-cute_white text-lg"
               title={link.label}
             >
               {link.label}
@@ -96,7 +98,10 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}{out}</div>
+        <div className="hidden lg:flex lg:justify-end lg:flex-1">
+          {cta}
+          {out}
+        </div>
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
