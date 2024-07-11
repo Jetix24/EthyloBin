@@ -8,6 +8,7 @@ import ButtonSignin from "./ButtonSignin";
 import ButtonLogOut from "./ButtonLogOut";
 import logo from "@/app/icon.png";
 import config from "@/config";
+import ButtonAvatar from "@/components/ButtonAvatar";
 
 const links = [
   {
@@ -164,6 +165,7 @@ const Header = () => {
             {/* Your CTA on small screens */}
             <div className="flex flex-col">{cta}</div>
             <div className="flex flex-col mt-2 ml-0 w-full ">{out}</div>
+            
           </div>
         </div>
       </div>

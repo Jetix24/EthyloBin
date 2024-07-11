@@ -7,6 +7,7 @@ import Image from "next/image";
 import { signOut } from "next-auth/react";
 import LogoutItem from "./LogoutItem";
 import Avatar from "../Avatar";
+import ButtonAvatar from "../ButtonAvatar";
 
 interface DesktopSidebarProps {
   image?: string; // Hace que la prop image sea opcional
@@ -117,9 +118,9 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({image}) => {
                   mb-3
                 "
             >
-              <LogoutItem onClick={handleSignOut} />
+             { /*<LogoutItem onClick={handleSignOut} />*/}
             </ul>
-            <Avatar image={image}/>
+           <Avatar image={image}/>
           </div>
         </nav>
       </div>
