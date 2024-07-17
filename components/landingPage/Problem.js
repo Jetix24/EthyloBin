@@ -104,7 +104,7 @@ const Problem = () => {
       <h1 className="text-dark_purple font-bold md:text-5xl text-4xl mb-4">
         ¿Falta de Gestión en el Inventario de tu Negocio?
       </h1>
-      <p className="text-blue_purple text-lg opacity-90 leading-relaxed">
+      <p className="text-blue_purple font-semibold text-lg opacity-90 leading-relaxed">
         En muchos negocios, la gestión del inventario puede ser un desafío...
       </p>
     </div>
