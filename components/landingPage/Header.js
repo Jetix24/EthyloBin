@@ -27,7 +27,7 @@ const Header = () => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const cta = (
-    <ButtonSignin extraStyle="btn-primary bg-cute_purple text-cute_white rounded-md border-0 hover:bg-blue_100 text-lg" />
+    <ButtonSignin extraStyle="btn-primary bg-cute_purple text-cute_white rounded-md border-0 hover:bg-cute_blue text-lg" />
   );
   const out = <ButtonLogOut />;
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
