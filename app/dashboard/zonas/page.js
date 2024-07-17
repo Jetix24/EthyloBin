@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import AllMateriaBox from "./components/AllMateriaBox";
+import clsx from "clsx";
+import useZone from "@/app/hooks/useZone";
 
 const Home = () => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { isOpen } = useZone();
 
   useEffect(() => {
     const fetchMateriasPrimas = async () => {
@@ -34,21 +37,20 @@ const Home = () => {
     );
   };
 
-
   return (
-    <div className="pl-5">
+    <div className={clsx("pl-5", isOpen ? "hidden" : "block")}>
       <div className="pl-80 p-5 h-full">
         <h1 className="text-2xl font-bold mb-4">Todas las Materias Primas</h1>
         {isLoading ? (
           <div className="flex justify-center items-center">
             <span className="loading loading-spinner loading-md"></span>
           </div>
-          ) : materiasPrimas.length === 0 ? (
-            <div className="flex justify-center items-center h-96">
-              <span className="text-gray-500">
-                Parece que no tienes nada registrado
-              </span>
-            </div>
+        ) : materiasPrimas.length === 0 ? (
+          <div className="flex justify-center items-center h-96">
+            <span className="text-gray-500">
+              Parece que no tienes nada registrado
+            </span>
+          </div>
         ) : (
           <ul>
             {materiasPrimas.map((materia) => (

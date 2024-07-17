@@ -5,13 +5,17 @@ import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import ZoneBox from "./ZoneBox";
 import { useRouter, usePathname } from "next/navigation";
+import clsx from "clsx";
+import useZone from "@/app/hooks/useZone";
 
 const ZoneList = () => {
+  const router = useRouter();
+  const { isOpen } = useZone();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
+  const [activeZonaId, setActiveZonaId] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,6 +32,11 @@ const ZoneList = () => {
     };
     fetchZonas();
   }, []);
+
+  const handleZonaClick = (zonaId) => {
+    setActiveZonaId(zonaId);
+    router.push(`/zonas/${zonaId}`);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -114,7 +123,12 @@ const ZoneList = () => {
         </form>
       </Modal>
 
-      <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
+      <aside
+        className={clsx(
+          "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+          isOpen ? "hidden" : "block w-full left-0"
+        )}
+      >
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Áreas</div>
@@ -138,6 +152,8 @@ const ZoneList = () => {
                 <ZoneBox
                   key={zona._id}
                   zona={zona}
+                  isActive={zona._id === activeZonaId}
+                  onClick={() => handleZonaClick(zona._id)}
                   onEdit={handleEdit}
                   onDelete={handleDelete}
                 />
