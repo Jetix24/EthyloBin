@@ -7,6 +7,7 @@ import ZoneBox from "./ZoneBox";
 import { useRouter, usePathname } from "next/navigation";
 import clsx from "clsx";
 import useZone from "@/app/hooks/useZone";
+import { IoMdAddCircle } from "react-icons/io";
 
 const ZoneList = () => {
   const router = useRouter();
@@ -134,9 +135,15 @@ const ZoneList = () => {
             <div className="text-2xl font-bold text-neutral-800">Áreas</div>
             <div
               onClick={() => setIsModalOpen(true)}
-              className="btn btn-primary"
+              className="relative
+              inline-block
+              rounded-full
+              overflow-hidden
+              text-cute_purple
+              hover:text-white_purple
+              cursor-pointer"
             >
-              Agregar Área
+              <IoMdAddCircle size={32} />
             </div>
           </div>
           {isLoading ? (
