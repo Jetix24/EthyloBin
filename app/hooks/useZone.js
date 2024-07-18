@@ -9,7 +9,7 @@ const useZone = () => {
       return "";
     }
     return params.id;
-  }, [params?.zoneId]);
+  }, [params?.id]);
 
   const isOpen = useMemo(() => !!zoneId, [zoneId]);
 

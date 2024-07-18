@@ -10,7 +10,7 @@ import useZone from "@/app/hooks/useZone";
 
 const ZoneList = () => {
   const router = useRouter();
-  const { isOpen } = useZone();
+  const { isOpen } = useZone(); // Importamos el hook useZone
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
@@ -35,7 +35,7 @@ const ZoneList = () => {
 
   const handleZonaClick = (zonaId) => {
     setActiveZonaId(zonaId);
-    router.push(`/zonas/${zonaId}`);
+    router.push(`/dashboard/zonas/${zonaId}`);
   };
 
   const handleSubmit = async (e) => {
@@ -43,7 +43,7 @@ const ZoneList = () => {
     setIsLoading(true);
     try {
       const { newZona } = await apiClient.post("/zonas", { name });
-      toast.success("Area creada");
+      toast.success("Área creada");
       setZonas([...zonas, newZona]);
       setIsModalOpen(false);
     } catch (error) {
@@ -89,7 +89,7 @@ const ZoneList = () => {
               name="name"
               id="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="Escribe el nombre del area"
+              placeholder="Escribe el nombre del área"
               autoComplete="off"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -109,14 +109,14 @@ const ZoneList = () => {
               >
                 <path
                   fillRule="evenodd"
-                  d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                  d="M10 5a1 1 0 011 1v3h3a1 1 110 2h-3v3a1 1 112 0v-3H6a1 1 110-2h3V6a1 1 111-1z"
                   clipRule="evenodd"
                 ></path>
               </svg>
               {isLoading ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
-                "Crear area"
+                "Crear área"
               )}
             </button>
           </div>
@@ -163,7 +163,7 @@ const ZoneList = () => {
         </div>
         <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
           <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Area
+            Agregar Área
           </div>
         </div>
       </aside>
