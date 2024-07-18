@@ -8,7 +8,7 @@ import ButtonCheckout from "@/components/landingPage/ButtonCheckout";
 const Pricing = () => {
   return (
     <section className="bg-purple_100 overflow-hidden" id="pricing">
-      <div className="py-24 px-8 max-w-7xl mx-auto">
+      <div className="py-16 px-8 max-w-7xl mx-auto">
         <div className="relative pt-8">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           {config.stripe.plans.map((plan) => (
