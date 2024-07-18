@@ -15,7 +15,7 @@ const CTA = () => {
       
       <div className="relative hero-overlay bg-dark_purple bg-opacity-70"></div>
       <div className="relative hero-content text-center text-neutral-content p-8 w-full">
-        <div className="flex flex-col items-center max-w-4xl p-8 md:p-0 ">
+        <div className="flex flex-col items-center max-w-5xl p-8 md:p-0 ">
           <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12 text-white">
           Simplifica la gestión de inventario para tu negocio de alimentos
           </h2>

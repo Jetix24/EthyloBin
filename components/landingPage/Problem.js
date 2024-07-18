@@ -98,7 +98,7 @@ const Item = ({ item }) => {
 
 const Problem = () => {
   return (
-    <section className="bg-cute_white">
+    <section className="bg-cute_white" id="problema">
   <div className="max-w-7xl mx-auto px-16 py-16 md:py-16 text-center">
     <div className="mb-12 md:mb-14">
       <h1 className="text-dark_purple font-bold md:text-5xl text-4xl mb-4">

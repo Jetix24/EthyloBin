@@ -12,12 +12,20 @@ import ButtonAvatar from "@/components/ButtonAvatar";
 
 const links = [
   {
+    href: "/#problema",
+    label: "Problemas",
+  },
+  {
     href: "/#characteristics",
     label: "Caracteristicas",
   },
   {
     href: "/#pricing",
     label: "Precio",
+  },
+  {
+    href: "/#faq",
+    label: "Preguntas",
   },
 ];
 
@@ -60,7 +68,7 @@ const Header = () => {
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
-        <div className="flex lg:hidden bg-blue_500">
+        <div className="flex lg:hidden bg-dark_purple">
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-sm p-2.5"
@@ -73,7 +81,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-8 h-8 text-purple_200 "
+              className="w-8 h-8 text-cute_white "
             >
               <path
                 strokeLinecap="round"
@@ -108,12 +116,12 @@ const Header = () => {
       {/* Mobile menu, show/hide based on menu state. */}
       <div className={`relative z-50 ${isOpen ? "" : "hidden"}`}>
         <div
-          className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-blue_500 sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
+          className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-dark_purple sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
         >
           {/* Your logo/name on small screens */}
           <div className="flex items-center justify-between">
             <Link
-              className="flex items-center gap-2 shrink-0  text-purple_200"
+              className="flex items-center gap-2 shrink-0  text-cute_white"
               title={`${config.appName} hompage`}
               href="/"
             >
@@ -139,7 +147,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-purple_200"
+                className="w-6 h-6 text-cute_white"
               >
                 <path
                   strokeLinecap="round"
@@ -158,7 +166,7 @@ const Header = () => {
                   <Link
                     href={link.href}
                     key={link.href}
-                    className="link link-hover text-purple_200"
+                    className="link link-hover text-cute_white"
                     title={link.label}
                   >
                     {link.label}
