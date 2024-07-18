@@ -6,10 +6,11 @@ import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 
-const ZoneBox = ({ zona, onEdit, onDelete }) => {
+const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(zona.name);
   const router = useRouter();
 
@@ -39,9 +40,27 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
     }
   };
 
+  const handleDeleteConfirm = async () => {
+    setIsLoading(true);
+    try {
+      await apiClient.delete(`/zonas?id=${zona._id}`);
+      onDelete(zona._id);
+      setIsLoading(true);
+      setIsDeleteModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar la zona");
+    }
+  };
+
   return (
     <>
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
+      <div
+        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer hover:bg-slate-200 ${
+          isActive ? "bg-slate-400 text-white" : "bg-white"
+        }`}
+        onClick={onClick}
+      >
         <div className="flex-1 cursor-pointer" onClick={handleClick}>
           <div className="font-bold">{zona.name}</div>
         </div>
@@ -77,18 +96,18 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
       <Modal
         isModalOpen={isEditModalOpen}
         setIsModalOpen={setIsEditModalOpen}
-        title="Editar Area"
+        title="Editar Área"
       >
         <form onSubmit={handleEditSubmit}>
           <label className="block mb-2 text-sm font-medium text-gray-900">
-            Nombre del Area
+            Nombre del Área
           </label>
           <input
             type="text"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-            placeholder="Nombre del Area"
+            placeholder="Nombre del Área"
           />
           <button type="submit" className="mt-4 btn btn-primary">
             Guardar cambios
@@ -99,7 +118,7 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
       <Modal
         isModalOpen={isDeleteModalOpen}
         setIsModalOpen={setIsDeleteModalOpen}
-        title="Eliminar Area"
+        title="Eliminar Área"
       >
         <p>
           ¿Estás seguro? Al eliminar esta zona, todos los elementos dentro de
@@ -113,13 +132,15 @@ const ZoneBox = ({ zona, onEdit, onDelete }) => {
             Cancelar
           </button>
           <button
-            onClick={() => {
-              onDelete(zona._id);
-              setIsDeleteModalOpen(false);
-            }}
+            onClick={handleDeleteConfirm}
+            disabled={isLoading}
             className="btn btn-danger"
           >
-            Eliminar
+            {isLoading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Eliminar"
+            )}
           </button>
         </div>
       </Modal>
