@@ -1,9 +1,17 @@
 "use client";
 import useRoutes from "@/app/hooks/useRoutes";
 import MobileItem from "./MobileItem";
+import useZone from "@/app/hooks/useZone";
 
 const MobileFooter = () => {
   const routes = useRoutes();
+  const { isOpen } = useZone();
+
+  console.log("isOpen en Mobile Footer", isOpen);
+
+  if (isOpen) {
+    return null;
+  }
 
   return (
     <div

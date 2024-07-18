@@ -5,13 +5,18 @@ import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import ZoneBox from "./ZoneBox";
 import { useRouter, usePathname } from "next/navigation";
+import clsx from "clsx";
+import useZone from "@/app/hooks/useZone";
+import { IoMdAddCircle } from "react-icons/io";
 
 const ZoneList = () => {
+  const router = useRouter();
+  const { isOpen } = useZone(); // Importamos el hook useZone
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
+  const [activeZonaId, setActiveZonaId] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -29,13 +34,19 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
+  const handleZonaClick = (zonaId) => {
+    setActiveZonaId(zonaId);
+    router.push(`/dashboard/zonas/${zonaId}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       const { newZona } = await apiClient.post("/zonas", { name });
-      toast.success("Area creada");
+      toast.success("Área creada");
       setZonas([...zonas, newZona]);
+      setName(""); // Limpiar el input antes de cerrar el modal
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);
@@ -80,7 +91,7 @@ const ZoneList = () => {
               name="name"
               id="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="Escribe el nombre del area"
+              placeholder="Escribe el nombre del área"
               autoComplete="off"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -100,24 +111,41 @@ const ZoneList = () => {
               >
                 <path
                   fillRule="evenodd"
-                  d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                  d="M10 5a1 1 0 011 1v3h3a1 1 110 2h-3v3a1 1 112 0v-3H6a1 1 110-2h3V6a1 1 111-1z"
                   clipRule="evenodd"
                 ></path>
               </svg>
               {isLoading ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
-                "Crear area"
+                "Crear área"
               )}
             </button>
           </div>
         </form>
       </Modal>
 
-      <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
+      <aside
+        className={clsx(
+          "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+          isOpen ? "hidden" : "block w-full left-0 "
+        )}
+      >
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Áreas</div>
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="relative
+              inline-block
+              rounded-full
+              overflow-hidden
+              text-cute_purple
+              hover:text-white_purple
+              cursor-pointer"
+            >
+              <IoMdAddCircle size={32} />
+            </div>
           </div>
           {isLoading ? (
             <div className="flex justify-center items-center">
@@ -125,30 +153,18 @@ const ZoneList = () => {
             </div>
           ) : (
             <ul>
-              <li
-                key="all"
-                className={`my-2 p-2 border rounded cursor-pointer ${
-                  isActiveAll ? "bg-blue-200" : "bg-white"
-                }`}
-                onClick={() => router.push("/dashboard/zonas")}
-              >
-                <div className="font-bold">Todas las materias primas</div>
-              </li>
               {zonas.map((zona) => (
                 <ZoneBox
                   key={zona._id}
                   zona={zona}
+                  isActive={zona._id === activeZonaId}
+                  onClick={() => handleZonaClick(zona._id)}
                   onEdit={handleEdit}
                   onDelete={handleDelete}
                 />
               ))}
             </ul>
           )}
-        </div>
-        <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
-          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Area
-          </div>
         </div>
       </aside>
     </>
