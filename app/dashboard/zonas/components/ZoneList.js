@@ -126,12 +126,18 @@ const ZoneList = () => {
       <aside
         className={clsx(
           "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
-          isOpen ? "hidden" : "block w-full left-0"
+          isOpen ? "hidden" : "block w-full left-0 "
         )}
       >
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Áreas</div>
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="btn btn-primary"
+            >
+              Agregar Área
+            </div>
           </div>
           {isLoading ? (
             <div className="flex justify-center items-center">
@@ -139,7 +145,7 @@ const ZoneList = () => {
             </div>
           ) : (
             <ul>
-              <li
+              {/* <li
                 key="all"
                 className={`my-2 p-2 border rounded cursor-pointer ${
                   isActiveAll ? "bg-blue-200" : "bg-white"
@@ -147,7 +153,7 @@ const ZoneList = () => {
                 onClick={() => router.push("/dashboard/zonas")}
               >
                 <div className="font-bold">Todas las materias primas</div>
-              </li>
+              </li> */}
               {zonas.map((zona) => (
                 <ZoneBox
                   key={zona._id}
@@ -160,11 +166,6 @@ const ZoneList = () => {
               ))}
             </ul>
           )}
-        </div>
-        <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
-          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Área
-          </div>
         </div>
       </aside>
     </>
