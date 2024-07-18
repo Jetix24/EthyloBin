@@ -46,6 +46,7 @@ const ZoneList = () => {
       const { newZona } = await apiClient.post("/zonas", { name });
       toast.success("Área creada");
       setZonas([...zonas, newZona]);
+      setName(""); // Limpiar el input antes de cerrar el modal
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);
@@ -152,15 +153,6 @@ const ZoneList = () => {
             </div>
           ) : (
             <ul>
-              {/* <li
-                key="all"
-                className={`my-2 p-2 border rounded cursor-pointer ${
-                  isActiveAll ? "bg-blue-200" : "bg-white"
-                }`}
-                onClick={() => router.push("/dashboard/zonas")}
-              >
-                <div className="font-bold">Todas las materias primas</div>
-              </li> */}
               {zonas.map((zona) => (
                 <ZoneBox
                   key={zona._id}
