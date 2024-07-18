@@ -10,6 +10,7 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(zona.name);
   const router = useRouter();
 
@@ -36,6 +37,19 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
     } catch (error) {
       console.error(error);
       toast.error("Error al editar la zona");
+    }
+  };
+
+  const handleDeleteConfirm = async () => {
+    setIsLoading(true);
+    try {
+      await apiClient.delete(`/zonas?id=${zona._id}`);
+      onDelete(zona._id);
+      setIsLoading(true);
+      setIsDeleteModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar la zona");
     }
   };
 
@@ -118,13 +132,15 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
             Cancelar
           </button>
           <button
-            onClick={() => {
-              onDelete(zona._id);
-              setIsDeleteModalOpen(false);
-            }}
+            onClick={handleDeleteConfirm}
+            disabled={isLoading}
             className="btn btn-danger"
           >
-            Eliminar
+            {isLoading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Eliminar"
+            )}
           </button>
         </div>
       </Modal>
