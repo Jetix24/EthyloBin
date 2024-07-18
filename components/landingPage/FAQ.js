@@ -7,22 +7,27 @@ import { useRef, useState } from "react";
 
 const faqList = [
   {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
-  },
-  {
-    question: "Can I get a refund?",
+    question: "¿Cómo empiezo a usar Tario?",
     answer: (
       <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
+        Solo necesitas registrarte en nuestra plataforma y comenzar a agregar tus productos.
       </p>
     ),
   },
   {
-    question: "I have another question",
+    question: "¿Cómo agrego y organizo mis productos en Tario?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
+      <p>
+        Crea una categoría, una area y un proveedor, y posteriormente agrega tus productos.
+      </p>
+    ),
+  },
+  {
+    question: "¿Cómo manejo la lista de compras y proveedores?",
+    answer: (
+      <p>
+        Al momento de agregar un producto, puedes seleccionar un proveedor y al momento de que el producto baje de la cantidad minima asldra en la lista de compras.
+      </p>
     ),
   },
 ];
@@ -42,12 +47,12 @@ const Item = ({ item }) => {
         aria-expanded={isOpen}
       >
         <span
-          className={`flex-1 text-base-content ${isOpen ? "text-primary" : ""}`}
+          className={`flex-1 text-blue_purple ${isOpen ? "text-cute_purple" : ""}`}
         >
           {item?.question}
         </span>
         <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
+          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current text-dark_purple`}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -89,12 +94,12 @@ const Item = ({ item }) => {
 
 const FAQ = () => {
   return (
-    <section className="bg-base-200" id="faq">
+    <section className="bg-cute_white" id="faq">
       <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
         <div className="flex flex-col text-left basis-1/2">
-          <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
-          <p className="sm:text-4xl text-3xl font-extrabold text-base-content">
-            Frequently Asked Questions
+          <p className="inline-block font-semibold text-cute_purple mb-4">PF</p>
+          <p className="sm:text-4xl text-3xl font-extrabold text-dark_purple">
+            Preguntas Frecuentes
           </p>
         </div>
 

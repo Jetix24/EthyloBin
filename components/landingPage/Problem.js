@@ -56,7 +56,7 @@ const Item = ({ item }) => {
           {item?.question}
         </span>
         <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
+          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current text-dark_purple`}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
