@@ -69,7 +69,7 @@ const config = {
   auth: {
     loginUrl: "/api/auth/signin",
     callbackUrl: "/dashboard",
-    zonasUrl: "/zonas",
+    zonasUrl: "/dashboard/zonas",
     landUrl: "/",
     landUrlPri: "/#pricing",
   },

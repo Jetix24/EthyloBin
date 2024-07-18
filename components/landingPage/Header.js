@@ -5,10 +5,16 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
+import ButtonLogOut from "./ButtonLogOut";
 import logo from "@/app/icon.png";
 import config from "@/config";
+import ButtonAvatar from "@/components/ButtonAvatar";
 
 const links = [
+  {
+    href: "/#problema",
+    label: "Problemas",
+  },
   {
     href: "/#characteristics",
     label: "Caracteristicas",
@@ -17,6 +23,10 @@ const links = [
     href: "/#pricing",
     label: "Precio",
   },
+  {
+    href: "/#faq",
+    label: "Preguntas",
+  },
 ];
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
@@ -24,15 +34,17 @@ const links = [
 const Header = () => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
-  const cta = <ButtonSignin extraStyle="btn-primary bg-blue_200 text-purple_200 rounded-md border-0 hover:bg-blue_100 text-lg" />;
-
+  const cta = (
+    <ButtonSignin extraStyle="btn-primary bg-cute_purple text-cute_white rounded-md border-0 hover:bg-cute_blue text-lg" />
+  );
+  const out = <ButtonLogOut />;
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
   useEffect(() => {
     setIsOpen(false);
   }, [searchParams]);
 
   return (
-    <header className="bg-blue_500">
+    <header className="bg-dark_purple">
       <nav
         className="container flex items-center justify-between px-8 py-4 mx-auto"
         aria-label="Global"
@@ -40,23 +52,23 @@ const Header = () => {
         {/* Your logo/name on large screens */}
         <div className="flex lg:flex-1">
           <Link
-            className="flex items-center gap-2 shrink-0 text-purple_200 text-3xl"
+            className="flex items-center gap-2 shrink-0 text-cute_white text-3xl"
             href="/"
             title={`${config.appName} hompage`}
           >
             <Image
               src={logo}
               alt={`${config.appName} logo`}
-              className="w-8"
+              className="w-10"
               priority={true}
               width={40}
               height={40}
             />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            <span className="font-extrabold text-xl">{config.appName}</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
-        <div className="flex lg:hidden bg-blue_500">
+        <div className="flex lg:hidden bg-dark_purple">
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-sm p-2.5"
@@ -69,7 +81,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 text-purple_200 "
+              className="w-8 h-8 text-cute_white "
             >
               <path
                 strokeLinecap="round"
@@ -86,7 +98,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover text-purple_200 text-lg"
+              className="link link-hover text-cute_white text-lg"
               title={link.label}
             >
               {link.label}
@@ -95,30 +107,33 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
+        <div className="hidden lg:flex lg:justify-end lg:flex-1">
+          {cta}
+          {out}
+        </div>
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
       <div className={`relative z-50 ${isOpen ? "" : "hidden"}`}>
         <div
-          className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-blue_500 sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
+          className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-dark_purple sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
         >
           {/* Your logo/name on small screens */}
           <div className="flex items-center justify-between">
             <Link
-              className="flex items-center gap-2 shrink-0  text-purple_200"
+              className="flex items-center gap-2 shrink-0  text-cute_white"
               title={`${config.appName} hompage`}
               href="/"
             >
               <Image
                 src={logo}
                 alt={`${config.appName} logo`}
-                className="w-8"
+                className="w-10"
                 priority={true}
                 width={40}
                 height={40}
               />
-              <span className="font-extrabold text-lg">{config.appName}</span>
+              <span className="font-extrabold text-xl">{config.appName}</span>
             </Link>
             <button
               type="button"
@@ -132,7 +147,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-purple_200"
+                className="w-6 h-6 text-cute_white"
               >
                 <path
                   strokeLinecap="round"
@@ -151,7 +166,7 @@ const Header = () => {
                   <Link
                     href={link.href}
                     key={link.href}
-                    className="link link-hover text-purple_200"
+                    className="link link-hover text-cute_white"
                     title={link.label}
                   >
                     {link.label}
@@ -162,6 +177,8 @@ const Header = () => {
             <div className="divider"></div>
             {/* Your CTA on small screens */}
             <div className="flex flex-col">{cta}</div>
+            <div className="flex flex-col mt-2 ml-0 w-full ">{out}</div>
+            
           </div>
         </div>
       </div>

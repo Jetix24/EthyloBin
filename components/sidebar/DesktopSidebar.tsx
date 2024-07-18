@@ -6,8 +6,14 @@ import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import LogoutItem from "./LogoutItem";
+import Avatar from "../Avatar";
+import ButtonAvatar from "../ButtonAvatar";
 
-const DesktopSidebar: React.FC = () => {
+interface DesktopSidebarProps {
+  image?: string; // Hace que la prop image sea opcional
+}
+
+const DesktopSidebar: React.FC<DesktopSidebarProps> = ({image}) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +37,7 @@ const DesktopSidebar: React.FC = () => {
             lg:z-40
             lg:w-20
             lg:overflow-y-auto
-            lg:bg-blue_500
+            lg:bg-dark_purple
             lg:border-r-[1px]
             border-slate-800
             lg:pb-4
@@ -112,8 +118,9 @@ const DesktopSidebar: React.FC = () => {
                   mb-3
                 "
             >
-              <LogoutItem onClick={handleSignOut} />
+             { /*<LogoutItem onClick={handleSignOut} />*/}
             </ul>
+           <Avatar image={image}/>
           </div>
         </nav>
       </div>

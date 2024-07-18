@@ -12,7 +12,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
   const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL // Asegúrate de reemplazar esto con tu dominio real
-  const successUrl = `${baseUrl}/zonas`;
+  const successUrl = `${baseUrl}/dashboard/zonas`;
   const cancelUrl = `${baseUrl}/#pricing`;
 
   const handlePayment = async () => {
@@ -39,7 +39,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
 
   return (
     <button
-      className="btn text-lg bg-blue_200 btn-block text-purple_200 rounded-lg border-0 hover:bg-blue_100 group"
+      className="btn text-lg bg-cute_purple btn-block text-cute_white rounded-lg border-0 hover:bg-cute_blue group"
       onClick={() => handlePayment()}
     >
       {isLoading ? (

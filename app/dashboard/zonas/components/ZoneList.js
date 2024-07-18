@@ -4,12 +4,15 @@ import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import ZoneBox from "./ZoneBox";
+import { useRouter, usePathname } from "next/navigation";
 
 const ZoneList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const fetchZonas = async () => {
@@ -26,20 +29,6 @@ const ZoneList = () => {
     fetchZonas();
   }, []);
 
-  const handleEdit = async (id, newName) => {
-    setZonas((prevZonas) =>
-      prevZonas.map((zona) =>
-        zona._id === id ? { ...zona, name: newName } : zona
-      )
-    );
-    toast.success("Zona actualizada");
-  };
-
-  const handleDelete = async (id) => {
-    setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
-    toast.success("Zona eliminada");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -54,6 +43,22 @@ const ZoneList = () => {
       setIsLoading(false);
     }
   };
+
+  const handleEdit = async (id, newName) => {
+    setZonas((prevZonas) =>
+      prevZonas.map((zona) =>
+        zona._id === id ? { ...zona, name: newName } : zona
+      )
+    );
+    toast.success("Zona actualizada");
+  };
+
+  const handleDelete = async (id) => {
+    setZonas((prevZonas) => prevZonas.filter((zona) => zona._id !== id));
+    toast.success("Zona eliminada");
+  };
+
+  const isActiveAll = pathname === "/dashboard/zonas";
 
   return (
     <>
@@ -120,6 +125,15 @@ const ZoneList = () => {
             </div>
           ) : (
             <ul>
+              <li
+                key="all"
+                className={`my-2 p-2 border rounded cursor-pointer ${
+                  isActiveAll ? "bg-blue-200" : "bg-white"
+                }`}
+                onClick={() => router.push("/dashboard/zonas")}
+              >
+                <div className="font-bold">Todas las materias primas</div>
+              </li>
               {zonas.map((zona) => (
                 <ZoneBox
                   key={zona._id}
