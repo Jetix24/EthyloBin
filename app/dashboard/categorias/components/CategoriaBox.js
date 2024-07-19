@@ -13,6 +13,7 @@ const CategoriaBox = ({ categoria, onEdit, onDelete  }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(categoria.name);
 
   const handleClick = () => {
@@ -32,12 +33,25 @@ const CategoriaBox = ({ categoria, onEdit, onDelete  }) => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await apiClient.put("/categorias/[id]", { id: categoria._id, name: newName });
+      await apiClient.put("/categorias", { id: categoria._id, name: newName });
       onEdit(categoria._id, newName);
       setIsEditModalOpen(false);
     } catch (error) {
       console.error(error);
       toast.error("Error al editar la categoria");
+    }
+  };
+
+  const handleDeleteConfirm = async () => {
+    setIsLoading(true);
+    try {
+      await apiClient.delete(`/categorias?id=${categoria._id}`);
+      onDelete(categoria._id);
+      setIsLoading(true);
+      setIsDeleteModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar la categoria");
     }
   };
 
@@ -110,13 +124,15 @@ const CategoriaBox = ({ categoria, onEdit, onDelete  }) => {
             Cancelar
           </button>
           <button
-            onClick={() => {
-              onDelete(categoria._id);
-              setIsDeleteModalOpen(false);
-            }}
+            onClick={handleDeleteConfirm}
+            disabled={isLoading}
             className="btn btn-danger"
           >
-            Eliminar
+            {isLoading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Eliminar"
+            )}
           </button>
         </div>
       </Modal>

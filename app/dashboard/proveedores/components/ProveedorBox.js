@@ -13,6 +13,7 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(proveedor.name);
 
   const handleClick = () => {
@@ -38,6 +39,19 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
     } catch (error) {
       console.error(error);
       toast.error("Error al editar el proveedor");
+    }
+  };
+
+  const handleDeleteConfirm = async () => {
+    setIsLoading(true);
+    try {
+      await apiClient.delete(`/proveedores?id=${proveedor._id}`);
+      onDelete(proveedor._id);
+      setIsLoading(true);
+      setIsDeleteModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al eliminar al proveedor");
     }
   };
 
@@ -118,13 +132,15 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
             Cancelar
           </button>
           <button
-            onClick={() => {
-              onDelete(proveedor._id);
-              setIsDeleteModalOpen(false);
-            }}
+            onClick={handleDeleteConfirm}
+            disabled={isLoading}
             className="btn btn-danger"
           >
-            Eliminar
+            {isLoading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Eliminar"
+            )}
           </button>
         </div>
       </Modal>
