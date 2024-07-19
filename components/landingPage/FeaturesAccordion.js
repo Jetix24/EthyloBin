@@ -149,7 +149,7 @@ const FeaturesAccordion = () => {
       <div className="px-8">
       <h2 className="md:text-5xl text-4xl tracking-tight mb-12 md:mb-8 font-bold text-dark_purple text-center">
       Todo lo que necesitas para tu inventario{" "}
-      <span className="block bg-dark_purple text-cute_purple md:px-8 md:mt-3 leading-relaxed">
+      <span className="block text-cute_blue md:px-8 md:leading-relaxed">
         y hacer crecer tu negocio
       </span>
 </h2>

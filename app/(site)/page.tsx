@@ -7,7 +7,7 @@ import Footer from "@/components/landingPage/Footer";
 import CarouselText from '@/components/landingPage/CarouselText';
 import FAQ from '@/components/landingPage/FAQ';
 import Problem from '@/components/landingPage/Problem';
-import FeaturesAccordion from '@/components/FeaturesAccordion';
+import FeaturesAccordion from '@/components/landingPage/FeaturesAccordion';
 
 export default async function Home() {
 
