@@ -5,14 +5,19 @@ import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import CategoriaBox from "./CategoriaBox";
 import { useRouter, usePathname } from "next/navigation";
+import clsx from "clsx";
+import useCategoria from "@/app/hooks/useCategoria";
+import { IoMdAddCircle } from "react-icons/io";
 
 const CategoriaList = () => {
+  const { isOpen } = useCategoria();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categorias, setCategorias] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const [activeCategoriaId, setActiveCategoriaId] = useState(null);
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -28,6 +33,11 @@ const CategoriaList = () => {
     };
     fetchCategorias();
   }, []);
+
+  const handleCategoriaClick = (categoriaId) => {
+    setActiveCategoriaId(categoriaId);
+    router.push(`/dashboard/categorias/${categoriaId}`);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -113,11 +123,28 @@ const CategoriaList = () => {
         </form>
       </Modal>
 
-      <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
+      <aside
+        className={clsx(
+          "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+          isOpen ? "hidden" : "block w-full left-0 "
+        )}
+      >
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">
-              Categorías
+            <div className="text-2xl font-bold text-neutral-800">Categorías</div>
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="relative
+              inline-block
+              rounded-full
+              overflow-hidden
+              text-cute_purple
+              hover:text-cute_blue
+              cursor-pointer
+              transition-colors 
+              duration-400"
+            >
+              <IoMdAddCircle size={32} />
             </div>
           </div>
           {isLoading ? (
@@ -126,26 +153,17 @@ const CategoriaList = () => {
             </div>
           ) : (
             <ul>
-              <li
-                key="all"
-                className={`my-2 p-2 border rounded cursor-pointer ${
-                  isActiveAll ? "bg-blue-200" : "bg-white"
-                }`}
-                onClick={() => router.push("/dashboard/categorias")}
-              >
-                <div className="font-bold">Todas las materias primas</div>
-              </li>
               {categorias.map((categoria) => (
-                <CategoriaBox key={categoria._id} categoria={categoria}  onEdit={handleEdit}
-                onDelete={handleDelete}  />
+                <CategoriaBox 
+                  key={categoria._id} 
+                  categoria={categoria}  
+                  isActive={categoria._id === activeCategoriaId}
+                  onClick={() => handleCategoriaClick(categoria._id)}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}  />
               ))}
             </ul>
           )}
-        </div>
-        <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
-          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Categoría
-          </div>
         </div>
       </aside>
     </>
