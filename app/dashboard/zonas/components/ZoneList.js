@@ -141,8 +141,11 @@ const ZoneList = () => {
               rounded-full
               overflow-hidden
               text-cute_purple
-              hover:text-white_purple
-              cursor-pointer"
+              hover:text-cute_blue
+              cursor-pointer
+              transition-colors 
+              duration-400"
+
             >
               <IoMdAddCircle size={32} />
             </div>
