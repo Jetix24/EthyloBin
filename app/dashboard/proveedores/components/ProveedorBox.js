@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter} from "next/navigation";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
 import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 
-const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const isActive = pathname === `/proveedores/${proveedor._id}`;
+const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(proveedor.name);
+  const router = useRouter();
 
   const handleClick = () => {
     router.push(`/dashboard/proveedores/${proveedor._id}`);
@@ -58,12 +56,12 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete  }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer hover:bg-slate-300 ${
-          isActive ? "bg-blue-200" : "bg-white"
+        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white ${
+          isActive ? "bg-cute_purple text-white" : "bg-white"
         }`}
-        onClick={handleClick}
+        onClick={onClick}
       >
-        <div className="flex-1">
+        <div className="flex-1" onClick={handleClick}>
           <div className="font-bold">{proveedor.name}</div>
         </div>
         <Popover className="relative">

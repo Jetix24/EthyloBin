@@ -4,7 +4,10 @@ import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import ProveedorBox from "./ProveedorBox";
+import clsx from "clsx";
+import useProveedor from "@/app/hooks/useProveedor";
 import { useRouter, usePathname } from "next/navigation";
+import { IoMdAddCircle } from "react-icons/io";
 
 const ProveedorList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +16,8 @@ const ProveedorList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const [activeProveedorId, setActiveProveedorId] = useState(null);
+  const { isOpen } = useProveedor();
 
   useEffect(() => {
     const fetchProveedores = async () => {
@@ -29,6 +34,11 @@ const ProveedorList = () => {
     fetchProveedores();
   }, []);
 
+  const handleProveedorClick = (proveedorId) => {
+    setActiveProveedorId(proveedorId);
+    router.push(`/dashboard/proveedores/${proveedorId}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -44,8 +54,6 @@ const ProveedorList = () => {
     }
   };
 
-  const isActiveAll = pathname === "/dashboard/proveedores";
-
   const handleEdit = async (id, newName) => {
     setProveedores((prevProvedores) =>
       prevProvedores.map((proveedor) =>
@@ -59,10 +67,8 @@ const ProveedorList = () => {
     toast.success("Proveedor eliminado");
   };
 
+  const isActiveAll = pathname === "/dashboard/proveedores";
   
-
-  
-
   return (
     <>
       <Modal
@@ -117,11 +123,28 @@ const ProveedorList = () => {
         </form>
       </Modal>
 
-      <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
+      <aside 
+      className={clsx(
+        "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+        isOpen ? "hidden" : "block w-full left-0 "
+      )}>
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">
-              Proveedores
+            <div className="text-2xl font-bold text-neutral-800">Proveedores</div>
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="relative
+              inline-block
+              rounded-full
+              overflow-hidden
+              text-cute_purple
+              hover:text-cute_blue
+              cursor-pointer
+              transition-colors 
+              duration-400"
+
+            >
+              <IoMdAddCircle size={32} />
             </div>
           </div>
           {isLoading ? (
@@ -130,26 +153,18 @@ const ProveedorList = () => {
             </div>
           ) : (
             <ul>
-              <li
-                key="all"
-                className={`my-2 p-2 border rounded cursor-pointer ${
-                  isActiveAll ? "bg-blue-200" : "bg-white"
-                }`}
-                onClick={() => router.push("/dashboard/proveedores")}
-              >
-                <div className="font-bold">Todos los proveedores</div>
-              </li>
               {proveedores.map((proveedor) => (
-                <ProveedorBox key={proveedor._id} proveedor={proveedor} onEdit={handleEdit}
-                onDelete={handleDelete} />
+                <ProveedorBox 
+                  key={proveedor._id} 
+                  proveedor={proveedor} 
+                  isActive={proveedor._id === activeProveedorId}
+                  onClick={() => handleProveedorClick(proveedor._id)}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete} 
+                  />
               ))}
             </ul>
           )}
-        </div>
-        <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
-          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Proveedor
-          </div>
         </div>
       </aside>
     </>
