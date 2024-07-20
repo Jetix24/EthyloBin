@@ -4,7 +4,7 @@ const CarouselText = () => {
 
   return (
     <section className="max-w-5xl  max-h-5xl mx-auto flex flex-col items-center justify-center gap-16 lg:gap-20 px-8 py-2 lg:py-5">
-      <div className="carousel max-w-6xl rounded-lg">
+      <div className="carousel max-w-6xl rounded-md">
         <div id="slide1" className="carousel-item relative w-full h-full">
           <Image src="/img/facil.jpg" className="w-full" width={1200} height={1080} alt="Facil" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

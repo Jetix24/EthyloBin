@@ -71,7 +71,7 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
             <BsThreeDots className="text-xl" />
           </Popover.Button>
           {isPopoverOpen && (
-            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="p-2">
                 <button
                   onClick={handleEdit}
@@ -104,7 +104,7 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
             type="text"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
             placeholder="Nombre del proveedor"
           />
           <button type="submit" className="mt-4 btn btn-primary">

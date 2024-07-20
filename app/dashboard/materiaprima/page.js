@@ -87,7 +87,7 @@ const Home = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="relative p-4 w-full max-w-3xl h-full md:h-auto">
-        <div className="relative p-4 bg-white rounded-lg shadow  sm:p-5">
+        <div className="relative p-4 bg-white rounded-md shadow  sm:p-5">
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
             <h3 className="text-lg font-semibold text-gray-900 ">
               Agregar Materia Prima
@@ -109,7 +109,7 @@ const Home = () => {
                   onChange={(e) => setName(e.target.value)}
                   required
                   autoComplete="off"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 d"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 d"
                   placeholder="Nombre de la materia prima"
                 />
               </div>
@@ -126,7 +126,7 @@ const Home = () => {
                   value={categoria}
                   onChange={(e) => setCategoria(e.target.value)}
                   required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                 >
                   <option value="">Seleccione una categoría</option>
                   {categorias.map((c) => (
@@ -147,7 +147,7 @@ const Home = () => {
                   id="zona"
                   value={zona}
                   onChange={(e) => setZona(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                 >
                   <option value="">Seleccione una zona</option>
                   {zonas.map((z) => (
@@ -168,7 +168,7 @@ const Home = () => {
                   id="proveedor"
                   value={proveedor}
                   onChange={(e) => setProveedor(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                 >
                   <option value="">Seleccione un proveedor</option>
                   {proveedores.map((p) => (
@@ -205,7 +205,7 @@ const Home = () => {
                   value={medida}
                   onChange={(e) => setMedida(e.target.value)}
                   required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
                   <option value="">Seleccione una medida</option>
                   {contable
@@ -234,7 +234,7 @@ const Home = () => {
                   value={cantidad}
                   onChange={(e) => setCantidad(e.target.valueAsNumber)}
                   required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                   placeholder="Cantidad en inventario"
                 />
               </div>
@@ -251,7 +251,7 @@ const Home = () => {
                   value={minimoAlmacen}
                   onChange={(e) => setMinimoAlmacen(e.target.valueAsNumber)}
                   required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                   placeholder="Cantidad mínima en almacén"
                 />
               </div>
@@ -260,14 +260,14 @@ const Home = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full sm:w-auto justify-center border-solid text-gray-500 hover:bg-gray-100 focus:ring-primary-300 border border-gray-200 hover:text-gray-900 focus:z-10 inline-flex bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                className="w-full sm:w-auto justify-center border-solid text-gray-500 hover:bg-gray-100 focus:ring-primary-300 border border-gray-200 hover:text-gray-900 focus:z-10 inline-flex bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-md text-sm px-5 py-2.5 text-center "
               >
                 {isLoading ? "Guardando..." : "Agregar Materia Prima"}
               </button>
 
               <button
                 type="button"
-                className="w-full justify-center sm:w-auto text-gray-500 inline-flex items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 "
+                className="w-full justify-center sm:w-auto text-gray-500 inline-flex items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 "
               >
                 <svg
                   className="mr-1 -ml-1 w-5 h-5"

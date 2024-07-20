@@ -113,7 +113,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           </Popover.Button>
 
           {isPopoverOpen && (
-            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="p-2">
                 <button
                   onClick={() => {
@@ -160,7 +160,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
                 autoComplete="off"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 d"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 d"
                 placeholder="Nombre de la materia prima"
               />
             </div>
@@ -177,7 +177,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
               >
                 <option value="">Seleccione una categoría</option>
                 {categorias.map((c) => (
@@ -198,7 +198,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 id="zona"
                 value={zona}
                 onChange={(e) => setZona(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
               >
                 <option value="">Seleccione una zona</option>
                 {zonas.map((z) => (
@@ -219,7 +219,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 id="proveedor"
                 value={proveedor}
                 onChange={(e) => setProveedor(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
               >
                 <option value="">Seleccione un proveedor</option>
                 {proveedores.map((p) => (
@@ -256,7 +256,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={medida}
                 onChange={(e) => setMedida(e.target.value)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               >
                 <option value="">Seleccione una medida</option>
                 {contable
@@ -285,7 +285,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={cantidad}
                 onChange={(e) => setCantidad(e.target.valueAsNumber)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                 placeholder="Cantidad en inventario"
               />
             </div>
@@ -302,7 +302,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={minimoAlmacen}
                 onChange={(e) => setMinimoAlmacen(e.target.valueAsNumber)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                 placeholder="Cantidad mínima en almacén"
               />
             </div>
@@ -311,7 +311,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full sm:w-auto justify-center border-solid text-gray-500 hover:bg-gray-100 focus:ring-primary-300 border border-gray-200 hover:text-gray-900 focus:z-10 inline-flex bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+              className="w-full sm:w-auto justify-center border-solid text-gray-500 hover:bg-gray-100 focus:ring-primary-300 border border-gray-200 hover:text-gray-900 focus:z-10 inline-flex bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-md text-sm px-5 py-2.5 text-center "
             >
               {isLoading ? "Guardando..." : "Guardar cambios"}
             </button>
@@ -319,7 +319,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <button
               type="button"
               onClick={() => setIsEditModalOpen(false)}
-              className="w-full justify-center sm:w-auto text-gray-500 inline-flex items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 "
+              className="w-full justify-center sm:w-auto text-gray-500 inline-flex items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 "
             >
               <svg
                 className="mr-1 -ml-1 w-5 h-5"

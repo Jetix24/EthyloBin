@@ -73,7 +73,7 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
           </Popover.Button>
 
           {isPopoverOpen && (
-            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="p-2">
                 <button
                   onClick={handleEdit}

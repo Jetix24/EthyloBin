@@ -115,7 +115,7 @@ const Problem = () => {
           alt="Problema"
           width={500}
           height={500}
-          className="rounded-lg"
+          className="rounded-md"
         />
       </div>
       <div className="max-w-xl text-lg leading-relaxed">

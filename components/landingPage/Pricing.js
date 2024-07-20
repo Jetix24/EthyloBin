@@ -12,7 +12,7 @@ const Pricing = () => {
         <div className="relative pt-8">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           {config.stripe.plans.map((plan) => (
-            <div key={plan.priceId} className="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex bg-cute_white">
+            <div key={plan.priceId} className="max-w-lg mx-auto rounded-md shadow-lg overflow-hidden lg:max-w-none lg:flex bg-cute_white">
               <div className="flex-1 bg-purple_200 px-6 py-8 lg:p-12">
                 <h3 className="text-3xl font-bold text-blue_500 sm:text-4xl">Precio pensado para tu negocio</h3>
                 {plan.description && (
