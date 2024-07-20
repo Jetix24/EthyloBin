@@ -55,7 +55,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await apiClient.put(`/materias-primas/${materia._id}`, {
+      await apiClient.put(`/materias-primas?id=${materia._id}`, {
         name,
         cantidad,
         zona,
