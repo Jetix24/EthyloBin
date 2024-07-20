@@ -86,9 +86,11 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
   };
 
   const handleDelete = async () => {
+    setIsLoading(true);
     try {
       await apiClient.delete(`/materias-primas/${materia._id}`);
       onDelete(materia._id);
+      setIsLoading(false);
       setIsDeleteModalOpen(false);
       toast.success("Materia prima eliminada");
     } catch (error) {
@@ -149,7 +151,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900 "
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Nombre
               </label>
@@ -160,7 +162,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
                 autoComplete="off"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 d"
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
                 placeholder="Nombre de la materia prima"
               />
             </div>
@@ -168,7 +170,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="categoria"
-                className="block mb-2 text-sm font-medium text-gray-900 "
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Categoría
               </label>
@@ -177,7 +179,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
               >
                 <option value="">Seleccione una categoría</option>
                 {categorias.map((c) => (
@@ -190,7 +192,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="zona"
-                className="block mb-2 text-sm font-medium text-gray-900"
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Zona
               </label>
@@ -198,7 +200,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 id="zona"
                 value={zona}
                 onChange={(e) => setZona(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
               >
                 <option value="">Seleccione una zona</option>
                 {zonas.map((z) => (
@@ -211,7 +213,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="proveedor"
-                className="block mb-2 text-sm font-medium text-gray-900"
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Proveedor
               </label>
@@ -219,7 +221,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 id="proveedor"
                 value={proveedor}
                 onChange={(e) => setProveedor(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
               >
                 <option value="">Seleccione un proveedor</option>
                 {proveedores.map((p) => (
@@ -232,7 +234,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="contable"
-                className="block mb-2 text-sm font-medium text-gray-900 "
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Contable
               </label>
@@ -247,7 +249,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="medida"
-                className="block mb-2 text-sm font-medium text-gray-900"
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Medida
               </label>
@@ -256,7 +258,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={medida}
                 onChange={(e) => setMedida(e.target.value)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
               >
                 <option value="">Seleccione una medida</option>
                 {contable
@@ -275,7 +277,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             <div>
               <label
                 htmlFor="cantidad"
-                className="block mb-2 text-sm font-medium text-gray-900 "
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Cantidad actual en inventario
               </label>
@@ -285,14 +287,14 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={cantidad}
                 onChange={(e) => setCantidad(e.target.valueAsNumber)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
                 placeholder="Cantidad en inventario"
               />
             </div>
             <div>
               <label
                 htmlFor="minimoAlmacen"
-                className="block mb-2 text-sm font-medium text-gray-900 "
+                className="block mb-2 text-md font-medium text-blue_purple"
               >
                 Mínimo en Almacén
               </label>
@@ -302,39 +304,29 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
                 value={minimoAlmacen}
                 onChange={(e) => setMinimoAlmacen(e.target.valueAsNumber)}
                 required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
                 placeholder="Cantidad mínima en almacén"
               />
             </div>
           </div>
-          <div className="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-            <button
-              type="submit"
+          <div className="flex md:justify-end mt-4 justify-center w-full">
+          <button
+            onClick={() => setIsDeleteModalOpen(false)}
+            className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
+          >
+            Cancelar
+          </button>
+            <button 
+              type="submit" 
+              className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
               disabled={isLoading}
-              className="w-full sm:w-auto justify-center border-solid text-gray-500 hover:bg-gray-100 focus:ring-primary-300 border border-gray-200 hover:text-gray-900 focus:z-10 inline-flex bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-md text-sm px-5 py-2.5 text-center "
             >
-              {isLoading ? "Guardando..." : "Guardar cambios"}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsEditModalOpen(false)}
-              className="w-full justify-center sm:w-auto text-gray-500 inline-flex items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 "
-            >
-              <svg
-                className="mr-1 -ml-1 w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 1.414 1.414L10 11.414l-4.293 4.293a1 1 1.414-1.414L8.586 10 4.293 5.707a1 1 0 0-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Descartar
-            </button>
+              {isLoading ? (
+                <span className="loading loading-spinner loading-md"></span>
+              ) : (
+                "Guardar cambios"
+              )}
+            </button>  
           </div>
         </form>
       </Modal>
@@ -348,15 +340,23 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           ¿Estás seguro? Al eliminar esta materia prima, se perderán todos los
           datos asociados.
         </p>
-        <div className="flex justify-end mt-4">
+        <div className="flex md:justify-end mt-4 justify-center w-full">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
-            className="mr-4 btn btn-secondary"
+            className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
           >
             Cancelar
           </button>
-          <button onClick={handleDelete} className="btn btn-danger">
-            Eliminar
+          <button
+            onClick={handleDelete}
+            disabled={isLoading}
+            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
+          >
+            {isLoading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Eliminar"
+            )}
           </button>
         </div>
       </Modal>
