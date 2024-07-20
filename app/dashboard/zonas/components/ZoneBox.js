@@ -30,10 +30,12 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await apiClient.put("/zonas", { id: zona._id, name: newName });
       onEdit(zona._id, newName);
       setIsEditModalOpen(false);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
       toast.error("Error al editar la zona");
@@ -110,8 +112,16 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
             placeholder="Nombre del Área"
           />
           <div className="flex justify-end">
-            <button type="submit" className="mt-4 w-full sm:w-auto text-cute_white btn bg-cute_purple hover:bg-blue_purple rounded-md">
-              Guardar cambios
+            <button 
+              type="submit" 
+              className="mt-4 w-full sm:w-auto min-w-[120px] text-cute_white btn bg-cute_purple hover:bg-blue_purple rounded-md"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="loading loading-spinner loading-md"></span>
+              ) : (
+                "Guardar cambios"
+              )}
             </button>
           </div>
         </form>
@@ -136,7 +146,7 @@ const ZoneBox = ({ zona, onEdit, onDelete, isActive, onClick }) => {
           <button
             onClick={handleDeleteConfirm}
             disabled={isLoading}
-            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
+            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
           >
             {isLoading ? (
               <span className="loading loading-spinner loading-md"></span>
