@@ -30,10 +30,12 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await apiClient.put("/proveedores", { id: proveedor._id, name: newName });
       onEdit(proveedor._id, newName);
       setIsEditModalOpen(false);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
       toast.error("Error al editar el proveedor");
@@ -97,19 +99,29 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
         title="Editar Proveedor"
       >
         <form onSubmit={handleEditSubmit}>
-          <label className="block mb-2 text-sm font-medium text-gray-900">
+        <label className="block mb-2 text-md font-medium text-blue_purple">
             Nombre del proveedor
           </label>
           <input
             type="text"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
             placeholder="Nombre del proveedor"
           />
-          <button type="submit" className="mt-4 btn btn-primary">
-            Guardar cambios
-          </button>
+          <div className="flex justify-end">
+            <button 
+              type="submit" 
+              className="mt-4 w-full sm:w-auto min-w-[120px] text-cute_white btn bg-cute_purple hover:bg-blue_purple rounded-md"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="loading loading-spinner loading-md"></span>
+              ) : (
+                "Guardar cambios"
+              )}
+            </button>
+          </div>
         </form>
       </Modal>
 
@@ -118,21 +130,21 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
         setIsModalOpen={setIsDeleteModalOpen}
         title="Eliminar proveedor"
       >
-        <p>
+        <p className="text-md ">
           ¿Estás seguro? Al eliminar este proveedor, todos los elementos dentro de
           este proveedor se quedarán sin proveedor.
         </p>
-        <div className="flex justify-end mt-4">
+        <div className="flex md:justify-end mt-4 justify-center w-full">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
-            className="mr-4 btn btn-secondary"
+             className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
           >
             Cancelar
           </button>
           <button
             onClick={handleDeleteConfirm}
             disabled={isLoading}
-            className="btn btn-danger"
+            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
           >
             {isLoading ? (
               <span className="loading loading-spinner loading-md"></span>
