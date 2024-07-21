@@ -81,7 +81,7 @@ export const renderSchemaTags = () => {
           "@type": "SoftwareApplication",
           name: config.appName,
           description: config.appDescription,
-          image: `https://${config.domainName}/icon.webp`,
+          image: `https://${config.domainName}/icon.png`,
           url: `https://${config.domainName}/`,
           author: [
             {
