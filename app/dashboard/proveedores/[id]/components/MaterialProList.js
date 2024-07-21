@@ -30,7 +30,7 @@ const MateriaZonaList = ({proveedorId}) => {
 
   return (
     <div className="p-5">
-      <h1 className="text-3xl font-bold mb-4 text-center sm:text-left">Materias Primas</h1>
+      <h1 className="text-2xl font-bold mb-3 text-center sm:text-left">Materias Primas</h1>
       {isLoading ? (
         <div className="flex justify-center items-center">
           <span className="loading loading-spinner loading-md"></span>
