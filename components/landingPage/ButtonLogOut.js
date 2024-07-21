@@ -23,7 +23,7 @@ const ButtonLogOut = () => {
   if (status === "authenticated") {
     return (
       <button
-        className={`btn text-lg md:text-xl bg-cute_purple btn-block text-cute_white rounded-lg border-0 hover:bg-cute_blue group sm:ml-4 ${active && 'bg-emerald-500 text-gray-100'} sm:w-10`}
+        className={`btn text-lg md:text-xl bg-cute_purple btn-block text-cute_white rounded-md border-0 hover:bg-cute_blue group sm:ml-4 ${active && 'bg-cute_blue text-cute_white'} sm:w-10`}
         onClick={handleLogOut}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

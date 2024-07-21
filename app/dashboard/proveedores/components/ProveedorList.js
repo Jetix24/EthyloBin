@@ -4,7 +4,10 @@ import apiClient from "@/libs/api";
 import Modal from "@/components/Modal";
 import toast from "react-hot-toast";
 import ProveedorBox from "./ProveedorBox";
+import clsx from "clsx";
+import useProveedor from "@/app/hooks/useProveedor";
 import { useRouter, usePathname } from "next/navigation";
+import { IoMdAddCircle } from "react-icons/io";
 
 const ProveedorList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +16,8 @@ const ProveedorList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const [activeProveedorId, setActiveProveedorId] = useState(null);
+  const { isOpen } = useProveedor();
 
   useEffect(() => {
     const fetchProveedores = async () => {
@@ -29,6 +34,11 @@ const ProveedorList = () => {
     fetchProveedores();
   }, []);
 
+  const handleProveedorClick = (proveedorId) => {
+    setActiveProveedorId(proveedorId);
+    router.push(`/dashboard/proveedores/${proveedorId}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -44,8 +54,6 @@ const ProveedorList = () => {
     }
   };
 
-  const isActiveAll = pathname === "/dashboard/proveedores";
-
   const handleEdit = async (id, newName) => {
     setProveedores((prevProvedores) =>
       prevProvedores.map((proveedor) =>
@@ -59,10 +67,8 @@ const ProveedorList = () => {
     toast.success("Proveedor eliminado");
   };
 
+  const isActiveAll = pathname === "/dashboard/proveedores";
   
-
-  
-
   return (
     <>
       <Modal
@@ -74,7 +80,7 @@ const ProveedorList = () => {
           <div className="col-span-2">
             <label
               htmlFor="name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-md font-medium text-blue_purple"
             >
               Nombre del proveedor
             </label>
@@ -82,31 +88,19 @@ const ProveedorList = () => {
               type="text"
               name="name"
               id="name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+              className={`bg-white  text-blue_purple  border-cute_blue border-2 text-sm rounded-md block w-full p-2.5`}
               placeholder="Escribe el nombre del proveedor"
               autoComplete="off"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+          <div className="flex justify-end">
             <button
               type="submit"
               disabled={isLoading}
-              className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+               className="mt-4 w-full sm:w-auto text-cute_white btn bg-cute_purple hover:bg-blue_purple rounded-md min-w-[120px]"
             >
-              <svg
-                className="me-1 -ms-1 w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
               {isLoading ? (
                 <span className="loading loading-spinner loading-md"></span>
               ) : (
@@ -117,11 +111,28 @@ const ProveedorList = () => {
         </form>
       </Modal>
 
-      <aside className="fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200">
+      <aside 
+      className={clsx(
+        "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+        isOpen ? "hidden" : "block w-full left-0 "
+      )}>
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
-            <div className="text-2xl font-bold text-neutral-800">
-              Proveedores
+            <div className="text-2xl font-bold text-neutral-800">Proveedores</div>
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="relative
+              inline-block
+              rounded-full
+              overflow-hidden
+              text-cute_purple
+              hover:text-cute_blue
+              cursor-pointer
+              transition-colors 
+              duration-400"
+
+            >
+              <IoMdAddCircle size={32} />
             </div>
           </div>
           {isLoading ? (
@@ -130,26 +141,18 @@ const ProveedorList = () => {
             </div>
           ) : (
             <ul>
-              <li
-                key="all"
-                className={`my-2 p-2 border rounded cursor-pointer ${
-                  isActiveAll ? "bg-blue-200" : "bg-white"
-                }`}
-                onClick={() => router.push("/dashboard/proveedores")}
-              >
-                <div className="font-bold">Todos los proveedores</div>
-              </li>
               {proveedores.map((proveedor) => (
-                <ProveedorBox key={proveedor._id} proveedor={proveedor} onEdit={handleEdit}
-                onDelete={handleDelete} />
+                <ProveedorBox 
+                  key={proveedor._id} 
+                  proveedor={proveedor} 
+                  isActive={proveedor._id === activeProveedorId}
+                  onClick={() => handleProveedorClick(proveedor._id)}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete} 
+                  />
               ))}
             </ul>
           )}
-        </div>
-        <div className="absolute bottom-0 w-full p-4 bg-gray-100 flex justify-center items-center">
-          <div onClick={() => setIsModalOpen(true)} className="btn btn-primary">
-            Agregar Proveedor
-          </div>
         </div>
       </aside>
     </>

@@ -6,7 +6,7 @@ const CTA = () => {
   return (
     <section className="relative hero overflow-hidden min-h-screen">
       <Image
-        src="/img/background.jpeg"
+        src="/img/background.webp"
         alt="Background"
         className="object-cover w-full"
         fill

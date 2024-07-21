@@ -39,7 +39,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
 
   return (
     <button
-      className="btn text-lg bg-cute_purple btn-block text-cute_white rounded-lg border-0 hover:bg-cute_blue group"
+      className="btn text-lg bg-cute_purple btn-block text-cute_white rounded-md border-0 hover:bg-cute_blue group"
       onClick={() => handlePayment()}
     >
       {isLoading ? (

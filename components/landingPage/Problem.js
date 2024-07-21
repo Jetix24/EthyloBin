@@ -111,11 +111,11 @@ const Problem = () => {
     <div className=" flex flex-col md:flex-row items-center gap-6">
       <div className="flex-shrink-0">
         <Image
-          src="/img/problema-inventario.jpg"
+          src="/img/problema-inventario.webp"
           alt="Problema"
           width={500}
           height={500}
-          className="rounded-lg"
+          className="rounded-md"
         />
       </div>
       <div className="max-w-xl text-lg leading-relaxed">

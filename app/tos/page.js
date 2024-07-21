@@ -14,7 +14,7 @@ import config from "@/config";
 // Necesito tu ayuda para redactar unos Términos y Servicios simples para mi sitio web. Aquí tienes algo de contexto:
 // - Sitio web: https://tario.com
 // - Nombre: Tario
-// - Información de contacto: solofervazquez@gmail.com
+// - Información de contacto: Tario.software@gmail.com
 // - Descripción: Tario es una herramienta digital para gestionar tu negocio de preparación de alimentos. Ayuda a los propietarios de cafeterías, puestos de comida y restaurantes a administrar sus inventarios.
 // - Propiedad: al comprar una suscripción, los usuarios obtienen acceso a la plataforma y a las funciones de gestión de inventario. No pueden revender la plataforma ni los datos recopilados.
 // - Datos de usuarios recopilados: nombre, correo electrónico e información de pago
@@ -85,7 +85,7 @@ Nos reservamos el derecho de modificar estos Términos y Servicios en cualquier 
 Estos Términos y Servicios se rigen por las leyes de México. Cualquier disputa será resuelta en los tribunales competentes de México.
 
 8. Contacto
-Para cualquier consulta o soporte, contáctanos en solofervazquez@gmail.com.
+Para cualquier consulta o soporte, contáctanos en Tario.software@gmail.com.
 
 Gracias por usar Tario.
 
