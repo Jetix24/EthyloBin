@@ -36,7 +36,7 @@ const Avatar: React.FC<AvatarProps> = ({ image }) => {
       >
         <Image
           alt="Avatar"
-          src={image || '/img/placeholder.jpg'}
+          src={image || '/img/placeholder.webp'}
           fill
         />
       </div>
@@ -46,10 +46,12 @@ const Avatar: React.FC<AvatarProps> = ({ image }) => {
           setIsModalOpen={setIsModalOpen}
           title="Salir de la sesión"
         >
-          <button onClick={handleLogout} className="mt-4 btn btn-primary">
+          <div className="flex justify-end">
+          <button onClick={handleLogout}  className="mt-4 w-full sm:w-auto text-cute_white btn bg-cute_purple hover:bg-blue_purple rounded-md">
           <RiLogoutBoxFill className="h-7 w-7 shrink-0" />
             Cerrar sesión
           </button>
+          </div>
         </Modal>
       )}
     </div>

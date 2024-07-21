@@ -133,7 +133,7 @@ const AuthForm = ( {user}) => {
           px-4
           py-8
           shadow
-          sm:rounded-lg
+          sm:rounded-md
           sm:px-10
         "
       >

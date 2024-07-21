@@ -4,9 +4,9 @@ const CarouselText = () => {
 
   return (
     <section className="max-w-5xl  max-h-5xl mx-auto flex flex-col items-center justify-center gap-16 lg:gap-20 px-8 py-2 lg:py-5">
-      <div className="carousel max-w-6xl rounded-lg">
+      <div className="carousel max-w-6xl rounded-md">
         <div id="slide1" className="carousel-item relative w-full h-full">
-          <Image src="/img/facil.jpg" className="w-full" width={1200} height={1080} alt="Facil" />
+          <Image src="/img/facil.webp" className="w-full" width={1200} height={1080} alt="Facil" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide4" className="btn btn-circle">❮</a> 
             <a href="#slide2" className="btn btn-circle">❯</a>
@@ -17,7 +17,7 @@ const CarouselText = () => {
           </div>
         </div>
         <div id="slide2" className="carousel-item relative w-full">
-          <Image src="/img/inventario.jpg" className="w-full" width={1200} height={1080} alt="Inventario" />
+          <Image src="/img/inventario.webp" className="w-full" width={1200} height={1080} alt="Inventario" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide1" className="btn btn-circle">❮</a> 
             <a href="#slide3" className="btn btn-circle">❯</a>
@@ -28,7 +28,7 @@ const CarouselText = () => {
           </div>
         </div> 
         <div id="slide3" className="carousel-item relative w-full">
-          <Image src="/img/organiza.jpg" className="w-full" width={1200} height={1080} alt="Organiza" />
+          <Image src="/img/organiza.webp" className="w-full" width={1200} height={1080} alt="Organiza" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide2" className="btn btn-circle">❮</a> 
             <a href="#slide4" className="btn btn-circle">❯</a>
@@ -39,7 +39,7 @@ const CarouselText = () => {
           </div>
         </div> 
         <div id="slide4" className="carousel-item relative w-full">
-          <Image src="/img/provedores.jpg" className="w-full" width={1200} height={1080} alt="Proveedores" />
+          <Image src="/img/provedores.webp" className="w-full" width={1200} height={1080} alt="Proveedores" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide3" className="btn btn-circle">❮</a> 
             <a href="#slide1" className="btn btn-circle">❯</a>
