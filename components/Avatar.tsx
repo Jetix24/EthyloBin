@@ -36,7 +36,7 @@ const Avatar: React.FC<AvatarProps> = ({ image }) => {
       >
         <Image
           alt="Avatar"
-          src={image || '/img/placeholder.jpg'}
+          src={image || '/img/placeholder.webp'}
           fill
         />
       </div>
