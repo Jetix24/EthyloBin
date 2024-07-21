@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
-import AllMateriaPrimaBox from "./components/AllMateriaBox";
+import MateriaPrimaBox from "./MateriaPrimaBox";
 
-const CategoriaDetail = () => {
+const MateriaCategoriaList = ({categoriaId}) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +13,9 @@ const CategoriaDetail = () => {
     const fetchMateriasPrimas = async () => {
       setIsLoading(true);
       try {
-        const materiasData = await apiClient.get("/materias-primas");
+        const materiasData = await apiClient.get(
+          `/categorias/${categoriaId}/materias-primas`
+        );
         setMateriasPrimas(materiasData);
       } catch (error) {
         console.error(error);
@@ -24,7 +26,7 @@ const CategoriaDetail = () => {
     };
 
     fetchMateriasPrimas();
-  }, []);
+  }, [categoriaId]);
 
   const handleEdit = (materiaId, updatedData) => {
     setMateriasPrimas((prevMaterias) =>
@@ -41,23 +43,22 @@ const CategoriaDetail = () => {
   };
 
   return (
-    <div className="pl-5">
-      <div className="pl-80 p-5 h-full">
-        <h1 className="text-2xl font-bold mb-4 hidden lg:block">Todas las Materias Primas</h1>
+    <div className="p-5">
+        <h1 className="text-3xl font-bold mb-4 text-center sm:text-left">Materias Primas</h1>
         {isLoading ? (
           <div className="flex justify-center items-center">
             <span className="loading loading-spinner loading-md"></span>
           </div>
         ) : materiasPrimas.length === 0 ? (
-          <div className="flex justify-center items-center h-96">
-            <span className="text-gray-500">
-              Parece que no tienes nada registrado en esta categoría
-            </span>
-          </div>
-        ) : (
+            <div className="flex justify-center items-center h-96">
+              <span className="text-gray-500">
+                Parece que no tienes nada registrado en esta categoria
+              </span>
+            </div>
+          ) : (
           <ul>
             {materiasPrimas.map((materia) => (
-              <AllMateriaPrimaBox
+              <MateriaPrimaBox
                 key={materia._id}
                 materia={materia}
                 onEdit={handleEdit}
@@ -66,9 +67,8 @@ const CategoriaDetail = () => {
             ))}
           </ul>
         )}
-      </div>
     </div>
   );
 };
 
-export default CategoriaDetail;
+export default  MateriaCategoriaList;
