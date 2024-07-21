@@ -6,7 +6,7 @@ const ProveedorDetail = () => {
   const { id } = useParams();
 
   return (
-    <div className="pl-80">
+    <div className="lg:pl-80 pl-0">
       <MateriaProList proveedorId={id} />
     </div>
   );

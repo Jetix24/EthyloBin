@@ -25,11 +25,11 @@ const MobileItem = ({ href, icon: Icon, active, onClick }) => {
         w-full
         justify-center
         p-4
-        text-gray-500
-        hover:text-black
-        hover:bg-gray-100
+        text-white_purple
+        hover:text-cute_blue
+        hover:bg-white_purple
       `,
-        active && "bg-gray-100 text-black"
+        active && "bg-cute_blue text-white_purple"
       )}
     >
       <Icon className="h-6 w-6" />

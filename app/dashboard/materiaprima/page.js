@@ -97,8 +97,8 @@ const Home = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-dark_purple bg-opacity-70">
-      <div className="relative p-4 w-full max-w-3xl h-full md:h-auto">
-        <div className="relative p-4 bg-cute_white rounded-md shadow  sm:p-5">
+      <div className="relative p-4 w-full max-w-3xl h-full md:h-auto overflow-auto">
+        <div className="relative p-4 bg-cute_white rounded-md shadow sm:p-5  md:mb-0 mb-4 ">
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
             <h3 className="text-lg font-semibold text-gray-900 ">
               Agregar Materia Prima
@@ -267,16 +267,16 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div className="flex md:justify-end mt-4 justify-center w-full">
-            <button
-              onClick={() => resetInputs()}
-              className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
-            >
-              Descartar
-            </button>
+            <div className="flex flex-col sm:flex-row md:justify-end mt-4 justify-center w-full">
+              <button
+                onClick={() => resetInputs()}
+                className="mb-4 sm:mb-0 sm:mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
+              >
+                Descartar
+              </button>
               <button 
                 type="submit" 
-                className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
+                  className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] md:mb-0 mb-8"
                 disabled={isLoading}
               >
                 {isLoading ? (

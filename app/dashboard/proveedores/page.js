@@ -7,7 +7,7 @@ import AllMateriaBox from "./components/AllMateriaBox";
 
 const Home = () => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMateriasPrimas = async () => {
@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <div className="pl-5">
       <div className="pl-80 p-5 h-full">
-        <h1 className="text-2xl font-bold mb-4">Todas las Materias Primas</h1>
+        <h1 className="text-2xl font-bold mb-3 hidden lg:block">Todas las Materias Primas</h1>
         {isLoading ? (
           <div className="flex justify-center items-center">
             <span className="loading loading-spinner loading-md"></span>
