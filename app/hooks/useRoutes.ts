@@ -11,12 +11,6 @@ const useRoutes = () => {
   const routes = useMemo(
     () => [
       {
-        label: "Agregar Materia Prima",
-        href: "/dashboard/materiaprima",
-        icon: IoMdAddCircle,
-        active: pathname === "/dashboard/materiaprima" || !!pathname.match(/\/dashboard\/materiaprima\/\d+/),
-      },
-      {
         label: "Zonas",
         href: "/dashboard/zonas",
         icon: MdOutlineKitchen,
@@ -34,6 +28,12 @@ const useRoutes = () => {
         icon: FaBasketShopping,
         active: pathname === "/dashboard/proveedores" || !!pathname.match(/\/dashboard\/proveedores\/\d+/),
       },
+            // {
+      //   label: "Agregar Materia Prima",
+      //   href: "/dashboard/materiaprima",
+      //   icon: IoMdAddCircle,
+      //   active: pathname === "/dashboard/materiaprima" || !!pathname.match(/\/dashboard\/materiaprima\/\d+/),
+      // },
     ],
     [pathname]
   );
