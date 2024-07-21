@@ -28,7 +28,6 @@ const AllMateriaBox = ({ materia, onQuantityChange }) => {
 
   return (
     <div className="hidden lg:block">
-      <h1 className="text-2xl font-bold mb-4">Todas las Materias Primas</h1>
       <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
         <div className="flex-1 flex items-center">
           <div className="text-2xl font-bold">{materia.name}</div>

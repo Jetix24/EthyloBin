@@ -1,26 +1,28 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { BsThreeDots } from "react-icons/bs";
-import { Popover } from "@headlessui/react";
-import Modal from "@/components/Modal";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
+import MateriaPrimaBox from "./MateriaPrimaBox";
+import { IoMdAddCircle } from "react-icons/io";
+import Modal from "@/components/Modal";
 
-const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [name, setName] = useState(materia.name);
-  const [cantidad, setCantidad] = useState(materia.cantidad);
-  const [zona, setZona] = useState(materia.zona || "");
-  const [categoria, setCategoria] = useState(materia.categoria);
-  const [proveedor, setProveedor] = useState(materia.proveedor || "");
-  const [contable, setContable] = useState(materia.contable);
-  const [medida, setMedida] = useState(materia.medida);
-  const [minimoAlmacen, setMinimoAlmacen] = useState(materia.minimoAlmacen);
+const MateriaCategoriaList = ({categoriaId}) => {
+  const [materiasPrimas, setMateriasPrimas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
+
+  const [name, setName] = useState("");
+  const [cantidad, setCantidad] = useState(0); // Nuevo campo
+  const [zona, setZona] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [proveedor, setProveedor] = useState("");
+  const [contable, setContable] = useState(true);
+  const [medida, setMedida] = useState("unidades"); // Valor por defecto
+  const [minimoAlmacen, setMinimoAlmacen] = useState(0);
   const [zonas, setZonas] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [proveedores, setProveedores] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const contableOptions = [
     "unidades",
@@ -32,121 +34,147 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
   const noContableOptions = ["frasco", "botella", "paquete"];
 
   useEffect(() => {
-    const fetchOptions = async () => {
+    const fetchMateriasPrimas = async () => {
+      setIsLoading(true);
       try {
-        const [zonasData, categoriasData, proveedoresData] = await Promise.all([
-          apiClient.get("/zonas"),
-          apiClient.get("/categorias"),
-          apiClient.get("/proveedores"),
-        ]);
-        setZonas(zonasData);
-        setCategorias(categoriasData);
-        setProveedores(proveedoresData);
+        const materiasData = await apiClient.get(
+          `/categorias/${categoriaId}/materias-primas`
+        );
+        setMateriasPrimas(materiasData);
       } catch (error) {
         console.error(error);
-        toast.error("Error al cargar opciones");
+        toast.error("Error al cargar materias primas");
+      } finally {
+        setIsLoading(false);
       }
+
+      const fetchOptions = async () => {
+        try {
+          const [zonasData, categoriasData, proveedoresData] = await Promise.all([
+            apiClient.get("/zonas"),
+            apiClient.get("/categorias"),
+            apiClient.get("/proveedores"),
+          ]);
+          setZonas(zonasData);
+          setCategorias(categoriasData);
+          setProveedores(proveedoresData);
+        } catch (error) {
+          console.error(error);
+          toast.error("Error al cargar opciones");
+        }
+      };
+      fetchOptions();
     };
+    fetchMateriasPrimas();
+  }, [categoriaId]);
 
-    fetchOptions();
-  }, []);
+  function resetInputs() {
+    setName("");
+    setCantidad(0);
+    setZona("");
+    setCategoria("");
+    setProveedor("");
+    setContable(true);
+    setMedida("unidades"); // Restablecer a valor por defecto
+    setMinimoAlmacen(0);
+  } 
 
-  const handleEdit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await apiClient.put(`/materias-primas?id=${materia._id}`, {
+      const { newMateriaPrima } = await apiClient.post("/materias-primas", {
         name,
         cantidad,
-        zona,
+        zona: zona || null,
         categoria,
-        proveedor,
+        proveedor: proveedor || null,
         contable,
         medida,
         minimoAlmacen,
       });
-      onEdit(materia._id, {
-        name,
-        cantidad,
-        zona,
-        categoria,
-        proveedor,
-        contable,
-        medida,
-        minimoAlmacen,
-      });
-      setIsEditModalOpen(false);
-      toast.success("Materia prima actualizada");
+      toast.success("Materia prima agregada exitosamente");
+      setMateriasPrimas([...materiasPrimas, newMateriaPrima]);
+      // Reset form fields
+      setName("");
+      setCantidad(0);
+      setZona("");
+      setCategoria("");
+      setProveedor("");
+      setContable(true);
+      setMedida("unidades"); // Restablecer a valor por defecto
+      setMinimoAlmacen(0);
+      setIsSubmitModalOpen(false);
     } catch (error) {
       console.error(error);
-      toast.error("Error al actualizar la materia prima");
+      toast.error("Error al agregar la materia prima");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleDelete = async () => {
-    setIsLoading(true);
-    try {
-      await apiClient.delete(`/materias-primas/${materia._id}`);
-      onDelete(materia._id);
-      setIsLoading(false);
-      setIsDeleteModalOpen(false);
-      toast.success("Materia prima eliminada");
-    } catch (error) {
-      console.error(error);
-      toast.error("Error al eliminar la materia prima");
-    }
+
+  const handleEdit = (materiaId, updatedData) => {
+    setMateriasPrimas((prevMaterias) =>
+      prevMaterias.map((materia) =>
+        materia._id === materiaId ? { ...materia, ...updatedData } : materia
+      )
+    );
+  };
+
+  const handleDelete = (materiaId) => {
+    setMateriasPrimas((prevMaterias) =>
+      prevMaterias.filter((materia) => materia._id !== materiaId)
+    );
   };
 
   return (
-    <>
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
-        <div className="flex-1">
-          <div className="font-bold">{materia.name}</div>
-          <div>{`Cantidad: ${materia.cantidad}`}</div>
+    <div className="p-5">
+        <div className="flex justify-between">
+        <h1 className="text-2xl font-bold mb-1 text-dark_purple">Materias Primas</h1>
+        <div
+              onClick={() => setIsSubmitModalOpen(true)}
+              className="relative
+              inline-block
+              rounded-full
+              overflow-hidden
+              text-cute_purple
+              hover:text-cute_blue
+              cursor-pointer
+              transition-colors 
+              duration-400"
+            >
+              <IoMdAddCircle size={32} />
         </div>
-        <Popover className="relative">
-          <Popover.Button
-            onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-            className="focus:outline-none flex items-center"
-          >
-            <BsThreeDots className="text-xl" />
-          </Popover.Button>
-
-          {isPopoverOpen && (
-            <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-              <div className="p-2">
-                <button
-                  onClick={() => {
-                    setIsEditModalOpen(true);
-                    setIsPopoverOpen(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Editar
-                </button>
-                <button
-                  onClick={() => {
-                    setIsDeleteModalOpen(true);
-                    setIsPopoverOpen(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Eliminar
-                </button>
-              </div>
-            </Popover.Panel>
-          )}
-        </Popover>
-      </div>
-
-      <Modal
-        isModalOpen={isEditModalOpen}
-        setIsModalOpen={setIsEditModalOpen}
-        title="Editar Materia Prima"
+        </div>
+        {isLoading ? (
+          <div className="flex justify-center items-center">
+            <span className="loading loading-spinner loading-md"></span>
+          </div>
+        ) : materiasPrimas.length === 0 ? (
+            <div className="flex justify-center items-center h-96">
+              <span className="text-gray-500">
+                Parece que no tienes nada registrado en esta categoria
+              </span>
+            </div>
+          ) : (
+          <ul>
+            {materiasPrimas.map((materia) => (
+              <MateriaPrimaBox
+                key={materia._id}
+                materia={materia}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
+            ))}
+          </ul>
+        )}
+        <Modal
+        isModalOpen={isSubmitModalOpen}
+        setIsModalOpen={setIsSubmitModalOpen}
+        title="Agregar Materia Prima"
       >
-        <form onSubmit={handleEdit}>
+        <form onSubmit={handleSubmit}>
           <div className="grid gap-4 mb-4 sm:grid-cols-2">
             <div>
               <label
@@ -311,7 +339,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           </div>
           <div className="flex flex-col sm:flex-row md:justify-end mt-4 justify-center w-full">
           <button
-            onClick={() => setIsDeleteModalOpen(false)}
+            onClick={() => { resetInputs(); setIsSubmitModalOpen(false); }}
             className="mb-4 sm:mb-0 sm:mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
           >
             Cancelar
@@ -330,38 +358,8 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           </div>
         </form>
       </Modal>
-
-      <Modal
-        isModalOpen={isDeleteModalOpen}
-        setIsModalOpen={setIsDeleteModalOpen}
-        title="Eliminar Materia Prima"
-      >
-        <p className="text-md ">
-          ¿Estás seguro? Al eliminar esta materia prima, se perderán todos los
-          datos asociados.
-        </p>
-        <div className="flex md:justify-end mt-4 justify-center w-full">
-          <button
-            onClick={() => setIsDeleteModalOpen(false)}
-             className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
-          >
-            Cancelar
-          </button>
-          <button
-            onClick={handleDelete}
-            disabled={isLoading}
-            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
-          >
-            {isLoading ? (
-              <span className="loading loading-spinner loading-md"></span>
-            ) : (
-              "Eliminar"
-            )}
-          </button>
-        </div>
-      </Modal>
-    </>
+    </div>
   );
 };
 
-export default MateriaPrimaBox;
+export default  MateriaCategoriaList;

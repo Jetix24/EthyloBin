@@ -101,7 +101,8 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
 
   return (
     <>
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
+    <div className="hidden lg:block">
+      <div className=" flex justify-between items-center my-2 p-2 border rounded bg-white">
         <div className="flex-1">
           <div className="font-bold">{materia.name}</div>
           <div>{`Cantidad: ${materia.cantidad}`}</div>
@@ -309,16 +310,16 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
               />
             </div>
           </div>
-          <div className="flex md:justify-end mt-4 justify-center w-full">
+          <div className="flex flex-col sm:flex-row md:justify-end mt-4 justify-center w-full">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
-            className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
+            className="mb-4 sm:mb-0 sm:mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
           >
             Cancelar
           </button>
             <button 
               type="submit" 
-              className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
+             className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] "
               disabled={isLoading}
             >
               {isLoading ? (
@@ -340,7 +341,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           ¿Estás seguro? Al eliminar esta materia prima, se perderán todos los
           datos asociados.
         </p>
-        <div className="flex md:justify-end mt-4 justify-center w-full">
+        <div className="flex flex-col sm:flex-row md:justify-end mt-4 justify-center w-full">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
             className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
@@ -350,7 +351,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           <button
             onClick={handleDelete}
             disabled={isLoading}
-            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
+             className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] md:mb-0 mb-8"
           >
             {isLoading ? (
               <span className="loading loading-spinner loading-md"></span>
@@ -360,6 +361,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           </button>
         </div>
       </Modal>
+      </div>
     </>
   );
 };
