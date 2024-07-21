@@ -98,7 +98,7 @@ const Home = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-dark_purple bg-opacity-70">
       <div className="relative p-4 w-full max-w-3xl h-full md:h-auto">
-        <div className="relative p-4 bg-white rounded-md shadow  sm:p-5">
+        <div className="relative p-4 bg-cute_white rounded-md shadow  sm:p-5">
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
             <h3 className="text-lg font-semibold text-gray-900 ">
               Agregar Materia Prima
