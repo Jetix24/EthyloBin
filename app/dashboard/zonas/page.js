@@ -9,7 +9,7 @@ import useZone from "@/app/hooks/useZone";
 
 const Home = () => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { isOpen } = useZone();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Home = () => {
   };
 
   return (
-    <div className={clsx("pl-5", isOpen ? "hidden" : "block")}>
+    <div className="pl-5">
       <div className="pl-80 p-5 h-full">
       <h1 className="text-2xl font-bold mb-4 hidden lg:block">Todas las Materias Primas</h1>
         {isLoading ? (
