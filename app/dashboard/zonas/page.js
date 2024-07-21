@@ -40,6 +40,7 @@ const Home = () => {
   return (
     <div className={clsx("pl-5", isOpen ? "hidden" : "block")}>
       <div className="pl-80 p-5 h-full">
+      <h1 className="text-2xl font-bold mb-4 hidden lg:block">Todas las Materias Primas</h1>
         {isLoading ? (
           <div className="flex justify-center items-center">
             <span className="loading loading-spinner loading-md"></span>
