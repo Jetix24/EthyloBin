@@ -340,7 +340,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           ¿Estás seguro? Al eliminar esta materia prima, se perderán todos los
           datos asociados.
         </p>
-        <div className="flex md:justify-end mt-4 justify-center w-full">
+        <div className="flex flex-col sm:flex-row md:justify-end mt-4 justify-center w-full">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
             className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
@@ -350,7 +350,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
           <button
             onClick={handleDelete}
             disabled={isLoading}
-            className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px]"
+             className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] md:mb-0 mb-8"
           >
             {isLoading ? (
               <span className="loading loading-spinner loading-md"></span>

@@ -276,7 +276,7 @@ const Home = () => {
               </button>
               <button 
                 type="submit" 
-                  className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] md:mx-0 mb-8"
+                  className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] md:mb-0 mb-8"
                 disabled={isLoading}
               >
                 {isLoading ? (
