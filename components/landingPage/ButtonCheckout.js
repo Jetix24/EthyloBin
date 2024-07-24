@@ -20,7 +20,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
 
     if (status === "unauthenticated") {
       router.push(config.auth.loginUrl);
-    }
+    }else{
     try {
       const res = await apiClient.post("/stripe/create-checkout", {
         priceId,
@@ -35,6 +35,7 @@ const ButtonCheckout = ({ priceId, mode = "payment" }) => {
     }
 
     setIsLoading(false);
+  }
   };
 
   return (
