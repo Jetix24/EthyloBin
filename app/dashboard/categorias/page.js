@@ -134,7 +134,7 @@ const CategoriaDetail = () => {
         <div
               onClick={() => setIsSubmitModalOpen(true)}
               className="relative
-              inline-block
+              hidden lg:inline-block
               rounded-full
               overflow-hidden
               text-cute_purple
