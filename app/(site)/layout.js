@@ -7,7 +7,6 @@ import connectMongo from "@/libs/mongoose";
 
 export default async function Layout({ children }) { 
   const session = await getServerSession(authOptions);
-  
   if (session) {
     const db = await connectMongo();
     const user = await User.findById(session.user.id);
