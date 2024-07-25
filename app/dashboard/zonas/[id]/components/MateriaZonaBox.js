@@ -110,7 +110,7 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
             </svg>
           </button>
         </div>
-        {/* boton de Reserva */}
+        {/* boton de Reserva, xd */}
         <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem] ml-4">
           <button
             type="button"
