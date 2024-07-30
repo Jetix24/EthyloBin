@@ -28,7 +28,7 @@ import config from "@/config";
 // Answer:
 
 export const metadata = getSEOTags({
-  title: `Terms and Conditions | ${config.appName}`,
+  title: `Términos y condiciones | ${config.appName}`,
   canonicalUrlRelative: "/tos",
 });
 
@@ -52,7 +52,7 @@ const TOS = () => {
           Back
         </Link>
         <h1 className="text-3xl font-extrabold pb-6">
-          Terminos y condiciones de {config.appName}
+          Términos y condiciones de {config.appName}
         </h1>
 
         <pre
