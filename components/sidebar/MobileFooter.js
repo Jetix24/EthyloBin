@@ -2,15 +2,13 @@
 import useRoutes from "@/app/hooks/useRoutes";
 import MobileItem from "./MobileItem";
 import useZone from "@/app/hooks/useZone";
-import { RiLogoutBoxFill } from 'react-icons/ri';
-import { signOut } from 'next-auth/react';
+import { RiLogoutBoxFill } from "react-icons/ri";
+import { signOut } from "next-auth/react";
 import clsx from "clsx";
 
 const MobileFooter = () => {
   const routes = useRoutes();
   const { isOpen } = useZone();
-
-  console.log("isOpen en Mobile Footer", isOpen);
 
   const logout = () => {
     signOut({ callbackUrl: "/" });
@@ -63,7 +61,7 @@ const MobileFooter = () => {
           `
           )}
         >
-          <RiLogoutBoxFill className="h-6 w-6"/>
+          <RiLogoutBoxFill className="h-6 w-6" />
         </button>
       </div>
     </div>

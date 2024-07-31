@@ -11,6 +11,10 @@ const materiaPrimaSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    reserva: {
+      type: Number,
+      default: 0, // Nuevo campo para reserva con valor por defecto 0
+    },
     // Relación con Zona (una materia prima se puede almacenar en una sola zona)
     zona: {
       type: mongoose.Schema.Types.ObjectId,
