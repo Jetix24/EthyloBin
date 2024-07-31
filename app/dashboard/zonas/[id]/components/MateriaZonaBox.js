@@ -61,6 +61,21 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
     }
   };
 
+  const formatFraction = (value) => {
+    if (isContable) return value;
+
+    switch (value) {
+      case 0.25:
+        return "¼";
+      case 0.5:
+        return "½";
+      case 0.75:
+        return "¾";
+      default:
+        return value;
+    }
+  };
+
   return (
     <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
       <div className="flex-1 flex items-center">
@@ -93,7 +108,7 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
           <input
             type="text"
             id="quantity-input"
-            value={quantity}
+            value={formatFraction(quantity)}
             onChange={(e) => handleQuantityChange(Number(e.target.value))}
             className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
             min="0"
@@ -150,7 +165,7 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
           <input
             type="text"
             id="reserve-input"
-            value={reserve}
+            value={formatFraction(reserve)}
             onChange={(e) => handleReserveChange(Number(e.target.value))}
             className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
             min="0"
