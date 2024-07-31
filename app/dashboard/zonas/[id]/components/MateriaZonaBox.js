@@ -8,33 +8,38 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
   const isContable = materia.contable;
 
   const handleQuantityChange = async (newQuantity) => {
-    setQuantity(newQuantity);
-    try {
-      await apiClient.put(`/materias-primas/${materia._id}/cantidad`, {
-        cantidad: newQuantity,
-      });
-      onQuantityChange(materia._id, newQuantity);
-    } catch (error) {
-      console.error(error);
+    if (!isNaN(newQuantity)) {
+      setQuantity(newQuantity);
+      try {
+        await apiClient.put(`/materias-primas/${materia._id}/cantidad`, {
+          cantidad: newQuantity,
+        });
+        onQuantityChange(materia._id, newQuantity);
+      } catch (error) {
+        console.error(error);
+        toast.error("Error al actualizar la cantidad");
+      }
     }
   };
 
   const handleReserveChange = async (newReserve) => {
-    setReserve(newReserve);
-    try {
-      await apiClient.put(`/materias-primas/${materia._id}/reserva`, {
-        reserva: newReserve,
-      });
-      onReserveChange(materia._id, newReserve);
-    } catch (error) {
-      console.error(error);
+    if (!isNaN(newReserve)) {
+      setReserve(newReserve);
+      try {
+        await apiClient.put(`/materias-primas/${materia._id}/reserva`, {
+          reserva: newReserve,
+        });
+        onReserveChange(materia._id, newReserve);
+      } catch (error) {
+        console.error(error);
+        toast.error("Error al actualizar la reserva");
+      }
     }
   };
 
   const incrementQuantity = () => {
     const increment = isContable ? 1 : 0.25; // Increment by 0.25 if not contable
     handleQuantityChange(quantity + increment);
-    console.log("contable: " + isContable);
   };
 
   const decrementQuantity = () => {
@@ -59,9 +64,7 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
   return (
     <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
       <div className="flex-1 flex items-center">
-        <div className="text-lg md:text-2xl font-bold">
-          {materia.name} {materia.c}
-        </div>
+        <div className="text-lg md:text-2xl font-bold">{materia.name}</div>
       </div>
       <form className="max-w-xs mx-auto flex items-center">
         <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem]">
@@ -92,8 +95,10 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
             id="quantity-input"
             value={quantity}
             onChange={(e) => handleQuantityChange(Number(e.target.value))}
-            className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm  min-w-2 md:min-w-5 block py-2.5 appearance-none"
+            className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
             min="0"
+            inputMode="numeric"
+            pattern="[0-9]*"
           />
           <button
             type="button"
@@ -147,8 +152,10 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
             id="reserve-input"
             value={reserve}
             onChange={(e) => handleReserveChange(Number(e.target.value))}
-            className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm  min-w-2 md:min-w-5 block py-2.5 appearance-none"
+            className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
             min="0"
+            inputMode="numeric"
+            pattern="[0-9]*"
           />
           <button
             type="button"
