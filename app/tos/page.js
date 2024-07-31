@@ -61,45 +61,6 @@ const TOS = () => {
         >
           {`Fecha de entrada en vigor: 18 de junio de 2024
 
-Bienvenido a Tario, una herramienta digital para gestionar el inventario de tu negocio de preparación de alimentos. Al acceder y usar nuestro sitio web https://tario.software, aceptas cumplir y estar sujeto a los siguientes Términos y Servicios.
-
-1. Aceptación de los Términos
-Al utilizar nuestro sitio web y nuestros servicios, aceptas estos Términos y Servicios. Si no estás de acuerdo con estos términos, no utilices nuestro sitio web.
-
-2. Suscripción y Acceso
-Al adquirir una suscripción, obtienes acceso a nuestra plataforma y a las funciones de gestión de inventario. Los usuarios no pueden revender la plataforma ni los datos recopilados a través de ella.
-
-3. Recopilación de Datos
-Recopilamos los siguientes datos de los usuarios:
-
-Nombre
-Correo electrónico
-Información de pago
-Los usuarios también pueden ingresar información sobre los insumos que gestionan en su negocio. Esta información se utilizará exclusivamente para el correcto funcionamiento de la plataforma y no se empleará con fines de beneficio propio.
-
-Además, recopilamos datos no personales a través de cookies web. Para más detalles, consulta nuestra Política de Privacidad en https://tario.com/privacy-policy.
-
-4. Propiedad Intelectual
-Todos los contenidos de la plataforma, incluyendo pero no limitado a textos, gráficos, logotipos y software, son propiedad de Tario y están protegidos por las leyes de propiedad intelectual.
-
-5. Ley Aplicable
-Estos Términos y Servicios se regirán e interpretarán de acuerdo con las leyes de México.
-
-6. Modificaciones de los Términos
-Nos reservamos el derecho de actualizar estos Términos y Servicios en cualquier momento. Notificaremos a los usuarios sobre cualquier cambio por correo electrónico.
-
-7. Información de Contacto
-Si tienes alguna pregunta sobre estos Términos y Servicios, puedes contactarnos en tario.software@gmail.com.
-
-Gracias por usar Tario.
-
-Esta información se utilizará exclusivamente para el correcto funcionamiento de la plataforma y no se empleará con fines de beneficio propio.
-
-cambia a "no se empleara con fines ajenos a... haz que suene formal y serio"
-ChatGPT
-Términos y Servicios de Tario
-Fecha de vigencia: 30 de julio de 2024
-
 Bienvenido a Tario, una herramienta digital para gestionar el inventario de su negocio de preparación de alimentos. Al acceder y utilizar nuestro sitio web https://tario.software, usted acepta cumplir y estar sujeto a los siguientes Términos y Servicios.
 
 1. Aceptación de los Términos
@@ -110,10 +71,10 @@ Al adquirir una suscripción, usted obtiene acceso a nuestra plataforma y a las 
 
 3. Recopilación de Datos
 Recopilamos los siguientes datos de los usuarios:
+- Nombre
+- Correo electrónico
+- Información de pago
 
-Nombre
-Correo electrónico
-Información de pago
 Los usuarios también pueden ingresar información sobre los insumos que gestionan en su negocio. Esta información se utilizará exclusivamente para el correcto funcionamiento de la plataforma y no se empleará con fines ajenos a este propósito.
 
 Además, recopilamos datos no personales a través de cookies web. Para más detalles, consulte nuestra Política de Privacidad en https://tario.software/privacy-policy.
