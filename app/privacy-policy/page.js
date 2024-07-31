@@ -26,7 +26,7 @@ import config from "@/config";
 // Please write a simple privacy policy for my site. Add the current date.  Do not add or explain your reasoning. Answer:
 
 export const metadata = getSEOTags({
-  title: `Privacy Policy | ${config.appName}`,
+  title: `Politica de privacidad | ${config.appName}`,
   canonicalUrlRelative: "/privacy-policy",
 });
 
@@ -50,58 +50,45 @@ const PrivacyPolicy = () => {
           Back
         </Link>
         <h1 className="text-3xl font-extrabold pb-6">
-          Privacy Policy for {config.appName}
+          Política de privacidad de {config.appName}
         </h1>
 
         <pre
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: 2023-08-25
+          {`Fecha de vigencia: 30 de julio de 2024
 
-Thank you for visiting ShipFast ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://shipfa.st (the "Website").
+Bienvenido a Tario. Esta política de privacidad explica cómo recopilamos, usamos y protegemos su información cuando visita nuestro sitio web https://tario.software y utiliza nuestros servicios. Al usar nuestro sitio web, usted acepta la recopilación y el uso de información de acuerdo con esta política.
 
-By accessing or using the Website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in this policy, please do not use the Website.
+1. Información que Recopilamos
+Datos Personales
+  Recopilamos los siguientes datos personales de los usuarios:
+  - Nombre
+  - Correo electrónico
+  - Información de pago
 
-1. Information We Collect
+Los usuarios también pueden ingresar información sobre los insumos que gestionan en su negocio. Esta información se utilizará exclusivamente para el correcto funcionamiento de la plataforma y no se empleará con fines ajenos a este propósito.
 
-1.1 Personal Data
+Datos No Personales
+  Recopilamos datos no personales a través de cookies web para mejorar su experiencia de navegación en nuestro sitio web.
 
-We collect the following personal information from you:
+2. Propósito de la Recopilación de Datos
+Los datos que recopilamos se utilizan para el procesamiento de pedidos y para garantizar el funcionamiento eficiente de nuestra plataforma.
 
-Name: We collect your name to personalize your experience and communicate with you effectively.
-Email: We collect your email address to send you important information regarding your orders, updates, and communication.
-Payment Information: We collect payment details to process your orders securely. However, we do not store your payment information on our servers. Payments are processed by trusted third-party payment processors.
+3. Compartir Datos
+No compartimos sus datos personales con terceros.
 
-1.2 Non-Personal Data
+4. Privacidad de los Niños
+No recopilamos datos de niños. Nuestros servicios están destinados únicamente para el uso de adultos.
 
-We may use web cookies and similar technologies to collect non-personal information such as your IP address, browser type, device information, and browsing patterns. This information helps us to enhance your browsing experience, analyze trends, and improve our services.
+5. Actualizaciones de la Política de Privacidad
+Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. Los usuarios serán notificados de cualquier cambio por correo electrónico.
 
-2. Purpose of Data Collection
+6. Información de Contacto
+Si tiene alguna pregunta sobre esta Política de Privacidad, por favor contáctenos en tario.software@gmail.com.
 
-We collect and use your personal data for the sole purpose of order processing. This includes processing your orders, sending order confirmations, providing customer support, and keeping you updated about the status of your orders.
-
-3. Data Sharing
-
-We do not share your personal data with any third parties except as required for order processing (e.g., sharing your information with payment processors). We do not sell, trade, or rent your personal information to others.
-
-4. Children's Privacy
-
-ShipFast is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at the email address provided below.
-
-5. Updates to the Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page, and we may notify you via email about significant changes.
-
-6. Contact Information
-
-If you have any questions, concerns, or requests related to this Privacy Policy, you can contact us at:
-
-Email: marc@shipfa.st
-
-For all other inquiries, please visit our Contact Us page on the Website.
-
-By using ShipFast, you consent to the terms of this Privacy Policy.`}
+Gracias por usar Tario.`}
         </pre>
       </div>
     </main>
