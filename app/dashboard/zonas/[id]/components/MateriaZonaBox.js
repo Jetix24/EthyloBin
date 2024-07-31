@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
   const [quantity, setQuantity] = useState(materia.cantidad);
   const [reserve, setReserve] = useState(materia.reserva || 0);
+  const isContable = materia.contable;
 
   const handleQuantityChange = async (newQuantity) => {
     setQuantity(newQuantity);
@@ -31,29 +32,36 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
   };
 
   const incrementQuantity = () => {
-    handleQuantityChange(quantity + 1);
+    const increment = isContable ? 1 : 0.25; // Increment by 0.25 if not contable
+    handleQuantityChange(quantity + increment);
+    console.log("contable: " + isContable);
   };
 
   const decrementQuantity = () => {
+    const decrement = isContable ? 1 : 0.25; // Decrement by 0.25 if not contable
     if (quantity > 0) {
-      handleQuantityChange(quantity - 1);
+      handleQuantityChange(quantity - decrement);
     }
   };
 
   const incrementReserve = () => {
-    handleReserveChange(reserve + 1);
+    const increment = isContable ? 1 : 0.25; // Increment by 0.25 if not contable
+    handleReserveChange(reserve + increment);
   };
 
   const decrementReserve = () => {
+    const decrement = isContable ? 1 : 0.25; // Decrement by 0.25 if not contable
     if (reserve > 0) {
-      handleReserveChange(reserve - 1);
+      handleReserveChange(reserve - decrement);
     }
   };
 
   return (
     <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
       <div className="flex-1 flex items-center">
-        <div className="text-lg md:text-2xl font-bold">{materia.name}</div>
+        <div className="text-lg md:text-2xl font-bold">
+          {materia.name} {materia.c}
+        </div>
       </div>
       <form className="max-w-xs mx-auto flex items-center">
         <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem]">
@@ -110,7 +118,7 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
             </svg>
           </button>
         </div>
-        {/* boton de Reserva, xd */}
+        {/* Botón de Reserva */}
         <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem] ml-4">
           <button
             type="button"
