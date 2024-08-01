@@ -46,6 +46,7 @@ const ProveedorList = () => {
       const { newProveedor } = await apiClient.post("/proveedores", { name });
       toast.success("Proveedor creado");
       setProveedores([...proveedores, newProveedor]);
+      setName("");
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);
