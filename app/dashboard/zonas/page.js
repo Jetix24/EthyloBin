@@ -43,11 +43,11 @@ const Home = () => {
       <h1 className="text-2xl font-bold mb-3 hidden lg:block">Todas las Materias Primas</h1>
         {isLoading ? (
           <div className="flex justify-center items-center">
-            <span className="loading loading-spinner loading-md"></span>
+            <span className="loading loading-spinner loading-md hidden lg:block"></span>
           </div>
         ) : materiasPrimas.length === 0 ? (
           <div className="flex justify-center items-center h-96">
-            <span className="text-gray-500">
+            <span className="text-gray-500 hidden lg:block">
               Parece que no tienes nada registrado
             </span>
           </div>
