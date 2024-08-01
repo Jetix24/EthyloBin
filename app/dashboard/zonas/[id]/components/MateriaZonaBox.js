@@ -82,118 +82,128 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
         <div className="text-lg md:text-2xl font-bold">{materia.name}</div>
       </div>
       <form className="max-w-xs mx-auto flex items-center">
-        <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem]">
-          <button
-            type="button"
-            id="decrement-button"
-            onClick={decrementQuantity}
-            className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-          >
-            <svg
-              className="w-3 h-3 text-gray-900"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 2"
+        <div className="">
+          <div className=" text-xs text-gray-500 mb-1 md:mb-0  text-center">
+            En uso
+          </div>
+          <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem]">
+            <button
+              type="button"
+              id="decrement-button"
+              onClick={decrementQuantity}
+              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h16"
-              />
-            </svg>
-          </button>
-          <input
-            type="text"
-            id="quantity-input"
-            value={formatFraction(quantity)}
-            onChange={(e) => handleQuantityChange(Number(e.target.value))}
-            className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
-            min="0"
-            inputMode="numeric"
-            pattern="[0-9]*"
-          />
-          <button
-            type="button"
-            id="increment-button"
-            onClick={incrementQuantity}
-            className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-          >
-            <svg
-              className="w-3 h-3 text-gray-900"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
+              <svg
+                className="w-3 h-3 text-gray-900"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 2"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h16"
+                />
+              </svg>
+            </button>
+            <input
+              type="text"
+              id="quantity-input"
+              value={formatFraction(quantity)}
+              onChange={(e) => handleQuantityChange(Number(e.target.value))}
+              className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
+              min="0"
+              inputMode="numeric"
+              pattern="[0-9]*"
+            />
+            <button
+              type="button"
+              id="increment-button"
+              onClick={incrementQuantity}
+              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 1v16M1 9h16"
-              />
-            </svg>
-          </button>
+              <svg
+                className="w-3 h-3 text-gray-900"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 1v16M1 9h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
         {/* Botón de Reserva */}
-        <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem] ml-4">
-          <button
-            type="button"
-            id="decrement-reserve-button"
-            onClick={decrementReserve}
-            className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-          >
-            <svg
-              className="w-3 h-3 text-gray-900"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 2"
+        <div className="ml-4">
+          <div className="text-xs text-gray-500 mb-1 md:mb-0 text-center">
+            Reserva
+          </div>
+          <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem] ">
+            <button
+              type="button"
+              id="decrement-reserve-button"
+              onClick={decrementReserve}
+              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h16"
-              />
-            </svg>
-          </button>
-          <input
-            type="text"
-            id="reserve-input"
-            value={formatFraction(reserve)}
-            onChange={(e) => handleReserveChange(Number(e.target.value))}
-            className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
-            min="0"
-            inputMode="numeric"
-            pattern="[0-9]*"
-          />
-          <button
-            type="button"
-            id="increment-reserve-button"
-            onClick={incrementReserve}
-            className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-          >
-            <svg
-              className="w-3 h-3 text-gray-900"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
+              <svg
+                className="w-3 h-3 text-gray-900"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 2"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h16"
+                />
+              </svg>
+            </button>
+            <input
+              type="text"
+              id="reserve-input"
+              value={formatFraction(reserve)}
+              onChange={(e) => handleReserveChange(Number(e.target.value))}
+              className="bg-gray-50 border-x-0 border-gray-300 h-7 md:h-11 w-11 md:w-14 text-center text-cute_blue text-sm min-w-2 md:min-w-5 block py-2.5 appearance-none"
+              min="0"
+              inputMode="numeric"
+              pattern="[0-9]*"
+            />
+            <button
+              type="button"
+              id="increment-reserve-button"
+              onClick={incrementReserve}
+              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 1v16M1 9h16"
-              />
-            </svg>
-          </button>
+              <svg
+                className="w-3 h-3 text-gray-900"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 1v16M1 9h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </form>
     </div>
