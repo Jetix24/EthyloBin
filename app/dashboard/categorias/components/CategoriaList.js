@@ -150,9 +150,9 @@ const CategoriaList = () => {
             </div>
           ) : (
             <ul>
-              <div className={`flex-1 cursor-pointer ${isActiveAll && isAllMateriasActive ? "font-bold" : ""}`} onClick={handleMateriaClick}>
+              {/* <div className={`flex-1 cursor-pointer ${isActiveAll && isAllMateriasActive ? "font-bold" : ""}`} onClick={handleMateriaClick}>
                 <div className="font-bold">Todas las materias</div>
-              </div>
+              </div> */}
               {categorias.map((categoria) => (
                 <CategoriaBox 
                   key={categoria._id} 
