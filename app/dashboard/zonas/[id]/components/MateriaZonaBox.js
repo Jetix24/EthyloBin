@@ -76,14 +76,28 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
     }
   };
 
+  const getMeasurementLabel = (value, measure) => {
+    if (isContable) {
+      return measure;
+    } else {
+      if (value > 1) {
+        return `${measure}s`;
+      } else if (value === 1) {
+        return `${measure}`;
+      } else {
+        return `de ${measure}`;
+      }
+    }
+  };
+
   return (
     <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
       <div className="flex-1 flex items-center">
         <div className="text-lg md:text-2xl font-bold">{materia.name}</div>
       </div>
       <form className="max-w-xs mx-auto flex items-center">
-        <div className="">
-          <div className=" text-xs text-gray-500 mb-1 md:mb-0  text-center">
+        <div>
+          <div className="text-xs text-gray-500 mb-1 md:mb-0 text-center">
             En uso
           </div>
           <div className="relative flex flex-col-reverse md:flex-row items-center max-w-[8rem]">
@@ -141,6 +155,9 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
                 />
               </svg>
             </button>
+          </div>
+          <div className="text-xs text-gray-500 mt-1 text-center">
+            {getMeasurementLabel(quantity, materia.medida)}
           </div>
         </div>
         {/* Botón de Reserva */}
@@ -203,6 +220,9 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
                 />
               </svg>
             </button>
+          </div>
+          <div className="text-xs text-gray-500 mt-1 text-center">
+            {materia.medida}
           </div>
         </div>
       </form>
