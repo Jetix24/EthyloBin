@@ -8,7 +8,7 @@ const useCategoria = () => {
     if (!params?.id) {
       return "";
     }
-    return params.id;
+    return params.id === "allmaterias" ? "allmaterias" : params.id;
   }, [params?.id]);
 
   const isOpen = useMemo(() => !!categoriaId, [categoriaId]);
