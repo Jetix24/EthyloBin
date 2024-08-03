@@ -34,9 +34,19 @@ const MateriaZonaList = ({ zonaId }) => {
     );
   };
 
+  const handleReserveChange = (id, newReserve) => {
+    setMateriasPrimas((prevMaterias) =>
+      prevMaterias.map((materia) =>
+        materia._id === id ? { ...materia, reserva: newReserve } : materia
+      )
+    );
+  };
+
   return (
     <div className="p-5">
-      <h1 className="text-2xl font-bold mb-3 text-center sm:text-left">Materias Primas</h1>
+      <h1 className="text-2xl font-bold mb-3 text-center sm:text-left">
+        Materias Primas
+      </h1>
       {isLoading ? (
         <div className="flex justify-center items-center">
           <span className="loading loading-spinner loading-md"></span>
@@ -54,6 +64,7 @@ const MateriaZonaList = ({ zonaId }) => {
               key={materia._id}
               materia={materia}
               onQuantityChange={handleQuantityChange}
+              onReserveChange={handleReserveChange}
             />
           ))}
         </ul>

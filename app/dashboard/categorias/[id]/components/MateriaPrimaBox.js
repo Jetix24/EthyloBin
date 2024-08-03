@@ -310,14 +310,14 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row md:justify-end mt-4 justify-center w-full">
-          <button
-            onClick={() => setIsDeleteModalOpen(false)}
-            className="mb-4 sm:mb-0 sm:mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
-          >
-            Cancelar
-          </button>
-            <button 
-              type="submit" 
+            <button
+              onClick={() => setIsDeleteModalOpen(false)}
+              className="mb-4 sm:mb-0 sm:mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
               className="btn text-cute_white bg-cute_purple hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md min-w-[120px] "
               disabled={isLoading}
             >
@@ -326,7 +326,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
               ) : (
                 "Guardar cambios"
               )}
-            </button>  
+            </button>
           </div>
         </form>
       </Modal>
@@ -343,7 +343,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
         <div className="flex md:justify-end mt-4 justify-center w-full">
           <button
             onClick={() => setIsDeleteModalOpen(false)}
-             className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
+            className="mr-4 btn text-cute_white bg-cute_blue hover:bg-blue_purple flex-grow md:flex-grow-0 rounded-md"
           >
             Cancelar
           </button>
