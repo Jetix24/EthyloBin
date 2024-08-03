@@ -46,7 +46,7 @@ const ZoneList = () => {
       const { newZona } = await apiClient.post("/zonas", { name });
       toast.success("Área creada");
       setZonas([...zonas, newZona]);
-      setName(""); // Limpiar el input antes de cerrar el modal
+      setName("");
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);

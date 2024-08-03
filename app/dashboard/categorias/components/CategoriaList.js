@@ -8,11 +8,13 @@ import { useRouter, usePathname } from "next/navigation";
 import clsx from "clsx";
 import useCategoria from "@/app/hooks/useCategoria";
 import { IoMdAddCircle } from "react-icons/io";
+import AllMateriaBox from "./AllMateriaBox";
 
 const CategoriaList = () => {
-  const { isOpen } = useCategoria();
+  const { isOpen, isAllMateriasActive } = useCategoria();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categorias, setCategorias] = useState([]);
+  const [materiasPrimas, setMateriasPrimas] = useState([]);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -39,6 +41,11 @@ const CategoriaList = () => {
     router.push(`/dashboard/categorias/${categoriaId}`);
   };
 
+  const handleMateriaClick = () => {
+    setActiveCategoriaId("all-materias");
+    router.push(`/dashboard/categorias/all-materias`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -46,6 +53,7 @@ const CategoriaList = () => {
       const { newCategoria } = await apiClient.post("/categorias", { name });
       toast.success("Categoría creada");
       setCategorias([...categorias, newCategoria]);
+      setName("");
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);
@@ -57,7 +65,8 @@ const CategoriaList = () => {
   const handleEdit = async (id, newName) => {
     setCategorias((prevCategorias) =>
       prevCategorias.map((categoria) =>
-        categoria._id === id ? { ...categoria, name: newName } : categoria      )
+        categoria._id === id ? { ...categoria, name: newName } : categoria
+      )
     );
     toast.success("Categoria actualizada");
   };
@@ -141,6 +150,9 @@ const CategoriaList = () => {
             </div>
           ) : (
             <ul>
+              {/* <div className={`flex-1 cursor-pointer ${isActiveAll && isAllMateriasActive ? "font-bold" : ""}`} onClick={handleMateriaClick}>
+                <div className="font-bold">Todas las materias</div>
+              </div> */}
               {categorias.map((categoria) => (
                 <CategoriaBox 
                   key={categoria._id} 
