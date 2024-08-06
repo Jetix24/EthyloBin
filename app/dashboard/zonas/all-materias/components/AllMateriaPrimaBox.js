@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import apiClient from "@/libs/api";
+import toast from "react-hot-toast";
 
 const AllMateriaPrimaBox = ({ materia, onQuantityChange }) => {
     const [quantity, setQuantity] = useState(materia.cantidad);
@@ -28,7 +29,7 @@ const AllMateriaPrimaBox = ({ materia, onQuantityChange }) => {
           await apiClient.put(`/materias-primas/${materia._id}/reserva`, {
             reserva: newReserve,
           });
-          onReserveChange(materia._id, newReserve);
+          onQuantityChange(materia._id, newReserve);
         } catch (error) {
           console.error(error);
           toast.error("Error al actualizar la reserva");
