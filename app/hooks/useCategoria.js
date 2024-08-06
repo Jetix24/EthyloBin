@@ -8,7 +8,7 @@ const useCategoria = () => {
   const categoriaId = useMemo(() => {
     const pathParts = pathname.split("/");
     const lastPart = pathParts[pathParts.length - 1];
-    console.log("lastPart", lastPart);
+
     if (lastPart === "all-materias") {
       return "all-materias";
     }
@@ -18,7 +18,6 @@ const useCategoria = () => {
     return params.id;
   }, [params?.id, pathname]);
 
-  console.log("categoriaId", categoriaId);
   const isOpen = useMemo(() => !!categoriaId, [categoriaId]);
 
   return {
