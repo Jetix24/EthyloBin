@@ -102,7 +102,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
 
   return (
     <>
-      <div className="hidden lg:block">
+      <div className=" block">
         <div className=" flex justify-between items-center my-2 p-2 border rounded bg-white">
           <div className="flex-1">
             <div className="font-bold">{materia.name}</div>

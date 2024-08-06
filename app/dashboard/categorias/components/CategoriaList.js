@@ -150,9 +150,19 @@ const CategoriaList = () => {
             </div>
           ) : (
             <ul>
-              {/* <div className={`flex-1 cursor-pointer ${isActiveAll && isAllMateriasActive ? "font-bold" : ""}`} onClick={handleMateriaClick}>
-                <div className="font-bold">Todas las materias</div>
-              </div> */}
+              {categorias.length > 0 && (
+                <div
+                  className={`block lg:hidden justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white ${
+                    isActiveAll && isAllMateriasActive ? "bg-cute_purple text-white" : "bg-white"
+                  }`}
+                  onClick={handleMateriaClick}
+                >
+                  <div className="flex-1 cursor-pointer">
+                    <div className="font-bold">Todas las materias</div>
+                  </div>
+                </div>
+              )}
+              
               {categorias.map((categoria) => (
                 <CategoriaBox 
                   key={categoria._id} 
