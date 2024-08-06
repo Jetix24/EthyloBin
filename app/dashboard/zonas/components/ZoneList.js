@@ -11,7 +11,7 @@ import { IoMdAddCircle } from "react-icons/io";
 
 const ZoneList = () => {
   const router = useRouter();
-  const { isOpen } = useZone(); // Importamos el hook useZone
+  const { isOpen, isAllMateriasActive } = useZone(); // Importamos el hook useZone
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zonas, setZonas] = useState([]);
   const [name, setName] = useState("");
@@ -37,6 +37,11 @@ const ZoneList = () => {
   const handleZonaClick = (zonaId) => {
     setActiveZonaId(zonaId);
     router.push(`/dashboard/zonas/${zonaId}`);
+  };
+
+  const handleMateriaClick = () => {
+    setActiveZonaId("all-materias");
+    router.push(`/dashboard/zonas/all-materias`);
   };
 
   const handleSubmit = async (e) => {
@@ -144,6 +149,18 @@ const ZoneList = () => {
             </div>
           ) : (
             <ul>
+              {zonas.length > 0 && (
+                <div
+                  className={`block lg:hidden justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white ${
+                    isActiveAll && isAllMateriasActive ? "bg-cute_purple text-white" : "bg-white"
+                  }`}
+                  onClick={handleMateriaClick}
+                >
+                  <div className="flex-1 cursor-pointer">
+                    <div className="font-bold">Todas las materias</div>
+                  </div>
+                </div>
+              )}
               {zonas.map((zona) => (
                 <ZoneBox
                   key={zona._id}

@@ -17,7 +17,7 @@ const ProveedorList = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [activeProveedorId, setActiveProveedorId] = useState(null);
-  const { isOpen } = useProveedor();
+  const { isOpen, isAllMateriasActive } = useProveedor();
 
   useEffect(() => {
     const fetchProveedores = async () => {
@@ -37,6 +37,11 @@ const ProveedorList = () => {
   const handleProveedorClick = (proveedorId) => {
     setActiveProveedorId(proveedorId);
     router.push(`/dashboard/proveedores/${proveedorId}`);
+  };
+
+  const handleMateriaClick = () => {
+    setActiveProveedorId("all-materias");
+    router.push(`/dashboard/proveedores/all-materias`);
   };
 
   const handleSubmit = async (e) => {
@@ -142,6 +147,18 @@ const ProveedorList = () => {
             </div>
           ) : (
             <ul>
+              {proveedores.length > 0 && (
+                <div
+                  className={`block lg:hidden justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white ${
+                    isActiveAll && isAllMateriasActive ? "bg-cute_purple text-white" : "bg-white"
+                  }`}
+                  onClick={handleMateriaClick}
+                >
+                  <div className="flex-1 cursor-pointer">
+                    <div className="font-bold">Todas las materias</div>
+                  </div>
+                </div>
+              )}
               {proveedores.map((proveedor) => (
                 <ProveedorBox 
                   key={proveedor._id} 
