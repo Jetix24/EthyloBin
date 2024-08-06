@@ -1,16 +1,24 @@
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useMemo } from "react";
 
 const useCategoria = () => {
   const params = useParams();
+  const pathname = usePathname();
 
   const categoriaId = useMemo(() => {
+    const pathParts = pathname.split("/");
+    const lastPart = pathParts[pathParts.length - 1];
+    console.log("lastPart", lastPart);
+    if (lastPart === "all-materias") {
+      return "all-materias";
+    }
     if (!params?.id) {
       return "";
     }
-    return params.id === "allmaterias" ? "allmaterias" : params.id;
-  }, [params?.id]);
+    return params.id;
+  }, [params?.id, pathname]);
 
+  console.log("categoriaId", categoriaId);
   const isOpen = useMemo(() => !!categoriaId, [categoriaId]);
 
   return {

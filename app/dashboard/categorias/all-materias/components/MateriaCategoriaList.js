@@ -127,14 +127,13 @@ const CategoriaDetail = () => {
   };
 
   return (
-    <div className="pl-5">
-      <div className="pl-80 p-5 h-full">
+    <div className="lg:pl-5">
+      <div className="lg:pl-80 p-5 h-full">
       <div className="flex justify-between">
-        <h1 className="text-2xl font-bold mb-1 hidden lg:block text-dark_purple">Todas las Materias Primas</h1>
+        <h1 className="text-2xl font-bold mb-1 text-dark_purple">Todas las Materias Primas</h1>
         <div
               onClick={() => setIsSubmitModalOpen(true)}
               className="relative
-              hidden lg:inline-block
               rounded-full
               overflow-hidden
               text-cute_purple
@@ -148,11 +147,11 @@ const CategoriaDetail = () => {
         </div>
         {isLoading ? (
           <div className="flex justify-center items-center">
-            <span className="loading loading-spinner loading-md hidden lg:block"></span>
+            <span className="loading loading-spinner loading-md"></span>
           </div>
         ) : materiasPrimas.length === 0 ? (
           <div className="flex justify-center items-center h-96">
-            <span className="text-gray-500 hidden lg:block">
+            <span className="text-gray-500">
               Parece que no tienes nada registrado en esta categoría
             </span>
           </div>
