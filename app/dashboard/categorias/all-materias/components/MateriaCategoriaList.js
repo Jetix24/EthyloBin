@@ -30,6 +30,7 @@ const CategoriaDetail = () => {
     "kilogramos",
     "gramos",
     "litros",
+    "onzas",
   ];
   const noContableOptions = ["frasco", "botella", "paquete"];
 

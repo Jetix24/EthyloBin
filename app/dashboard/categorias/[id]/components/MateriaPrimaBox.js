@@ -28,6 +28,7 @@ const MateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
     "kilogramos",
     "gramos",
     "litros",
+    "onzas",
   ];
   const noContableOptions = ["frasco", "botella", "paquete"];
 
