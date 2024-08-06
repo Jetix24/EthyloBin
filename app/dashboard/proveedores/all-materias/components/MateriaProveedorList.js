@@ -13,7 +13,7 @@ const MateriaProveedorList = () => {
       setIsLoading(true);
       try {
         const materiasData = await apiClient.get("/materias-primas");
-        const filteredMaterias = materiasData.filter(materia => materia.cantidad < materia.minimoAlmacen);
+        const filteredMaterias = materiasData.filter(materia => materia.cantidad + materia.reserva < materia.minimoAlmacen);
         setMateriasPrimas(filteredMaterias);
       } catch (error) {
         console.error(error);

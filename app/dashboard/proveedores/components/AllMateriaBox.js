@@ -9,7 +9,7 @@ const MateriaProBox = ({ materia}) => {
         <div className="text-2xl font-bold">{materia.name}</div>
       </div>
       <div className="font-bold">
-        <h2 className="font-bold">{`Min: ${materia.minimoAlmacen}/Can: ${materia.cantidad}`}</h2>
+        <h2 className="font-bold">{`Min: ${materia.minimoAlmacen}/Can: ${materia.cantidad+ materia.reserva}`}</h2>
       </div>    
     </div>
     </div>
