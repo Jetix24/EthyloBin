@@ -9,7 +9,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import AuthSocialButton from "./AuthSocialButton";
 import Input from "@/components/Input";
-import Button from "@/components/Button";
+import Button from "@/components/Common/buttons/Button";
 
 type Variant = 'LOGIN' | 'REGISTER';
 
