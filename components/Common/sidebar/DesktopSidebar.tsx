@@ -6,8 +6,8 @@ import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import LogoutItem from "./LogoutItem";
-import Avatar from "../Avatar";
-import ButtonAvatar from "../ButtonAvatar";
+import Avatar from "../../Avatar";
+import ButtonAvatar from "../buttons/ButtonAvatar";
 
 interface DesktopSidebarProps {
   image?: string; // Hace que la prop image sea opcional
