@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import ButtonSignin from "./ButtonSignin";
-import ButtonLogOut from "./ButtonLogOut";
+import ButtonSignin from "@/components/Common/buttons/ButtonSignin";
+import ButtonLogOut from "@/components/Common/buttons/ButtonLogOut";
 import logo from "@/app/icon.png";
 import config from "@/config";
-import ButtonAvatar from "@/components/ButtonAvatar";
+import ButtonAvatar from "@/components/Common/buttons/ButtonAvatar"; 
 
 const links = [
   {
