@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/modals/Modal";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/modals/Modal";
 import toast from "react-hot-toast";
 import ProveedorBox from "./ProveedorBox";
 import clsx from "clsx";
