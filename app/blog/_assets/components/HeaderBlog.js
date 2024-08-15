@@ -8,7 +8,7 @@ import Image from "next/image";
 import logo from "@/app/icon.png";
 import config from "@/config";
 import { categories } from "../content";
-import ButtonSignin from "@/components/landingPage/ButtonSignin"
+import ButtonSignin from "@/components/Common/buttons/ButtonSignin";
 
 const links = [
   {
