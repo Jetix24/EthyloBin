@@ -5,15 +5,9 @@ import DesktopItem from "./DesktopItem";
 import useRoutes from "@/app/hooks/useRoutes";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
-import LogoutItem from "./LogoutItem";
 import Avatar from "../../Avatar";
-import ButtonAvatar from "../buttons/ButtonAvatar";
 
-interface DesktopSidebarProps {
-  image?: string; // Hace que la prop image sea opcional
-}
-
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({image}) => {
+const DesktopSidebar = ({ image }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
