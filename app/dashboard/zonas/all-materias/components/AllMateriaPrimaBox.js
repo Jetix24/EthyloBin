@@ -91,7 +91,7 @@ const AllMateriaPrimaBox = ({ materia, onQuantityChange }) => {
     };
   
     return (
-      <div className="flex justify-between items-center my-2 p-2 border rounded bg-dark_white">
+      <div className="flex justify-between items-center my-2 p-2 border rounded bg-dark_white shadow-md">
         <div className="flex-1 flex items-center">
           <div className="text-lg md:text-2xl font-bold">{materia.name}</div>
         </div>
