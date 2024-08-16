@@ -91,7 +91,7 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
   };
 
   return (
-    <div className="flex justify-between items-center my-2 p-2 border rounded bg-white">
+    <div className="flex justify-between items-center my-2 p-2 border rounded bg-dark_white">
       <div className="flex-1 flex items-center">
         <div className="text-lg md:text-2xl font-bold">{materia.name}</div>
       </div>
@@ -105,10 +105,10 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
               type="button"
               id="decrement-button"
               onClick={decrementQuantity}
-              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+              className="flex items-center justify-center bg-cute_purple hover:bg-blue_purple rounded-b-lg md:rounded-none md:rounded-s-lg p-4 h-5 md:h-11 md:p-3"
             >
               <svg
-                className="w-3 h-3 text-gray-900"
+                className="w-3 h-3 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -137,10 +137,10 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
               type="button"
               id="increment-button"
               onClick={incrementQuantity}
-              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+             className="flex items-center justify-center bg-cute_blue hover:bg-blue_purple rounded-t-lg md:rounded-none md:rounded-e-lg p-4 h-5 md:h-11 md:p-3"
             >
               <svg
-                className="w-3 h-3 text-gray-900"
+                className="w-3 h-3 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -170,10 +170,10 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
               type="button"
               id="decrement-reserve-button"
               onClick={decrementReserve}
-              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+             className="flex items-center justify-center bg-cute_purple hover:bg-blue_purple rounded-b-lg md:rounded-none md:rounded-s-lg p-4 h-5 md:h-11 md:p-3"
             >
               <svg
-                className="w-3 h-3 text-gray-900"
+                className="w-3 h-3 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -202,10 +202,10 @@ const MateriaZonaBox = ({ materia, onQuantityChange, onReserveChange }) => {
               type="button"
               id="increment-reserve-button"
               onClick={incrementReserve}
-              className="flex items-center justify-center bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-md p-3 h-5 md:h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+              className="flex items-center justify-center bg-cute_blue hover:bg-blue_purple rounded-t-lg md:rounded-none md:rounded-e-lg p-4 h-5 md:h-11 md:p-3"
             >
               <svg
-                className="w-3 h-3 text-gray-900"
+                className="w-3 h-3 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
