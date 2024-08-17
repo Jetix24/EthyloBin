@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/next-auth";
 import config from "@/config";
-import Sidebar from "@/components/sidebar/Sidebar";
+import Sidebar from "@/components/Common/sidebar/Sidebar";
 import User from "@/models/User";
 import connectMongo from "@/libs/mongoose";
 

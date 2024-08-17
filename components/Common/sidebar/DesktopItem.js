@@ -3,15 +3,7 @@ import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
-interface DesktopItemProps {
-  label: string;
-  icon: any;
-  href: string;
-  onClick?: () => void;
-  active?: boolean;
-}
-
-const DesktopItem: React.FC<DesktopItemProps> = ({
+const DesktopItem = ({
   label,
   icon: Icon,
   href,

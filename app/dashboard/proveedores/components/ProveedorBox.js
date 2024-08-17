@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter} from "next/navigation";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/modals/Modal";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 
@@ -58,8 +58,8 @@ const ProveedorBox = ({ proveedor, onEdit, onDelete, isActive, onClick }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white ${
-          isActive ? "bg-cute_purple text-white" : "bg-white"
+        className={`flex justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white shadow ${
+          isActive ? "bg-cute_purple text-white" : "bg-dark_white"
         }`}
         onClick={onClick}
       >

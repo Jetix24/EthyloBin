@@ -3,15 +3,11 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
-import Modal from '@/components/Modal';
+import Modal from "@/components/Common/modals/Modal";
 import { signOut } from 'next-auth/react';
 import { RiLogoutBoxFill } from 'react-icons/ri';
 
-interface AvatarProps {
-  image?: string;
-}
-
-const Avatar: React.FC<AvatarProps> = ({ image }) => {
+const Avatar = ({ image }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogout = () => {

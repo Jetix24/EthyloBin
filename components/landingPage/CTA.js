@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import ButtonCta from "./ButtonCta";
+import ButtonCta from "@/components/Common/buttons/ButtonCta";
 
 const CTA = () => {
   return (

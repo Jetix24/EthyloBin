@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense } from 'react';
 import Header from "@/components/landingPage/Header";
 import Characteristics from "@/components/landingPage/Characteristics";
 import Pricing from "@/components/landingPage/Pricing";
@@ -9,7 +9,7 @@ import FAQ from '@/components/landingPage/FAQ';
 import Problem from '@/components/landingPage/Problem';
 import FeaturesAccordion from '@/components/landingPage/FeaturesAccordion';
 
-export default async function Home() {
+export default function Home() {
 
   return (
     <>
@@ -17,13 +17,13 @@ export default async function Home() {
         <Header />
       </Suspense>
       <main>
-        <CTA/>
+        <CTA />
         <Problem />
-        <Characteristics/>
-        <CarouselText/> 
-        <FeaturesAccordion/> 
-        <Pricing/> 
-        <FAQ/>     
+        <Characteristics />
+        <CarouselText />
+        <FeaturesAccordion />
+        <Pricing />
+        <FAQ />
       </main>
       <Footer />
     </>

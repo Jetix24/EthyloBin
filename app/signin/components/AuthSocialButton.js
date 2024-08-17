@@ -1,13 +1,6 @@
 import React from 'react';
-import { IconType } from 'react-icons';
 
-interface AuthSocialButtonProps {
-  icon: IconType,
-  tag: string,
-  onClick: () => void;
-}
-
-const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({
+const AuthSocialButton = ({
   icon: Icon,
   tag,
   onClick
@@ -41,7 +34,7 @@ const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({
           text-sm
         "
         >
-            {tag}
+          {tag}
         </span>
     </button>
    );
