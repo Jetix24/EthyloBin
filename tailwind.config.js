@@ -17,6 +17,7 @@ module.exports = {
         cute_purple: "#95729C",
         white_purple: "#ECD4D8",
         cute_white: "#F7F0F6",
+        dark_white: "#E5E5E5",
       },
       backgroundImage: {
         gradient:

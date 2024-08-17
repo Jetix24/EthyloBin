@@ -21,7 +21,7 @@ const features = [
     description:
       "Son las diferentes secciones de tu negocio, como la cocina, el bar, el salón, etc. Cada área puede tener diferentes productos.",
     type: "video",
-    path: "/img/Areas.webm",
+    path: "/video/Areas.webm",
     format: "video/webm",
     icon: MdOutlineKitchen,
   },
@@ -30,7 +30,7 @@ const features = [
     description:
       "Son las diferentes clasificaciones de tus productos, como bebidas, alimentos, postres, etc. Cada producto puede tener una categoría.",
     type: "video",
-    path: "/img/Categorias.webm",
+    path: "/video/Categorias.webm",
     alt: "video/webm",
     icon: GiFruitBowl,
   },
@@ -39,7 +39,7 @@ const features = [
     description:
       "Son las empresas o personas que te suministran los productos que vendes. Puedes registrar sus datos y los productos que te suministran.",
       type: "video",
-      path: "/img/Proveedor.webm",
+      path: "/video/Proveedor.webm",
       alt: "video/webm",
     icon: FaBasketShopping,
   },

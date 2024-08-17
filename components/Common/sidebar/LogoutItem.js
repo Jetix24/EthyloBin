@@ -3,12 +3,7 @@ import React from 'react';
 import clsx from "clsx";
 import { RiLogoutBoxFill } from 'react-icons/ri';
 
-interface LogoutItemProps {
-  onClick: () => void;
-  active?: boolean;
-}
-
-const LogoutItem: React.FC<LogoutItemProps> = ({ onClick, active }) => {
+const LogoutItem = ({ onClick, active }) => {
   return (
     <li onClick={onClick}>
       <button

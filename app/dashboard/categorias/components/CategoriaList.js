@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import apiClient from "@/libs/api";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/modals/Modal";
 import toast from "react-hot-toast";
 import CategoriaBox from "./CategoriaBox";
 import { useRouter, usePathname } from "next/navigation";
@@ -152,8 +152,8 @@ const CategoriaList = () => {
             <ul>
               {categorias.length > 0 && (
                 <div
-                  className={`block lg:hidden justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white ${
-                    isActiveAll && isAllMateriasActive ? "bg-cute_purple text-white" : "bg-white"
+                  className={`block lg:hidden justify-between items-center my-2 p-2 border rounded cursor-pointer transition-colors duration-400 ease-in-out hover:bg-cute_blue hover:text-cute_white shadow ${
+                    isActiveAll && isAllMateriasActive ? "bg-cute_purple text-white" : "bg-dark_white"
                   }`}
                   onClick={handleMateriaClick}
                 >

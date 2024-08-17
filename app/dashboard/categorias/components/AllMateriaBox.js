@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { Popover } from "@headlessui/react";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/modals/Modal";
 import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 
@@ -103,7 +103,7 @@ const AllMateriaPrimaBox = ({ materia, onEdit, onDelete }) => {
   return (
     <>
       <div className="hidden lg:block">
-        <div className=" flex justify-between items-center my-2 p-2 border rounded bg-white">
+        <div className=" flex justify-between items-center my-2 p-2 border rounded bg-dark_white shadow-md">
           <div className="flex-1">
             <div className="font-bold">{materia.name}</div>
             <div>{`Cantidad: ${materia.cantidad}`}</div>

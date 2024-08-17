@@ -5,7 +5,7 @@ import apiClient from "@/libs/api";
 import toast from "react-hot-toast";
 import MateriaPrimaBox from "./MateriaPrimaBox";
 import { IoMdAddCircle } from "react-icons/io";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Common/modals/Modal";
 
 const MateriaCategoriaList = ({categoriaId}) => {
   const [materiasPrimas, setMateriasPrimas] = useState([]);
