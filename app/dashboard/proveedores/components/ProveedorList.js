@@ -7,9 +7,12 @@ import ProveedorBox from "./ProveedorBox";
 import clsx from "clsx";
 import useProveedor from "@/app/hooks/useProveedor";
 import { useRouter, usePathname } from "next/navigation";
-import { IoMdAddCircle } from "react-icons/io";
+import { jsPDF } from "jspdf";
+import { BsThreeDots } from "react-icons/bs";
+import { Popover } from "@headlessui/react";
 
 const ProveedorList = () => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [proveedores, setProveedores] = useState([]);
   const [name, setName] = useState("");
@@ -53,6 +56,7 @@ const ProveedorList = () => {
       setProveedores([...proveedores, newProveedor]);
       setName("");
       setIsModalOpen(false);
+      setIsPopoverOpen(false);
     } catch (error) {
       console.error(error);
     } finally {
@@ -74,6 +78,37 @@ const ProveedorList = () => {
   };
 
   const isActiveAll = pathname === "/dashboard/proveedores";
+
+  const generatePDF = async () => {
+    const doc = new jsPDF();
+    let currentY = 20;
+    doc.text("Lista de Compras", 10, 10);
+    try {
+      const proveedoresData = await apiClient.get("/proveedores");
+      for (const proveedor of proveedoresData) {
+        const materiasData = await apiClient.get(`/proveedores/${proveedor._id}/materias-primas`);
+        const filteredMaterias = materiasData.filter(
+          (materia) => materia.cantidad + materia.reserva < materia.minimoAlmacen
+        );
+        if (filteredMaterias.length > 0) {
+          doc.text(`${proveedor.name}:`, 10, currentY);
+          currentY += 10;
+                   filteredMaterias.forEach((materia, index) => {
+            doc.rect(20, currentY-5, 5, 5);
+            doc.text(
+              `${materia.name}`, 30, currentY
+            );
+            currentY += 8;
+          });
+          currentY += 5;
+        }
+      }
+      doc.save("lista_compras.pdf");
+      setIsPopoverOpen(false);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
   
   return (
     <>
@@ -125,20 +160,32 @@ const ProveedorList = () => {
         <div className="px-5">
           <div className="flex justify-between mb-4 pt-4">
             <div className="text-2xl font-bold text-neutral-800">Proveedores</div>
-            <div
-              onClick={() => setIsModalOpen(true)}
-              className="relative
-              inline-block
-              rounded-full
-              overflow-hidden
-              text-cute_purple
-              hover:text-cute_blue
-              cursor-pointer
-              transition-colors 
-              duration-400"
-
-            >
-              <IoMdAddCircle size={32} />
+            <div className="flex space-x-4">
+               <Popover className="relative">
+                <Popover.Button 
+                  onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+                  className="focus:outline-none pt-2 flex items-center">
+                  <BsThreeDots className="text-xl" />
+                </Popover.Button>
+                {isPopoverOpen && (
+                  <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="p-2">
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Crear Proveedor
+                      </button>
+                      <button
+                        onClick={generatePDF}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Generar Lista
+                      </button>
+                    </div>
+                  </Popover.Panel>
+                )}
+              </Popover>      
             </div>
           </div>
           {isLoading ? (
