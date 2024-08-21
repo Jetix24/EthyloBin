@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { FaBasketShopping } from "react-icons/fa6";
 import { GiFruitBowl } from "react-icons/gi";
-import { MdOutlineKitchen } from "react-icons/md";
-import { IoMdAddCircle } from "react-icons/io";
+import { MdKitchen } from "react-icons/md";
+import { IoStatsChart } from "react-icons/io5";
 
 const useRoutes = () => {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ const useRoutes = () => {
       {
         label: "Zonas",
         href: "/dashboard/zonas",
-        icon: MdOutlineKitchen,
+        icon: MdKitchen,
         active: pathname === "/dashboard/zonas" || !!pathname.match(/\/dashboard\/zonas\/\d+/),
       },
       {
@@ -27,6 +27,12 @@ const useRoutes = () => {
         href: "/dashboard/proveedores",
         icon: FaBasketShopping,
         active: pathname === "/dashboard/proveedores" || !!pathname.match(/\/dashboard\/proveedores\/\d+/),
+      },
+      {
+        label: "Estadisticas",
+        href: "/dashboard/estadisticas",
+        icon: IoStatsChart,
+        active: pathname === "/dashboard/estadisticas" || !!pathname.match(/\/dashboard\/estadisticas\/\d+/),
       },
             // {
       //   label: "Agregar Materia Prima",
