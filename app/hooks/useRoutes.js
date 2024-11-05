@@ -28,12 +28,12 @@ const useRoutes = () => {
         icon: FaBasketShopping,
         active: pathname === "/dashboard/proveedores" || !!pathname.match(/\/dashboard\/proveedores\/\d+/),
       },
-      {
-        label: "Estadisticas",
-        href: "/dashboard/estadisticas",
-        icon: IoStatsChart,
-        active: pathname === "/dashboard/estadisticas" || !!pathname.match(/\/dashboard\/estadisticas\/\d+/),
-      },
+      // {
+      //   label: "Estadisticas",
+      //   href: "/dashboard/estadisticas",
+      //   icon: IoStatsChart,
+      //   active: pathname === "/dashboard/estadisticas" || !!pathname.match(/\/dashboard\/estadisticas\/\d+/),
+      // },
             // {
       //   label: "Agregar Materia Prima",
       //   href: "/dashboard/materiaprima",
