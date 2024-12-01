@@ -6,31 +6,32 @@ import { useRef, useState } from "react";
 // Just import the FAQ & add your FAQ content to the const faqList
 
 const faqList = [
-  {
-    question: "¿Cómo empiezo a usar Tario?",
-    answer: (
-      <p>
-        Solo necesitas registrarte en nuestra plataforma y comenzar a agregar tus productos.
-      </p>
-    ),
-  },
-  {
-    question: "¿Cómo agrego y organizo mis productos en Tario?",
-    answer: (
-      <p>
-        Crea una categoría, una area y un proveedor, y posteriormente agrega tus productos.
-      </p>
-    ),
-  },
-  {
-    question: "¿Cómo manejo la lista de compras y proveedores?",
-    answer: (
-      <p>
-        Al momento de agregar un producto, puedes seleccionar un proveedor y al momento de que el producto baje de la cantidad minima asldra en la lista de compras.
-      </p>
-    ),
-  },
-];
+    {
+      question: "¿Cómo empiezo a usar la compostadora inteligente?",
+      answer: (
+        <p>
+          Solo necesitas adqurir la compostadora, conectarlos a nuestra plataforma y comenzar a monitorear tus residuos orgánicos.
+        </p>
+      ),
+    },
+    {
+      question: "¿Cómo agrego y organizo los materiales en la compostadora?",
+      answer: (
+        <p>
+          Clasifica tus residuos orgánicos (verdes y marrones) y agrégalos en el lote correspondiente. La compostadora te ayudará a mantener un balance adecuado.
+        </p>
+      ),
+    },
+    {
+      question: "¿Qué datos puedo visualizar en la plataforma?",
+      answer: (
+        <p>
+          Puedes monitorear parámetros como temperatura, humedad, niveles de gases y progreso del compostaje en tiempo real desde la plataforma.
+        </p>
+      ),
+    },
+  ];
+  
 
 const Item = ({ item }) => {
   const accordion = useRef(null);

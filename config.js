@@ -31,12 +31,12 @@ const config = {
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
         priceAnchor: 300,
         features: [
-          { name: "Gestión de inventario" },
-          { name: "Categorización por areas" },
-          { name: "Lista de compras automática" },
-          { name: "Alertas de stock bajo" },
-          { name: "Actualizaciones automáticas" },
-          { name: "Acceso ilimitado a todas las funciones" },
+          { name: "Alertas automáticas de etileno detectado" },
+          { name: "Gestión y seguimiento de lotes de composta" },
+          { name: "Recomendaciones basadas en datos históricos" },
+          { name: "Reportes automáticos sobre el progreso del compostaje" },
+          { name: "Interfaz intuitiva para control total" },
+          { name: "Optimización del tiempo de compostaje" },
         ],
       },
     ],

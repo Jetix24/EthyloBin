@@ -3,18 +3,18 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 const faqList = [
   {
-    question: "Falta de control sobre el stock",
+    question: "Falta de monitoreo de condiciones",
     answer: (
       <p>
-        No tener un registro preciso y actualizado de los productos disponibles.
+        No medir parámetros clave como la temperatura, humedad o emisión de gases puede afectar la calidad del compostaje.
       </p>
     ),
   },
   {
-    question: "Desperdicio de productos",
+    question: "Descomposición ineficiente",
     answer: (
       <p>
-        La falta de rotación adecuada de productos perecederos puede resultar en pérdidas por caducidad o deterioro.
+        Una mezcla incorrecta de materiales o la falta de rotación adecuada puede ralentizar el proceso y generar malos olores.
       </p>
     ),
   },
@@ -22,19 +22,20 @@ const faqList = [
     question: "Gasto excesivo de tiempo",
     answer: (
       <p>
-        La gestión manual del inventario consume mucho tiempo y es propensa a errores.
+        Realizar el monitoreo y manejo del compostaje manualmente consume mucho tiempo y esfuerzo.
       </p>
     ),
   },
   {
-    question: "Errores en el registro de inventario",
+    question: "Falta de alertas tempranas",
     answer: (
       <p>
-        Ingresar datos incorrectos o no registrar las salidas y entradas de productos correctamente puede causar discrepancias en el inventario.
+        No contar con avisos automáticos sobre niveles de etileno o condiciones desfavorables puede llevar a un compostaje fallido.
       </p>
     ),
   },
 ];
+
 
 const Item = ({ item }) => {
   const accordion = useRef(null);
@@ -102,16 +103,16 @@ const Problem = () => {
   <div className="max-w-7xl mx-auto px-16 py-16 md:py-16 text-center">
     <div className="mb-12 md:mb-14">
       <h1 className="text-black_100 font-bold md:text-5xl text-4xl mb-4">
-        ¿Falta de Gestión en el Inventario de tu Negocio?
+        ¿Falta de Gestión en tu Composta?
       </h1>
       <p className="text-green_300 font-semibold text-lg opacity-90 leading-relaxed">
-        En muchos negocios, la gestión del inventario puede ser un desafío...
+        Al hacer una composta, la gestión de ella puede ser un desafío...
       </p>
     </div>
     <div className=" flex flex-col md:flex-row items-center gap-6">
       <div className="flex-shrink-0">
         <Image
-          src="/img/problema-inventario.webp"
+          src="/img/problema.webp"
           alt="Problema"
           width={500}
           height={500}

@@ -2,59 +2,40 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { FaBasketShopping } from "react-icons/fa6";
-import { GiFruitBowl } from "react-icons/gi";
-import { MdOutlineKitchen } from "react-icons/md";
-import { IoMdHelpCircle } from "react-icons/io";
+import { WiSmoke } from "react-icons/wi";
+import { FaTemperatureQuarter } from "react-icons/fa6";
+import { IoWater } from "react-icons/io5";
 
-
-// The features array is a list of features that will be displayed in the accordion.
-// - title: The title of the feature
-// - description: The description of the feature (when clicked)
-// - type: The type of media (video or image)
-// - path: The path to the media (for better SEO, try to use a local path)
-// - format: The format of the media (if type is 'video')
-// - alt: The alt text of the image (if type is 'image')
 const features = [
   {
-    title: "Areas",
+    title: "Etileno",
     description:
-      "Son las diferentes secciones de tu negocio, como la cocina, el bar, el salón, etc. Cada área puede tener diferentes productos.",
-    type: "video",
-    path: "/video/Areas.webm",
-    format: "video/webm",
-    icon: MdOutlineKitchen,
+      "Etileno es un gas que se produce de forma natural en frutas y vegetales, pero en concentraciones elevadas puede acelerar el proceso de maduración y descomposición de los alimentos. En esta sección se podrá visualizar la concentración de etileno en el ambiente del almacén.",
+    type: "image",
+    path: "/img/etileno_medicion_cel.png",
+    format: "img/png",
+    icon: WiSmoke,
   },
   {
-    title: "Categorias",
+    title: "Temperatura",
     description:
-      "Son las diferentes clasificaciones de tus productos, como bebidas, alimentos, postres, etc. Cada producto puede tener una categoría.",
-    type: "video",
-    path: "/video/Categorias.webm",
-    alt: "video/webm",
-    icon: GiFruitBowl,
+      "La temperatura es un indicador clave del progreso del proceso y de la actividad microbiana. En esta sección se podrá visualizar la temperatura del compostaje.",
+    type: "image",
+    path: "/img/temperatura_medicion.png",
+    alt: "img/png",
+    icon: FaTemperatureQuarter,
   },
   {
-    title: "Proveedores",
+    title: "Humedad",
     description:
-      "Son las empresas o personas que te suministran los productos que vendes. Puedes registrar sus datos y los productos que te suministran.",
-      type: "video",
-      path: "/video/Proveedor.webm",
-      alt: "video/webm",
-    icon: FaBasketShopping,
+      "La humedad es un factor importante para el desarrollo de microorganismos y la descomposición de los materiales. En esta sección se podrá visualizar la humedad del compostaje.",
+    type: "image",
+    path: "/img/humedad_medicion.png",
+    alt: "img/png",
+    icon: IoWater,
   },
-  // {
-  //   title: "Ayuda",
-  //   description:
-  //     "Si tienes alguna duda o problema, puedes ver los tutoriales de la sección o contactar con nuestro equipo de soporte para recibir ayuda.",
-  //   type: "video",
-  //   path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
-  //   format: "video/webm",
-  //   icon: IoMdHelpCircle,
-  // },
 ];
 
-// An SEO-friendly accordion component including the title and a description (when clicked.)
 const Item = ({ feature, isOpen, setFeatureSelected }) => {
   const accordion = useRef(null);
   const { title, description, icon: Icon } = feature;
@@ -96,32 +77,15 @@ const Item = ({ feature, isOpen, setFeatureSelected }) => {
   );
 };
 
-// A component to display the media (video or image) of the feature. If the type is not specified, it will display an empty div.
-// Video are set to autoplay for best UX.
 const Media = ({ feature }) => {
-  const { type, path, format, alt } = feature;
+  const { type, path, alt } = feature;
   const style = "rounded-2xl aspect-square w-full sm:w-[26rem]";
   const size = {
     width: 500,
     height: 500,
   };
 
-  if (type === "video") {
-    return (
-      <video
-        className={style}
-        autoPlay
-        muted
-        loop
-        playsInline
-        controls
-        width={size.width}
-        height={size.height}
-      >
-        <source src={path} type={format} />
-      </video>
-    );
-  } else if (type === "image") {
+  if (type === "image") {
     return (
       <Image
         src={path}
@@ -136,23 +100,21 @@ const Media = ({ feature }) => {
   }
 };
 
-// A component to display 2 to 5 features in an accordion.
-// By default, the first feature is selected. When a feature is clicked, the others are closed.
 const FeaturesAccordion = () => {
   const [featureSelected, setFeatureSelected] = useState(0);
 
   return (
     <section
-            className="flex flex-col justify-center items-center   md:px-10 py-24 md:py-32 space-y-24 md:space-y-32 max-w-8xl mx-auto bg-gray_200 "
+      className="flex flex-col justify-center items-center md:px-10 py-24 md:py-32 space-y-24 md:space-y-32 max-w-8xl mx-auto bg-gray_200"
       id="features"
     >
       <div className="px-8">
-      <h2 className="md:text-5xl text-4xl tracking-tight mb-12 md:mb-8 font-bold text-black_100 text-center">
-      Todo lo que necesitas para tu inventario{" "}
-      <span className="block text-green_100 md:px-8 md:leading-relaxed">
-        y hacer crecer tu negocio
-      </span>
-</h2>
+        <h2 className="md:text-5xl text-4xl tracking-tight mb-12 md:mb-8 font-bold text-black_100 text-center">
+          Todo lo que necesitas para tu composta{" "}
+          <span className="block text-green_100 md:px-8 md:leading-relaxed">
+            y hacerla más eficiente.
+          </span>
+        </h2>
         <div className="flex flex-col md:flex-row gap-12 md:gap-24">
           <div className="flex flex-col md:flex-row justify-between items-stretch w-full">
             <ul className="w-full md:w-auto">
@@ -166,7 +128,7 @@ const FeaturesAccordion = () => {
                 />
               ))}
             </ul>
-        
+
             <Media feature={features[featureSelected]} key={featureSelected} />
           </div>
         </div>

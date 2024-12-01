@@ -28,8 +28,11 @@ const Home = () => {
             <h2 className="text-3xl font-semibold mb-5">Etileno</h2>
             <Image src="/img/etileno.png" width={256} height={256} />
           </div>
-          <div className="radial-progress mb-10" style={{ "--value": etileno || 0, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
+          {/* <div className="radial-progress mb-10" style={{ "--value": etileno || 0, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
             {etileno !== null ? `${etileno} mg/m3` : '-'}
+          </div> */}
+          <div className="radial-progress mb-10" style={{ "--value": 35, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
+            35 mg/m3
           </div>
         </div>
       </div>
