@@ -28,7 +28,7 @@ const MobileFooter = () => {
         z-40
         flex
         items-center
-        bg-dark_purple
+        bg-black_100
         border-t-[1px]
         lg:hidden
       "
@@ -55,9 +55,9 @@ const MobileFooter = () => {
             w-full
             justify-center
             p-4
-          text-white_purple
-          hover:text-cute_blue
-          hover:bg-white_purple
+          text-green_100
+          hover:text-green_200
+          hover:bg-gray_100
           `
           )}
         >

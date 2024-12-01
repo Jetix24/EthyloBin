@@ -31,7 +31,7 @@ const DesktopSidebar = ({ image }) => {
             lg:z-40
             lg:w-20
             lg:overflow-y-auto
-            lg:bg-dark_purple
+            lg:bg-black_100
             lg:border-r-[1px]
             border-slate-800
             lg:pb-4
@@ -49,7 +49,7 @@ const DesktopSidebar = ({ image }) => {
             h-50        
             "
         >
-          <Image src="/img/icon.webp" alt="Logo" width={50} height={50} />
+          <Image src="/img/icon.png" alt="Logo" width={50} height={50} />
         </div>
         <hr className="w-full border-slate-600" />
         <nav

@@ -51,12 +51,12 @@ const Item = ({ item }) => {
         aria-expanded={isOpen}
       >
         <span
-          className={`flex-1 text-blue_purple ${isOpen ? "text-cute_purple" : ""}`}
+          className={`flex-1 text-green_300 ${isOpen ? "text-green_200" : ""}`}
         >
           {item?.question}
         </span>
         <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current text-dark_purple`}
+          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current text-black_100`}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -98,13 +98,13 @@ const Item = ({ item }) => {
 
 const Problem = () => {
   return (
-    <section className="bg-cute_white" id="problema">
+    <section className="bg-gray_200" id="problema">
   <div className="max-w-7xl mx-auto px-16 py-16 md:py-16 text-center">
     <div className="mb-12 md:mb-14">
-      <h1 className="text-dark_purple font-bold md:text-5xl text-4xl mb-4">
+      <h1 className="text-black_100 font-bold md:text-5xl text-4xl mb-4">
         ¿Falta de Gestión en el Inventario de tu Negocio?
       </h1>
-      <p className="text-blue_purple font-semibold text-lg opacity-90 leading-relaxed">
+      <p className="text-green_300 font-semibold text-lg opacity-90 leading-relaxed">
         En muchos negocios, la gestión del inventario puede ser un desafío...
       </p>
     </div>

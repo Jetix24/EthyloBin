@@ -47,12 +47,12 @@ const Item = ({ item }) => {
         aria-expanded={isOpen}
       >
         <span
-          className={`flex-1 text-blue_purple ${isOpen ? "text-cute_purple" : ""}`}
+          className={`flex-1 text-green_300 ${isOpen ? "text-green_200" : ""}`}
         >
           {item?.question}
         </span>
         <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current text-dark_purple`}
+          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current text-black_100`}
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -94,11 +94,11 @@ const Item = ({ item }) => {
 
 const FAQ = () => {
   return (
-    <section className="bg-cute_white" id="faq">
+    <section className="bg-gray_200" id="faq">
       <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
         <div className="flex flex-col text-left basis-1/2">
-          <p className="inline-block font-semibold text-cute_purple mb-4">PF</p>
-          <p className="sm:text-4xl text-3xl font-extrabold text-dark_purple">
+          <p className="inline-block font-semibold text-green_200 mb-4">PF</p>
+          <p className="sm:text-4xl text-3xl font-extrabold text-black_100">
             Preguntas Frecuentes
           </p>
         </div>

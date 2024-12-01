@@ -22,7 +22,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, children, title="" }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-dark_purple bg-opacity-70" />
+          <div className="fixed inset-0 bg-black_100 bg-opacity-70" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -36,9 +36,9 @@ const Modal = ({ isModalOpen, setIsModalOpen, children, title="" }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="relative w-full max-w-3xl h-full overflow-visible transform text-left align-middle shadow-xl transition-all rounded-md bg-cute_white p-6 md:p-8">
+              <Dialog.Panel className="relative w-full max-w-3xl h-full overflow-visible transform text-left align-middle shadow-xl transition-all rounded-md bg-gray_200 p-6 md:p-8">
                 <div className="flex justify-between items-center mb-4">
-                  <Dialog.Title as="h2" className="font-semibold text-dark_purple text-xl md:text-2xl">
+                  <Dialog.Title as="h2" className="font-semibold text-black_100 text-xl md:text-2xl">
                     {title}
                   </Dialog.Title>
                   <button
@@ -49,7 +49,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, children, title="" }) => {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="w-7 h-7 text-blue_purple hover:text-dark_purple"
+                      className="w-7 h-7 text-green_300 hover:text-black_100"
                     >
                       <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                     </svg>

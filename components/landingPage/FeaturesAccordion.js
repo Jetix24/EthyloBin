@@ -62,19 +62,19 @@ const Item = ({ feature, isOpen, setFeatureSelected }) => {
   return (
     <li>
       <button
-        className="relative flex gap-2 items-center w-full py-5 text-cute_blue font-bold text-left md:text-lg"
+        className="relative flex gap-2 items-center w-full py-5 text-green_100 font-bold text-left md:text-lg"
         onClick={(e) => {
           e.preventDefault();
           setFeatureSelected();
         }}
         aria-expanded={isOpen}
       >
-        <span className={`duration-100 ${isOpen ? "text-cute_purple" : ""}`}>
+        <span className={`duration-100 ${isOpen ? "text-green_200" : ""}`}>
           <Icon className="w-6 h-6" />
         </span>
         <span
           className={`flex-1 text-base-content ${
-            isOpen ? "text-cute_purple font-semibold" : ""
+            isOpen ? "text-green_200 font-semibold" : ""
           }`}
         >
           <h3 className="inline">{title}</h3>
@@ -143,13 +143,13 @@ const FeaturesAccordion = () => {
 
   return (
     <section
-            className="flex flex-col justify-center items-center   md:px-10 py-24 md:py-32 space-y-24 md:space-y-32 max-w-8xl mx-auto bg-cute_white "
+            className="flex flex-col justify-center items-center   md:px-10 py-24 md:py-32 space-y-24 md:space-y-32 max-w-8xl mx-auto bg-gray_200 "
       id="features"
     >
       <div className="px-8">
-      <h2 className="md:text-5xl text-4xl tracking-tight mb-12 md:mb-8 font-bold text-dark_purple text-center">
+      <h2 className="md:text-5xl text-4xl tracking-tight mb-12 md:mb-8 font-bold text-black_100 text-center">
       Todo lo que necesitas para tu inventario{" "}
-      <span className="block text-cute_blue md:px-8 md:leading-relaxed">
+      <span className="block text-green_100 md:px-8 md:leading-relaxed">
         y hacer crecer tu negocio
       </span>
 </h2>

@@ -30,11 +30,11 @@ const DesktopItem = ({
           text-sm
           leading-6
           font-semibold
-          text-white_purple
-          hover:text-cute_blue
-          hover:bg-white_purple
+          text-green_100
+          hover:text-green_200
+          hover:bg-gray_100
         `,
-          active && "bg-cute_blue text-white_purple"
+          active && "bg-gray_100 text-green_100"
         )}
       >
         <Icon className="h-7 w-7 shrink-0" />

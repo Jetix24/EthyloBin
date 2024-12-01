@@ -43,7 +43,7 @@ const Avatar = ({ image }) => {
           title="Salir de la sesión"
         >
           <div className="flex justify-end">
-          <button onClick={handleLogout}  className="mt-4 w-full sm:w-auto text-cute_white btn bg-cute_purple hover:bg-blue_purple rounded-md">
+          <button onClick={handleLogout}  className="mt-4 w-full sm:w-auto text-gray_200 btn bg-green_200 hover:bg-green_300 rounded-md">
           <RiLogoutBoxFill className="h-7 w-7 shrink-0" />
             Cerrar sesión
           </button>
