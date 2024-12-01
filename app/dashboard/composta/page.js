@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/compostaje');
+        const response = await axios.get('/api/compost');
         console.log('Datos obtenidos:', response.data); // Imprime los datos en consola
         setTemperatura(response.data.temperatura);
         setHumedad(response.data.humedad);
@@ -31,22 +31,22 @@ const Home = () => {
             <h2 className="text-3xl font-semibold mb-5">Temperatura</h2>
             <Image src="/img/temperatura.png" width={256} height={256} />
           </div>
-          <div className="radial-progress" style={{ "--value": 25, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
+          {/* <div className="radial-progress" style={{ "--value": 25, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
             25°C
-          </div>
-          {/* <div className="radial-progress" style={{ "--value": temperatura || 0, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
-            {temperatura !== null ? `${temperatura}°C` : '-'}
           </div> */}
+          <div className="radial-progress" style={{ "--value": temperatura || 28, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
+            {temperatura !== null ? `${temperatura}°C` : '28°C'}
+          </div>
           <div className="flex flex-col mb-10 ml-10 lg:ml-0 items-center text-center">
             <h2 className="text-3xl font-semibold mb-5">Humedad</h2>
             <Image src="/img/humedad.png" width={256} height={256} />
           </div>
-          <div className="radial-progress mb-10 lg:mb-0" style={{ "--value": 50, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
+          {/* <div className="radial-progress mb-10 lg:mb-0" style={{ "--value": 50, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
             50%
-          </div>
-          {/* <div className="radial-progress" style={{ "--value": humedad || 0, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
-            {humedad !== null ? `${humedad}%` : '-'}
           </div> */}
+          <div className="radial-progress" style={{ "--value": humedad || 87, "--size": "20rem", "--thickness": "2rem", "fontSize": "3rem" }} role="progressbar">
+            {humedad !== null ? `${humedad}%` : '87%'}
+          </div>
         </div>
       </div>
     </div>
